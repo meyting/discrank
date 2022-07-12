@@ -1,0 +1,568 @@
+{{ block title }}
+Before we start...
+{{ endblock }}
+
+{{ block content }}
+<p>
+    ... we would like to ask you to indicate your beliefs about how well subgroups of workers performed in the assessment test.
+</p>
+<p>
+    <i>
+    Please make sure, that the respective total for each subgroup sums up to 100%.
+    </i>
+</p>
+
+<div style="background-color:#f2f2f2; padding-left:25px">
+<hr>
+    <br>
+<table>
+    <tr>
+        <td>
+            <h6> Out of all female workers in our pool of workers, what fraction got a score between ...</h6>
+        </td>
+    </tr>
+</table>
+<table style="width:100%">
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t0 }} and {{ C.t1 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="f1">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="f1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange1">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t2 }} and {{ C.t3 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="f2">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="f2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange2">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t4 }} and {{ C.t5 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="f3">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="f3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange3">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t6 }} and {{ C.t7 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="f4">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="f4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange4">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t8 }} and {{ C.t9 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="f5">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="f5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange5">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t10 }} and {{ C.t11 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="f6">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="f6" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange6">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr  style="color:grey" id="fsum">
+        <td >
+            <h6>Total: </h6>
+        </td>
+        <td >
+            <div><h6><span id="ftotal" >0</span>%</h6></div>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+    <br>
+    <hr>
+</div>
+
+<br>
+
+<div style="background-color:#ffffff; padding-left:25px">
+<table>
+    <tr>
+        <td>
+            <h6> Out of all male workers in our pool of workers, what fraction got a score between ...</h6>
+        </td>
+    </tr>
+</table>
+<table style="width:100%">
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t0 }} and {{ C.t1 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="m1">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="m1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange1">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t2 }} and {{ C.t3 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="m2">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="m2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange2">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t4 }} and {{ C.t5 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="m3">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="m3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange3">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t6 }} and {{ C.t7 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="m4">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="m4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange4">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t8 }} and {{ C.t9 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="m5">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="m5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange5">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t10 }} and {{ C.t11 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="m6">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="m6" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange6">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr  style="color:grey" id="msum">
+        <td >
+            <h6>Total: </h6>
+        </td>
+        <td >
+            <div><h6><span id="mtotal" >0</span>%</h6></div>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+    <br>
+</div>
+
+
+    {{ next_button }}
+
+
+    <input type="hidden" name="ftotal" id="femaletotal" />
+    <input type="hidden" name="mtotal" id="maletotal" />
+
+
+
+{{ endblock }}
+
+
+{{ form.f1.errors }}
+{{ form.f2.errors }}
+{{ form.f3.errors }}
+{{ form.f4.errors }}
+{{ form.f5.errors }}
+{{ form.f6.errors }}
+{{ form.ftotal.errors }}
+{{ form.m1.errors }}
+{{ form.m2.errors }}
+{{ form.m3.errors }}
+{{ form.m4.errors }}
+{{ form.m5.errors }}
+{{ form.m6.errors }}
+{{ form.mtotal.errors }}
+
+{{ block app_scripts }}
+<script>
+        var slider1 = document.getElementById("frange1");
+        var output1 = document.getElementById("f1");
+        if(document.getElementById("f1") != null){
+        output1.innerHTML;
+        slider1.oninput = function() {
+            output1.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider2 = document.getElementById("frange2");
+        var output2 = document.getElementById("f2");
+        if(document.getElementById("f2") != null){
+        output2.innerHTML;
+        slider2.oninput = function() {
+            output2.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider3 = document.getElementById("frange3");
+        var output3 = document.getElementById("f3");
+        if(document.getElementById("f3") != null){
+        output3.innerHTML;
+        slider3.oninput = function() {
+            output3.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider4 = document.getElementById("frange4");
+        var output4 = document.getElementById("f4");
+        if(document.getElementById("f4") != null){
+        output4.innerHTML;
+        slider4.oninput = function() {
+            output4.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider5 = document.getElementById("frange5");
+        var output5 = document.getElementById("f5");
+        if(document.getElementById("f5") != null){
+        output5.innerHTML;
+        slider5.oninput = function() {
+            output5.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider6= document.getElementById("frange6");
+        var output6 = document.getElementById("f6");
+        if(document.getElementById("f6") != null){
+        output6.innerHTML;
+        slider6.oninput = function() {
+            output6.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider7 = document.getElementById("mrange1");
+        var output7 = document.getElementById("m1");
+        if(document.getElementById("m1") != null){
+        output7.innerHTML;
+        slider7.oninput = function() {
+            output7.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider8 = document.getElementById("mrange2");
+        var output8 = document.getElementById("m2");
+        if(document.getElementById("m2") != null){
+        output8.innerHTML;
+        slider8.oninput = function() {
+            output8.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider9 = document.getElementById("mrange3");
+        var output9 = document.getElementById("m3");
+        if(document.getElementById("m3") != null){
+        output9.innerHTML;
+        slider9.oninput = function() {
+            output9.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider10 = document.getElementById("mrange4");
+        var output10 = document.getElementById("m4");
+        if(document.getElementById("m4") != null){
+        output10.innerHTML;
+        slider10.oninput = function() {
+            output10.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider11 = document.getElementById("mrange5");
+        var output11 = document.getElementById("m5");
+        if(document.getElementById("m5") != null){
+        output11.innerHTML;
+        slider11.oninput = function() {
+            output11.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slider12= document.getElementById("mrange6");
+        var output12 = document.getElementById("m6");
+        if(document.getElementById("m6") != null){
+        output12.innerHTML;
+        slider12.oninput = function() {
+            output12.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+    $(function() {
+    $('input[type=range]').change(getTotal);
+    getTotal();
+    });
+
+    function getTotal() {
+        var s1 = parseInt(slider1.value) || 0;
+        var s2 = parseInt(slider2.value) || 0;
+        var s3 = parseInt(slider3.value) || 0;
+        var s4 = parseInt(slider4.value) || 0;
+        var s5 = parseInt(slider5.value) || 0;
+        var s6 = parseInt(slider6.value) || 0;
+        var s7 = parseInt(slider7.value) || 0;
+        var s8 = parseInt(slider8.value) || 0;
+        var s9 = parseInt(slider9.value) || 0;
+        var s10 = parseInt(slider10.value) || 0;
+        var s11 = parseInt(slider11.value) || 0;
+        var s12 = parseInt(slider12.value) || 0;
+
+        slider1.oninput = function() {
+            output1.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ftotal").innerHTML = parseFloat(this.value) + s2 + s3 + s4 + s5 + s6;
+            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            if (document.getElementById("ftotal").innerHTML == 100) {
+                  document.getElementById('fsum').style.color = "green";
+                  document.getElementById('ftotal').style.color = "green";
+            };
+            if (document.getElementById("ftotal").innerHTML != 100) {
+                  document.getElementById('fsum').style.color = "red";
+                  document.getElementById('ftotal').style.color = "red";
+            };};
+
+        slider2.oninput = function() {
+            output2.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ftotal").innerHTML = s1 + parseFloat(this.value) + s3 + s4 + s5 + s6;
+            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            if (document.getElementById("ftotal").innerHTML == 100) {
+                  document.getElementById('fsum').style.color = "green";
+                  document.getElementById('ftotal').style.color = "green";
+            };
+            if (document.getElementById("ftotal").innerHTML != 100) {
+                  document.getElementById('fsum').style.color = "red";
+                  document.getElementById('ftotal').style.color = "red";
+            };};
+
+        slider3.oninput = function() {
+            output3.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ftotal").innerHTML = s1 + s2 + parseFloat(this.value) + s4 + s5 + s6;
+            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            if (document.getElementById("ftotal").innerHTML == 100) {
+                  document.getElementById('fsum').style.color = "green";
+                  document.getElementById('ftotal').style.color = "green";
+            };
+            if (document.getElementById("ftotal").innerHTML != 100) {
+                  document.getElementById('fsum').style.color = "red";
+                  document.getElementById('ftotal').style.color = "red";
+            };};
+
+        slider4.oninput = function() {
+            output4.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + parseFloat(this.value) + s5 + s6;
+            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            if (document.getElementById("ftotal").innerHTML == 100) {
+                  document.getElementById('fsum').style.color = "green";
+                  document.getElementById('ftotal').style.color = "green";
+            };
+            if (document.getElementById("ftotal").innerHTML != 100) {
+                  document.getElementById('fsum').style.color = "red";
+                  document.getElementById('ftotal').style.color = "red";
+            };};
+
+        slider5.oninput = function() {
+            output5.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + parseFloat(this.value) + s6;
+            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            if (document.getElementById("ftotal").innerHTML == 100) {
+                  document.getElementById('fsum').style.color = "green";
+                  document.getElementById('ftotal').style.color = "green";
+            };
+            if (document.getElementById("ftotal").innerHTML != 100) {
+                  document.getElementById('fsum').style.color = "red";
+                  document.getElementById('ftotal').style.color = "red";
+            };};
+
+        slider6.oninput = function() {
+            output6.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + s5 + parseFloat(this.value);
+            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            if (document.getElementById("ftotal").innerHTML == 100) {
+                  document.getElementById('fsum').style.color = "green";
+                  document.getElementById('ftotal').style.color = "green";
+            };
+            if (document.getElementById("ftotal").innerHTML != 100) {
+                  document.getElementById('fsum').style.color = "red";
+                  document.getElementById('ftotal').style.color = "red";
+            };};
+        slider7.oninput = function() {
+            output7.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("mtotal").innerHTML = parseFloat(this.value) + s8 + s9 + s10 + s11 + s12;
+            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            if (document.getElementById("mtotal").innerHTML == 100) {
+                  document.getElementById('msum').style.color = "green";
+                  document.getElementById('mtotal').style.color = "green";
+            };
+            if (document.getElementById("mtotal").innerHTML != 100) {
+                  document.getElementById('msum').style.color = "red";
+                  document.getElementById('mtotal').style.color = "red";
+            };};
+
+        slider8.oninput = function() {
+            output8.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("mtotal").innerHTML = s7 + parseFloat(this.value) + s9 + s10 + s11 + s12;
+            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            if (document.getElementById("mtotal").innerHTML == 100) {
+                  document.getElementById('msum').style.color = "green";
+                  document.getElementById('mtotal').style.color = "green";
+            };
+            if (document.getElementById("mtotal").innerHTML != 100) {
+                  document.getElementById('msum').style.color = "red";
+                  document.getElementById('mtotal').style.color = "red";
+            };};
+
+        slider9.oninput = function() {
+            output9.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("mtotal").innerHTML = s7 + s8 + parseFloat(this.value) + s10 + s11 + s12;
+            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            if (document.getElementById("mtotal").innerHTML == 100) {
+                  document.getElementById('msum').style.color = "green";
+                  document.getElementById('mtotal').style.color = "green";
+            };
+            if (document.getElementById("mtotal").innerHTML != 100) {
+                  document.getElementById('msum').style.color = "red";
+                  document.getElementById('mtotal').style.color = "red";
+            };};
+        slider10.oninput = function() {
+            output10.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + parseFloat(this.value) + s11 + s12;
+            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            if (document.getElementById("mtotal").innerHTML == 100) {
+                  document.getElementById('msum').style.color = "green";
+                  document.getElementById('mtotal').style.color = "green";
+            };
+            if (document.getElementById("mtotal").innerHTML != 100) {
+                  document.getElementById('msum').style.color = "red";
+                  document.getElementById('mtotal').style.color = "red";
+            };};
+        slider11.oninput = function() {
+            output11.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + parseFloat(this.value) + s12;
+            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            if (document.getElementById("mtotal").innerHTML == 100) {
+                  document.getElementById('msum').style.color = "green";
+                  document.getElementById('mtotal').style.color = "green";
+            };
+            if (document.getElementById("mtotal").innerHTML != 100) {
+                  document.getElementById('msum').style.color = "red";
+                  document.getElementById('mtotal').style.color = "red";
+            };};
+        slider12.oninput = function() {
+            output12.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + s11 + parseFloat(this.value);
+            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            if (document.getElementById("mtotal").innerHTML == 100) {
+                  document.getElementById('msum').style.color = "green";
+                  document.getElementById('mtotal').style.color = "green";
+            };
+            if (document.getElementById("mtotal").innerHTML != 100) {
+                  document.getElementById('msum').style.color = "red";
+                  document.getElementById('mtotal').style.color = "red";
+            };};
+        }
+
+        document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+        document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+
+</script>
+{{ endblock }}
+
+{{ block app_styles }}
+<style>
+
+    .slidershown {
+       /*-webkit-appearance: none;*/
+        width: 80%;
+        height: 100%;
+        border-radius: 5px;
+        background: #dae0e5;
+        outline: none;
+        opacity: 0.7;
+         -webkit-transition: .2s;
+        transition: opacity .2s;
+        }
+
+    .slidershown::-webkit-slider-thumb {
+       /* -webkit-appearance: none;*/
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #c1002a;
+        cursor: pointer;
+        }
+
+    .emptyrow {
+        height:10px;
+        }
+</style>
+{{ endblock }}
+
+
+
