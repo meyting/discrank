@@ -1,0 +1,195 @@
+{{ extends "global/Page.html" }}
+{{ load otree static }}
+
+{{ block title }}
+Welcome!
+{{ endblock %}
+
+{{ block content }}
+
+<hr>
+<p><i>Please read the following explanations carefully!!</i></p>
+<hr>
+<h5><u>Background</u></h5> This study is based on a previous survey.
+In this previous survey, we set up a pool of potential "workers".
+
+{{ if player.participant.task == "logic" }}
+<p>
+    These workers are US residents who completed a <b>logic/math test</b>, consisting of 15 questions, including simple
+    math exercises as well as questions in which the workers had to find a pattern in a logical sequence of figures in
+    order to find the next figure of the sequence.
+    The total number of correctly solved questions constitutes a workers <b>productivity score</b>.
+</p>
+        <p>Click <b id="ass_trigger" style="color:darkred"> here </b> for an example screenshot.</p>
+        <div id="assmodal" class="modal">
+            <span id="assclose" class="close">&times;</span>
+            <img class="modal-content" id="assimg" src="{% static "screenshots/ass.JPG" %}" alt="logic/math test example screenshot" style="width:100%;max-width:800px">
+            <div id="asscaption"></div>
+        </div>
+{{ endif }}
+
+{{ if player.participant.task == "realeffort" }}
+<p>
+    These workers are US residents who completed an <b>effort test</b> in which we repeatedly presented each worker
+    with a matrix of zeros and ones and asked to indicate how many times the number "1" appears in that matrix.
+    They had 5 minutes to solve as many matrices as possible.
+    However, they always had the opportunity to abort the task and skip the remainder of it by just clicking an "Abort task & skip part" button.
+    The total number of correctly solved matrices constitutes a workers <b>productivity score</b>.
+</p>
+        <p>Click <b id="re_trigger" style="color:darkred"> here </b> for an example screenshot.</p>
+        <div id="remodal" class="modal">
+            <span id="reclose" class="close">&times;</span>
+            <img class="modal-content" id="reimg" src="{% static "screenshots/re.JPG" %}" alt="effort test example screenshot" style="width:100%;max-width:1000px">
+            <div id="recaption"></div>
+        </div>
+ {{ endif }}
+<br />
+
+<h5><u>Your task</u></h5>
+
+<br />
+<br />
+<h5><u>Your bonus payment</u></h5>
+
+<br />
+<br />
+<h5><u>Data</u></h5>
+    <i>
+    All data that you enter in this survey will be treated anonymously and will solely be used for academic research.
+    Neither the experimenter nor anyone else will be able to identify you from the answers that you give in this survey.
+    </i>
+
+<hr>
+<p>
+    If you have read and understood these explanations, please click "Next" to start.
+</p>
+    {% next_button %}
+
+{% endblock %}
+
+
+{% block styles %}
+<style>
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+    #ass_trigger:hover{
+        cursor: pointer;
+        }
+
+    #re_trigger:hover{
+        cursor: pointer;
+        }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        }
+
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+        }
+
+    .modal-content, #caption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+        }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+        }
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+    @media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// SCREENSHOT FOR LOGIC/MATH TEST
+// Get the modal
+var assmodal = document.getElementById("assmodal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var asstrigger = document.getElementById("ass_trigger");
+var assmodalImg = document.getElementById("assimg");
+var asscaptionText = document.getElementById("asscaption");
+asstrigger.onclick = function(){
+  assmodal.style.display = "block";
+  asscaptionText.innerHTML = assmodalImg.alt;
+};
+
+// Get the <span> element that closes the modal
+var assspan = document.getElementById("assclose");
+
+// When the user clicks on <span> (x), close the modal
+assspan.onclick = function() {
+  assmodal.style.display = "none";
+};
+
+
+// SCREENSHOT FOR REALEFFORT
+// Get the modal
+var remodal = document.getElementById("remodal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var retrigger = document.getElementById("re_trigger");
+var remodalImg = document.getElementById("reimg");
+var recaptionText = document.getElementById("recaption");
+retrigger.onclick = function(){
+  remodal.style.display = "block";
+  recaptionText.innerHTML = reodalImg.alt;
+}
+
+// Get the <span> element that closes the modal
+var respan = document.getElementById("reclose");
+
+// When the user clicks on <span> (x), close the modal
+respan.onclick = function() {
+  remodal.style.display = "none";
+}
+</script>
+
+{% endblock %}

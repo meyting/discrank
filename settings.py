@@ -2,6 +2,12 @@ from os import environ
 
 SESSION_CONFIGS = [
     dict(
+        name='welcome',
+        display_name='welcome',
+        num_demo_participants=20,
+        app_sequence=['welcome'],
+    ),
+    dict(
         name='beliefs',
         display_name='beliefs',
         num_demo_participants=20,
@@ -14,10 +20,30 @@ SESSION_CONFIGS = [
         app_sequence=['rank'],
     ),
     dict(
+        name='survey',
+        display_name='survey',
+        num_demo_participants=20,
+        app_sequence=['survey'],
+    ),
+    dict(
+        name='all_realeffort',
+        display_name='all (realeffort)',
+        num_demo_participants=20,
+        app_sequence=['welcome', 'beliefs', 'rank', 'survey'],
+        task='realeffort',
+    ),
+    dict(
+        name='all_logic',
+        display_name='all (logic)',
+        num_demo_participants=20,
+        app_sequence=['welcome','beliefs', 'rank', 'survey'],
+        task="logic",
+    ),
+    dict(
         name='all',
         display_name='all',
         num_demo_participants=20,
-        app_sequence=['beliefs', 'rank'],
+        app_sequence=['welcome','beliefs', 'rank', 'survey'],
     ),
 ]
 
@@ -30,7 +56,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=5.00, doc=""
 )
 
-PARTICIPANT_FIELDS = []
+PARTICIPANT_FIELDS = ["task"]
 SESSION_FIELDS = []
 
 # ISO-639 code

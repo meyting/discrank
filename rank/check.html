@@ -5,18 +5,18 @@
 <h2>Ranking</h2>
 <br />
 <p>
-    On the left side, you see a random ranking of animals, on the right side, you see a random ranking of vehicles.
+    On the left side, you see a random ranking of the letters A, B, C, and D, on the right side, you see a random ranking of the letters E, F, G, and H.
     In the middle, you see an empty "Mixed Ranking". You can fill this mixed ranking by dragging and dropping an item
     from on of the rankings on the sides into the mixed ranking. To try this out, please set up the following mixed ranking:
     <br /><br />
-    <b>1)</b> <b style="color:red">bike</b>
-    <b>2)</b> <b style="color:red">plane</b>
-    <b>3)</b> <b style="color:red">cat</b>
-    <b>4)</b> <b style="color:red">train</b>
-    <b>5)</b> <b style="color:red">dog</b>
-    <b>6)</b> <b style="color:red">monkey</b>
-    <b>7)</b> <b style="color:red">bird</b>
-    <b>8)</b> <b style="color:red">car</b>
+    <b>1)</b> <b style="color:red">A</b> <br>
+    <b>2)</b> <b style="color:red">B</b> <br>
+    <b>3)</b> <b style="color:red">C</b> <br>
+    <b>4)</b> <b style="color:red">D</b> <br>
+    <b>5)</b> <b style="color:red">E</b> <br>
+    <b>6)</b> <b style="color:red">F</b> <br>
+    <b>7)</b> <b style="color:red">G</b> <br>
+    <b>8)</b> <b style="color:red">H</b>
 
 </p>
 
@@ -24,18 +24,18 @@
 
 <div class="container">
   <div class="items-container" id="items-container">
-  <div class="headlines"><b>Animals</b></div>
+  <div class="headlines"><b>Left</b></div>
   <div class="row">
-    <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">dog</p></div>
+    <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">B</p></div>
   </div>
   <div class="row">
-    <div class="rank"> 2) </div> <div class="name"><p class="draggable" draggable="true">bird</p></div>
+    <div class="rank"> 2) </div> <div class="name"><p class="draggable" draggable="true">D</p></div>
   </div>
   <div class="row">
-    <div class="rank"> 3) </div> <div class="name"><p class="draggable" draggable="true">cat</p></div>
+    <div class="rank"> 3) </div> <div class="name"><p class="draggable" draggable="true">A</p></div>
   </div>
   <div class="row">
-    <div class="rank"> 4) </div> <div class="name"><p class="draggable" draggable="true">monkey</p></div>
+    <div class="rank"> 4) </div> <div class="name"><p class="draggable" draggable="true">C</p></div>
   </div>
 
   </div>
@@ -90,18 +90,18 @@
 
   <div class="empty">&nbsp;</div>
   <div class="items-container">
-  <div class="headlines"><b>Vehicles</b></div>
+  <div class="headlines"><b>Right</b></div>
   <div class="row">
-    <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">train</p></div>
+    <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">G</p></div>
   </div>
   <div class="row">
-    <div class="rank"> 2) </div> <div class="name"><p class="draggable" draggable="true">car</p></div>
+    <div class="rank"> 2) </div> <div class="name"><p class="draggable" draggable="true">H</p></div>
   </div>
   <div class="row">
-    <div class="rank"> 3) </div> <div class="name"><p class="draggable" draggable="true">bike</p></div>
+    <div class="rank"> 3) </div> <div class="name"><p class="draggable" draggable="true">F</p></div>
   </div>
   <div class="row">
-    <div class="rank"> 4) </div> <div class="name"><p class="draggable" draggable="true">plane</p></div>
+    <div class="rank"> 4) </div> <div class="name"><p class="draggable" draggable="true">E</p></div>
   </div>
 
   </div>
@@ -109,7 +109,7 @@
 </div>
 
 <div class="footer-container">
-<p>Once you have added all items to the Mixed Ranking, please click on "Next" to start with the actual task.</p>
+<p>Once you have added all letters to the Mixed Ranking, please click "Next" to start with the actual task.</p>
     <button class="btn otree-btn-next btn-primary" id="submit-btn">Next</button>
 
     </div>
@@ -130,7 +130,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    font-size: 1.5rem;
+    font-size: 1rem;
     position:relative;
 }
 
@@ -138,7 +138,9 @@
     float: left;
     width: 25%;
     background-color: #F5F5F5;
-    height: 330px;
+    height: 250px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
 
 .headlines {
@@ -161,7 +163,7 @@
 
 .outcome .row {
     margin-top: 1rem;
-    margin-bottom: 1.112rem;
+    margin-bottom: 1.118rem;
 }
 
 .rank {
@@ -180,7 +182,7 @@
 .outcome {
     width: 40%;
     float: left;
-    height: 450px;
+    height: 350px;
     background-color:#F5F5F5;
 
    }
@@ -200,6 +202,7 @@
     float: left;
     background-color:#F5F5F5;
     text-align:center;
+    padding-right: 1rem;
 }
 
 .draggable {
@@ -213,7 +216,7 @@
 }
 
 .footer-container {
-    margin-top: 10%;
+    margin-top: 5%;
     justify-content: center;
 }
 
@@ -233,6 +236,10 @@
     opacity: .5;
 }
 
+.green {
+   background-color: green;
+   border-color: green;
+   }
 
 
 
@@ -268,6 +275,7 @@ dropContainer.addEventListener('dragover', (e) => {
 
   // Only the currently dragged item has the class dragging.
   const draggable = document.querySelector('.dragging');
+    draggable.classList.add('green');
 
   // This determines the element which comes after the current mouse position (in the case
   // where there are no such elements, null is returned).

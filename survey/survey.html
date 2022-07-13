@@ -1,0 +1,121 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+Almost done!
+{% endblock %}
+
+{% block content %}
+<p>
+    Please answer the following questions to finish this survey.
+</p>
+<hr>
+<label for="birthday">Please provide your date of birth:</label><br />
+<input type="date" id="start" name="birthday" min="1900-01-01" max="2020-12-31" required class="form-control" >
+<br/>
+       {{  formfield 'gender' }}
+<hr>
+       {{  formfield 'race' }}
+       {{  formfield 'nationality' }}
+       {{  formfield 'state' }}
+<hr>
+       {{  formfield 'education' }}
+
+    <label for="occupation"> Which of these options best applies to you?</label>
+    <select onchange="yesnoCheckocc(this);" name="occupation" id="occ" class="form-control">
+        <option selected value> --------- </option>
+        <option  value="0">I am a High school student</option >
+        <option  value="1">I am a college student</option >
+        <option  value="2">I am working in a job</option>
+        <option  value="3">I am retired</option >
+        <option  value="4">I am a homemaker</option >
+        <option  value="5">I am unemployed</option >
+        <option  value="6">other</option >
+    </select>
+<br>
+    <div style="display: none;" id="profession">
+        {{  formfield 'profession' }}
+    </div>
+    <div style="display: none;" id="fieldofstudy">
+       {{  formfield 'fieldofstudy' }}
+    </div>
+<hr>
+       {{ formfield 'party' }}
+       {{ formfield 'religion' }}
+       {{ formfield 'favmovie' }}
+       {{ formfield 'favtvshow' }}
+       {{ formfield 'favbook' }}
+       {{ formfield 'favanimal' }}
+<hr>
+    <label for="actsat"> Did you take the ACT and/or SAT?</label>
+    <select onchange="yesnoCheckactsat(this);" name="actsat" id="actsat" class="form-control">
+        <option selected value> --------- </option>
+        <option  value="0">Yes, only the ACT</option >
+        <option  value="1">Yes, only the SAT</option >
+        <option  value="2">Yes, both</option>
+        <option  value="3">No, none of these</option >
+    </select>
+<br>
+    <div style="display: none;" id="act">
+       {{  formfield 'act' }}
+    </div>
+    <div style="display: none;" id="sat">
+       {{  formfield 'sat' }}
+    </div>
+<hr>
+       {{ formfield 'gpa_college' }}
+       {{ formfield 'gpa_hs' }}
+<hr>
+       {{ formfield 'purpose' }}
+       {{ formfield 'attentioncheck' }}
+<hr>
+
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function yesnoCheckocc(that) {
+    if (that.value == "1") {
+        document.getElementById("fieldofstudy").style.display = "block";
+        document.getElementById("profession").style.display = "none";
+    }
+    else if (that.value == "2") {
+        document.getElementById("profession").style.display = "block";
+        document.getElementById("fieldofstudy").style.display = "none";
+    } else {
+        document.getElementById("profession").style.display = "none";
+        document.getElementById("fieldofstudy").style.display = "none";
+    }
+};
+
+function yesnoCheckactsat(that) {
+    if (that.value == "0") {
+        document.getElementById("act").style.display = "block";
+        document.getElementById("sat").style.display = "none";
+    }
+    else if (that.value == "1") {
+        document.getElementById("sat").style.display = "block";
+        document.getElementById("act").style.display = "none";
+    }
+    else if (that.value == "2") {
+        document.getElementById("act").style.display = "block";
+        document.getElementById("sat").style.display = "block";
+    }
+    else {
+        document.getElementById("act").style.display = "none";
+        document.getElementById("sat").style.display = "none";
+    }
+};
+</script>
+
+
+{{ formfield_errors 'actsat' }}
+{{ formfield_errors 'occupation' }}
+
+{% endblock %}
+
