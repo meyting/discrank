@@ -66,13 +66,13 @@ class Player(BasePlayer):
     party = models.CharField(initial=None,
                              verbose_name='In politics today, do you consider yourself a Republican, a Democrat , or an Independent?',
                              choices=['Republican', 'Democrat', 'Independent'], )
-    favmovie = models.CharField(initial=None,
+    favmovie = models.CharField(initial=None, blank=True,
                                 verbose_name="What is your favorite movie?")
-    favtvshow = models.CharField(initial=None,
+    favtvshow = models.CharField(initial=None, blank=True,
                                  verbose_name="What is your favorite TV show?")
-    favbook = models.CharField(initial=None,
+    favbook = models.CharField(initial=None, blank=True,
                                verbose_name="What is your favorite book?")
-    favanimal = models.CharField(initial=None,
+    favanimal = models.CharField(initial=None, blank=True,
                                  verbose_name="What is your favorite animal?")
     purpose = models.LongStringField(initial=None,
                                      blank=True,
@@ -89,7 +89,7 @@ class Player(BasePlayer):
                               blank=True,
                               verbose_name='What was your highest ACT score?',
                               )
-    gpa_hs = models.FloatField(initial=None,
+    gpa_hs = models.FloatField(initial=None, blank=True,
                                verbose_name='What is your final (or current) high school GPA?')
     gpa_college = models.FloatField(initial=None, blank=True,
                                     verbose_name='What is your final (or current) college GPA?')
