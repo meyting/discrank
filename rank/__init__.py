@@ -45,6 +45,17 @@ class rank(Page):
         if len(rankinglist) < 30:
             return 'Please add all workers to the mixed ranking.'
 
+'''
+class rank2(Page):
+    form_model = 'player'
+    form_fields = ['ranking',]
+
+    def error_message(player, values):
+        rankinglist = values["ranking"].split(",")
+        if len(rankinglist) < 30:
+            return 'Please add all workers to the mixed ranking.'
+'''
 
 
-page_sequence = [check, rank,]
+page_sequence = [check,
+                 rank,]

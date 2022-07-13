@@ -19,7 +19,7 @@
 
 
 <div class="container">
-  <div class="items-container" id="items-container">
+  <div class="items-container" id="left-container">
   <div class="headlines"><b>Female Ranking</b></div>
   <div class="row">
     <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">Lena</p></div>
@@ -203,7 +203,7 @@
 
 
   <div class="empty">&nbsp;</div>
-  <div class="items-container">
+  <div class="items-container" id="right-container">
   <div class="headlines"><b>Male Ranking</b></div>
   <div class="row">
     <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">Florian</p></div>
@@ -283,7 +283,14 @@
     position:relative;
 }
 
-.items-container {
+.left-container {
+    float: left;
+    width: 25%;
+    background-color: #F5F5F5;
+    height: 1110px;
+}
+
+.right-container {
     float: left;
     width: 25%;
     background-color: #F5F5F5;
@@ -310,7 +317,7 @@
 
 .outcome .row {
     margin-top: 1rem;
-    margin-bottom: 1.112rem;
+    margin-bottom: 1.175rem;
 }
 
 .rank {
@@ -393,21 +400,92 @@
 <script>
 "use strict";
 
-let ranking = [];
+// ----------------------------------------------------------
+// region Class Items
+// ----------------------------------------------------------
 
-// This loop adds makes the currently dragged item appear with reduced opacity.
-document.querySelectorAll('.draggable').forEach(draggable => {
+function Items() {
+  this.ranking = this.getItemFromStorage('ranking', []);
+  this.left = this.getItemFromStorage('left', ['Lena', 'Lara', 'Clara', 'Sarah']);
+  this.right = this.getItemFromStorage('right', ['Florian', 'Julian', 'Marius', 'Markus']);
+}
 
-  draggable.addEventListener('dragstart', () => {
-    draggable.classList.add('dragging');
+Items.prototype.getRanking = function () {
+  return this.getItemFromStorage('ranking');
+}
+Items.prototype.setRanking = function (value) {
+  this.storeItemInStorage('ranking', value);
+}
+Items.prototype.getLeft = function () {
+  return this.getItemFromStorage('left');
+}
+Items.prototype.setLeft = function (value) {
+  this.storeItemInStorage('left', value);
+}
+Items.prototype.getRight = function () {
+  return this.getItemFromStorage('right');
+}
+Items.prototype.setRight = function (value) {
+  this.storeItemInStorage('right', value);
+}
+Items.prototype.isRankingComplete = function () {
+  return this.getLeft().length + this.getRight().length === 0;
+}
+Items.prototype.getItemFromStorage = function (key, defaultValue) {
+  const value = localStorage.getItem(key);
+  if (value) {
+    return JSON.parse(value);
+  }
+
+  this.storeItemInStorage(key, defaultValue);
+  return defaultValue;
+}
+Items.prototype.storeItemInStorage = function (key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+// ----------------------------------------------------------
+// endregion Class Items
+// ----------------------------------------------------------
+
+// ----------------------------------------------------------
+// region Document Initialization
+// ----------------------------------------------------------
+
+const items = new Items();
+const dropContainer = document.querySelector('.drop-container');
+const leftContainer = document.querySelector('#left-container');
+const rightContainer = document.querySelector('#right-container');
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  appendNames(leftContainer, items.getLeft());
+  appendNames(rightContainer, items.getRight());
+  appendNames(dropContainer, items.getRanking());
+
+  // This loop adds makes the currently dragged item appear with reduced opacity.
+  document.querySelectorAll('.draggable').forEach(draggable => {
+
+    draggable.addEventListener('dragstart', () => {
+      draggable.classList.add('dragging');
+    });
+
+    draggable.addEventListener('dragend', () => {
+      draggable.classList.remove('dragging');
+    });
   });
 
-  draggable.addEventListener('dragend', () => {
-    draggable.classList.remove('dragging');
-  });
 });
 
-const dropContainer = document.querySelector('.drop-container');
+function appendNames(container, names) {
+  names.forEach(name => {
+    const p = document.createElement('p');
+    p.innerText = name;
+    p.classList.add('draggable');
+    p.draggable = true;
+    container.appendChild(p);
+  });
+}
 
 dropContainer.addEventListener('dragover', (e) => {
 
@@ -429,7 +507,17 @@ dropContainer.addEventListener('dragover', (e) => {
     dropContainer.insertBefore(draggable, afterElement);
   }
 
-  updateranking(dropContainer);
+  items.setRanking(
+      [...dropContainer.children]
+          .reduce((names, paragraph) => names.concat(paragraph.innerText), [])
+  );
+  items.setLeft(
+      [...leftContainer.children]
+          .reduce((names, paragraph) => names.concat(paragraph.innerText), [])
+  );
+  items.setRight(
+      [...rightContainer.children].reduce((names, paragraph) => names.concat(paragraph.innerText), [])
+  );
 });
 
 function getDragAfterElement(container, y) {
@@ -446,57 +534,35 @@ function getDragAfterElement(container, y) {
     // (1): box.top - box.height / 2 gives the exact position of the vertical center of
     //      the current element
     // (2): y - "vertical center" < 0 iff the child is below the current mouse position
-    const offset = y - box.top - box.height /2
+    const offset = y - box.top - box.height / 2
 
     // This condition only holds when the child is the closest child to the current
     // mouse position.
     if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child };
+      return {offset: offset, element: child};
     } else {
       return closest;
     }
-  }, { offset: Number.NEGATIVE_INFINITY }).element
+  }, {offset: Number.NEGATIVE_INFINITY}).element
 }
 
-/**
- * Updates the global variable ranking with the currently chosen ranking.
- * @param container
- */
-function updateranking(container) {
-  ranking = [];
-  [...container.children].forEach(child => {
-    ranking.push(child.innerText);
-  });
-}
+// ----------------------------------------------------------
+// endregion Document Initialization
+// ----------------------------------------------------------
 
-/**
- * Return true if both item containers are empty.
- *
- * @return {boolean}
- */
-function itemsEmpty() {
-  return [...document.querySelectorAll('.items-container')]
-      .reduce(
-          (previousValue, currentContainer) =>
-              previousValue && currentContainer.children.length < 17
-      , true);
-}
+// ----------------------------------------------------------
+// region Submit Functionality
+// ----------------------------------------------------------
 
 document.querySelector('#submit-btn')
     .addEventListener('click', () => {
 
-      // TODO Perform your desired checks (i.e. if all people have been ranked)
-      if (! itemsEmpty()) {
-        window.alert('Please add all people to your ranking.');
-        return;
-      }
-
       // Create an empty invisible form
-      const form  = document.createElement('form');
+      const form = document.createElement('form');
       document.body.appendChild(form);
       form.style.display = 'none';
 
-      // TODO Select appropriate method and action (i.e. target location) here
+      // Select appropriate method and action (i.e. target location) here
       form.method = 'POST';
       form.action = '#';
 
@@ -506,19 +572,19 @@ document.querySelector('#submit-btn')
 
       // Add the currently chosen ranking to the input's value
       input.name = 'ranking[]';
-      input.value = ranking.reduce((previousValue, currentValue) => {
-        return previousValue.concat(currentValue);
-      }, []);
+      input.value = items.getRanking();
 
       // Submit to Otree form ranking
-      document.getElementById('ranking').value = ranking;
-
+      document.getElementById('ranking').value = input.value;
 
       // Submit the form (this uses the method and action from above)
       form.submit();
-
-
     });
+
+// ----------------------------------------------------------
+// endregion Submit Functionality
+// ----------------------------------------------------------
+
 
 </script>
 {{ endblock }}
