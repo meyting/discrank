@@ -21,14 +21,30 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    ranking = models.CharField()
+    ranking = models.CharField(blank=True)
+    check = models.CharField(blank=True)
 
 
 # PAGES
+class check(Page):
+    form_model = 'player'
+    form_fields = ['check',]
+
+    def error_message(player, values):
+        checklist = values["check"].split(",")
+        if len(checklist) < 8:
+            return 'Please add all items to the mixed ranking.'
+
+
 class rank(Page):
     form_model = 'player'
     form_fields = ['ranking',]
 
+    def error_message(player, values):
+        rankinglist = values["ranking"].split(",")
+        if len(rankinglist) < 30:
+            return 'Please add all workers to the mixed ranking.'
 
 
-page_sequence = [rank,]
+
+page_sequence = [check, rank,]
