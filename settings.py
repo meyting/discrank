@@ -18,6 +18,14 @@ SESSION_CONFIGS = [
         display_name='rank',
         num_demo_participants=20,
         app_sequence=['rank'],
+        version='old',
+    ),
+    dict(
+        name='rank_with_refresh',
+        display_name='rank with refresh',
+        num_demo_participants=20,
+        app_sequence=['rank'],
+        version='new',
     ),
     dict(
         name='survey',
