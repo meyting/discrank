@@ -2,26 +2,32 @@
 {{ block content }}
 <!-- The only relevant part is the dragging attribute assigned to the items
   which are supposed to be dragged. -->
-
 <h2>Ranking</h2>
 <br />
 <p>
-    On the left side, you a selection of female workers from our pool of workers, ranked according to their performance
-    in the counting task.
-    On the right side, you a selection of male workers from our pool of workers, ranked according to their performance
-    in the counting task.
-    In the middle, you see an empty "Mixed Ranking".
-    You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the mixed ranking.
+    On the left side, you see a random ranking of the letters A, B, C, and D, on the right side, you see a random ranking of the letters E, F, G, and H.
+    In the middle, you see an empty "Mixed Ranking". You can fill this mixed ranking by dragging and dropping an item
+    from on of the rankings on the sides into the mixed ranking. To try this out, please set up the following mixed ranking:
+    <br /><br />
+    <b>1)</b> <b style="color:red">A</b> <br>
+    <b>2)</b> <b style="color:red">B</b> <br>
+    <b>3)</b> <b style="color:red">C</b> <br>
+    <b>4)</b> <b style="color:red">D</b> <br>
+    <b>5)</b> <b style="color:red">E</b> <br>
+    <b>6)</b> <b style="color:red">F</b> <br>
+    <b>7)</b> <b style="color:red">G</b> <br>
+    <b>8)</b> <b style="color:red">H</b>
+
 </p>
-<p><b>Please rank all workers into one mixed ranking.</b></p>
 
 <br />
 
-  <div class="genderheadlines"><b>Female Ranking</b></div>
+
+  <div class="genderheadlines"><b>Left</b></div>
   <div class="empty">&nbsp;</div>
   <div class="mixedheadline"><b>Mixed Ranking</b></div>
   <div class="empty">&nbsp;</div>
-  <div class="genderheadlines"><b>Male Ranking</b></div>
+  <div class="genderheadlines"><b>Right</b></div>
 
 <div class="container">
   <div class="items-container" id="left-container">
@@ -64,93 +70,6 @@
      <div class="rank"> 8) </div>
    </div>
 
-   <div class="row">
-     <div class="rank"> 9) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 10) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 11) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 12) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 13) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 14) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 15) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 16) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 17) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 18) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 19) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 20) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 21) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 22) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 23) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 24) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 25) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 26) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 27) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 28) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 29) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 30) </div>
-   </div>
    </div>
 
    <div class="drop-container">
@@ -173,11 +92,11 @@
     </div>
 
 
-    <input type="hidden" name="ranking" id="ranking" />
+    <input type="hidden" name="check" id="check" />
 {{ endblock }}
 
 
-{{ formfield_errors 'ranking' }}
+{{ formfield_errors 'check' }}
 
 
 
@@ -197,7 +116,7 @@
     float: left;
     width: 25%;
     background-color: #F5F5F5;
-    height: 1110px;
+    height: 250px;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
     margin-top: 1rem;
@@ -255,7 +174,7 @@
 .outcome {
     width: 40%;
     float: left;
-    height: 1630px;
+    height: 450px;
     background-color:#F5F5F5;
    }
 
@@ -330,30 +249,28 @@
 // ----------------------------------------------------------
 
 function Items() {
-  this.ranking = this.getItemFromStorage('ranking', []);
-  this.left = this.getItemFromStorage('left', ['Lena', 'Lara', 'Clara', 'Sarah', '...', '...',
-   '...', '...', '...', '...', '...', '...', '...', '...', '...', ]);
-  this.right = this.getItemFromStorage('right', ['Florian', 'Julian', 'Marius', 'Markus', '...', '...',
-  '...', '...', '...', '...', '...', '...', '...', '...', '...', ]);
+  this.check = this.getItemFromStorage('check', []);
+  this.leftcheck = this.getItemFromStorage('leftcheck', ['C', 'A', 'D', 'B', ]);
+  this.rightcheck = this.getItemFromStorage('rightcheck', ['E', 'F', 'H', 'G',  ]);
 }
 
 Items.prototype.getRanking = function () {
-  return this.getItemFromStorage('ranking');
+  return this.getItemFromStorage('check');
 }
 Items.prototype.setRanking = function (value) {
-  this.storeItemInStorage('ranking', value);
+  this.storeItemInStorage('check', value);
 }
 Items.prototype.getLeft = function () {
-  return this.getItemFromStorage('left');
+  return this.getItemFromStorage('leftcheck');
 }
 Items.prototype.setLeft = function (value) {
-  this.storeItemInStorage('left', value);
+  this.storeItemInStorage('leftcheck', value);
 }
 Items.prototype.getRight = function () {
-  return this.getItemFromStorage('right');
+  return this.getItemFromStorage('rightcheck');
 }
 Items.prototype.setRight = function (value) {
-  this.storeItemInStorage('right', value);
+  this.storeItemInStorage('rightcheck', value);
 }
 Items.prototype.isRankingComplete = function () {
   return this.getLeft().length + this.getRight().length === 0;
@@ -499,11 +416,11 @@ document.querySelector('#submit-btn')
       form.appendChild(input);
 
       // Add the currently chosen ranking to the input's value
-      input.name = 'ranking[]';
+      input.name = 'check[]';
       input.value = items.getRanking();
 
       // Submit to Otree form ranking
-      document.getElementById('ranking').value = input.value;
+      document.getElementById('check').value = input.value;
 
       // Submit the form (this uses the method and action from above)
       form.submit();

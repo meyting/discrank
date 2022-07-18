@@ -26,6 +26,7 @@ class Player(BasePlayer):
 
 
 # PAGES
+'''
 class check(Page):
     form_model = 'player'
     form_fields = ['check',]
@@ -44,18 +45,31 @@ class rank(Page):
         rankinglist = values["ranking"].split(",")
         if len(rankinglist) < 30:
             return 'Please add all workers to the mixed ranking.'
-
 '''
+
+class check2(Page):
+    form_model = 'player'
+    form_fields = ['check',]
+
+    def error_message(player, values):
+        checklist = values["check"].split(",")
+        if len(checklist) < 8:
+            return 'Please add all items to the mixed ranking.'
+
+
 class rank2(Page):
     form_model = 'player'
     form_fields = ['ranking',]
 
     def error_message(player, values):
         rankinglist = values["ranking"].split(",")
-        if len(rankinglist) < 30:
+        if len(rankinglist) < 3:
+            print(len(rankinglist))
             return 'Please add all workers to the mixed ranking.'
-'''
 
 
-page_sequence = [check,
-                 rank,]
+
+page_sequence = [#check,
+                 #rank,
+                 check2,
+                 rank2,]
