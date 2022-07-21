@@ -49,27 +49,10 @@ Almost done!
        {{ formfield 'favbook' }}
        {{ formfield 'favanimal' }}
 <hr>
-    <label for="actsat"> Did you take the ACT and/or SAT?</label>
-    <select onchange="yesnoCheckactsat(this);" name="actsat" id="actsat" class="form-control">
-        <option selected value> --------- </option>
-        <option  value="0">Yes, only the ACT</option >
-        <option  value="1">Yes, only the SAT</option >
-        <option  value="2">Yes, both</option>
-        <option  value="3">No, none of these</option >
-    </select>
-<br>
-    <div style="display: none;" id="act">
-       {{  formfield 'act' }}
-    </div>
-    <div style="display: none;" id="sat">
-       {{  formfield 'sat' }}
-    </div>
-<hr>
        {{ formfield 'gpa_college' }}
        {{ formfield 'gpa_hs' }}
 <hr>
        {{ formfield 'purpose' }}
-       {{ formfield 'attentioncheck' }}
 <hr>
 
 
@@ -93,29 +76,27 @@ function yesnoCheckocc(that) {
     }
 };
 
-function yesnoCheckactsat(that) {
-    if (that.value == "0") {
-        document.getElementById("act").style.display = "block";
-        document.getElementById("sat").style.display = "none";
-    }
-    else if (that.value == "1") {
-        document.getElementById("sat").style.display = "block";
-        document.getElementById("act").style.display = "none";
-    }
-    else if (that.value == "2") {
-        document.getElementById("act").style.display = "block";
-        document.getElementById("sat").style.display = "block";
-    }
-    else {
-        document.getElementById("act").style.display = "none";
-        document.getElementById("sat").style.display = "none";
-    }
-};
 </script>
 
 
-{{ formfield_errors 'actsat' }}
 {{ formfield_errors 'occupation' }}
+{{ formfield_errors 'party' }}
+{{ formfield_errors 'religion' }}
+{{ formfield_errors 'favmovie' }}
+{{ formfield_errors 'favtvshow' }}
+{{ formfield_errors 'favbook' }}
+{{ formfield_errors 'favanimal' }}
+{{ formfield_errors 'gpa_college' }}
+{{ formfield_errors 'gpa_hs' }}
+{{ formfield_errors 'purpose' }}
+{{ formfield_errors 'profession' }}
+{{ formfield_errors 'fieldofstudy' }}
+{{ formfield_errors 'education' }}
+{{ formfield_errors 'state' }}
+{{ formfield_errors 'race' }}
+{{ formfield_errors 'gender' }}
+{{ formfield_errors 'birthday' }}
+{{ formfield_errors 'nationality' }}
 
 {% endblock %}
 

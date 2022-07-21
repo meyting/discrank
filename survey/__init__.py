@@ -76,19 +76,7 @@ class Player(BasePlayer):
                                  verbose_name="What is your favorite animal?")
     purpose = models.LongStringField(initial=None,
                                      blank=True,
-                                     verbose_name="Taking into account the following instruction, what do you think this experiment is about? Instruction: Please do not use the words 'Decision', and 'Study'.")
-    attentioncheck = models.LongStringField(initial=None,
-                                            blank=True,
-                                            verbose_name="Based on the following sentence what is your favorite color? When asked for your favorite color, please answer: 'aliceblue'.")
-    actsat = models.IntegerField(initial=None)
-    sat = models.IntegerField(initial=None,
-                              blank=True,
-                              verbose_name='What was your highest SAT score?',
-                              )
-    act = models.IntegerField(initial=None,
-                              blank=True,
-                              verbose_name='What was your highest ACT score?',
-                              )
+                                     verbose_name="What do you think this experiment is about?")
     gpa_hs = models.FloatField(initial=None, blank=True,
                                verbose_name='What is your final (or current) high school GPA?')
     gpa_college = models.FloatField(initial=None, blank=True,
@@ -101,8 +89,8 @@ class survey(Page):
     form_fields = ['birthday', 'gender', 'profession', 'fieldofstudy', 'occupation', 'nationality',
                    'education', 'race', 'state',
                    'religion', 'party', 'favmovie', 'favtvshow', 'favbook','favanimal',
-                   'purpose', 'actsat', 'act', 'sat', 'gpa_college', 'gpa_hs',
-                   'attentioncheck']
+                   'purpose',  'gpa_college', 'gpa_hs',
+                   ]
 
 
 page_sequence = [survey]

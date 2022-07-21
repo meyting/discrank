@@ -56,9 +56,11 @@ class check2(Page):
 
     def error_message(player, values):
         checklist = values["check"].split(",")
+        print(checklist)
+        print(C.checksolution)
         if len(checklist) < 8:
             return 'Please add all items to the mixed ranking.'
-        if len(checklist) != C.checksolution:
+        if checklist != C.checksolution:
             return 'Please make sure that you create the correct mixed ranking: A,B,C,D,E,F,G,H'
 
 
