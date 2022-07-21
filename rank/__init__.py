@@ -10,6 +10,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'rank'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
+    checksolution = ["A","B","C","D","E","F","G","H"]
 
 
 class Subsession(BaseSubsession):
@@ -26,7 +27,7 @@ class Player(BasePlayer):
 
 
 # PAGES
-
+'''
 class check(Page):
     form_model = 'player'
     form_fields = ['check',]
@@ -34,6 +35,8 @@ class check(Page):
     def error_message(player, values):
         checklist = values["check"].split(",")
         if len(checklist) < 8:
+            return 'Please add all items to the mixed ranking.'
+        if checklist != c.checksolution:
             return 'Please add all items to the mixed ranking.'
 
 
@@ -45,7 +48,7 @@ class rank(Page):
         rankinglist = values["ranking"].split(",")
         if len(rankinglist) < 30:
             return 'Please add all workers to the mixed ranking.'
-
+'''
 
 class check2(Page):
     form_model = 'player'
@@ -55,6 +58,8 @@ class check2(Page):
         checklist = values["check"].split(",")
         if len(checklist) < 8:
             return 'Please add all items to the mixed ranking.'
+        if len(checklist) != C.checksolution:
+            return 'Please make sure that you create the correct mixed ranking: A,B,C,D,E,F,G,H'
 
 
 class rank2(Page):
