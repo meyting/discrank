@@ -31,9 +31,6 @@ class check(Page):
     form_model = 'player'
     form_fields = ['check',]
 
-    def is_displayed(subsession):
-        return subsession.session.config['version'] == "old"
-
     def error_message(player, values):
         checklist = values["check"].split(",")
         if len(checklist) < 8:
@@ -43,9 +40,6 @@ class check(Page):
 class rank(Page):
     form_model = 'player'
     form_fields = ['ranking',]
-
-    def is_displayed(subsession):
-        return subsession.session.config['version'] == "old"
 
     def error_message(player, values):
         rankinglist = values["ranking"].split(",")
@@ -57,9 +51,6 @@ class check2(Page):
     form_model = 'player'
     form_fields = ['check',]
 
-    def is_displayed(subsession):
-        return subsession.session.config['version'] == "new"
-
     def error_message(player, values):
         checklist = values["check"].split(",")
         if len(checklist) < 8:
@@ -70,9 +61,6 @@ class rank2(Page):
     form_model = 'player'
     form_fields = ['ranking',]
 
-    def is_displayed(subsession):
-        return subsession.session.config['version'] == "new"
-
     def error_message(player, values):
         rankinglist = values["ranking"].split(",")
         if len(rankinglist) < 30:
@@ -81,7 +69,7 @@ class rank2(Page):
 
 
 
-page_sequence = [check,
-                 rank,
+page_sequence = [#check,
+                 #rank,
                  check2,
                  rank2,]
