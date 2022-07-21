@@ -1,0 +1,385 @@
+
+{{ block content }}
+<!-- The only relevant part is the dragging attribute assigned to the items
+  which are supposed to be dragged. -->
+<h2>Ranking</h2>
+<br />
+<p>
+    On the left side, you a selection of female workers from our pool of workers, ranked according to their performance
+    in the counting task.
+    On the right side, you a selection of male workers from our pool of workers, ranked according to their performance
+    in the counting task.
+    In the middle, you see an empty "Mixed Ranking".
+    You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the mixed ranking.
+</p>
+<p><b>Please rank all workers into one mixed ranking.</b></p>
+
+<br />
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-4">
+      <h5 class="bg-dark text-white p-2 text-center fw-bold rounded-3 mb-4" id="leftranking"></h5>
+      <div class="row px-4 mb-3">
+        <div class="col-2" id="left-container-ranks"></div>
+        <div class="col-10">
+          <div id="left-container" class="h-100">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 bg-light rounded-3 px-0">
+      <h5 class="bg-dark text-white p-2 text-center fw-bold rounded-3 mb-4" >Mixed Ranking</h5>
+      <div class="row px-4 mb-3">
+        <div class="col-2" id="drop-container-ranks"></div>
+        <div class="col-10">
+          <div id="drop-container" class="h-100"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <h5 class="bg-dark text-white p-2 text-center fw-bold rounded-3 mb-4" id="rightranking"></h5>
+      <div class="row px-4 mb-3">
+        <div class="col-2" id="right-container-ranks"></div>
+        <div class="col-10">
+          <div id="right-container" class="h-100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="text-center mt-5">
+     <p>Once you have added all items to the mixed ranking, please click on "Next".</p>
+    <button class="btn otree-btn-next btn-primary px-5" id="submit-btn">Next</button>
+  </div>
+
+
+
+    <input type="hidden" name="ranking" id="ranking" />
+    <input type="hidden" name="malesleft" id="malesleft" />
+
+{{ endblock }}
+
+
+{{ formfield_errors 'ranking' }}
+{{ formfield_errors 'malesleft' }}
+
+
+
+
+{{ block app_styles }}
+<style>
+
+
+.draggable {
+    cursor: move;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+
+.dragging {
+    opacity: .5;
+}
+
+
+
+</style>
+{{ endblock }}
+
+
+
+{{ block app_scripts }}
+<script>
+'use strict';
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Initial names and correct ranking
+/////////////////////////////////////////////////////////////////////////////////////
+
+const FEMALE = ['Sabrina (1)', 'Kristen (2)', 'Elizabeth (3)', 'Jessica (4)', 'Nicole (5)', 'Jennifer (6)', 'Ana (7)',
+   'Nani (8)', 'Katherine (9)', 'Valeria (10)', 'Tina (11)', 'Erika (12)', 'Marie (13)', 'Emily (14)', 'Nansi (15)'];
+const MALE = ['Yonifredy (1)', 'Corey (2)', 'Quinterius (3)', 'Leon (4)', 'Anthony (5)', 'Chris (6)',
+   'Lorenzo (7)', 'William (8)', 'Julian (9)', 'Drew (10)', 'Matthew (11)', 'Samuel (12)', 'Jack (13)', 'Richie (14)', 'Damian (15)'];
+const MALES_ARE_LEFT_PROB = .5;
+
+// Leave empty (i.e. []) if there is no correct answer (or green highlighting is not desired)
+const CORRECT_RANKING = [];
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+// DOM Elements
+/////////////////////////////////////////////////////////////////////////////////////
+
+const dropContainer = document.querySelector('#drop-container');
+const leftContainer = document.querySelector('#left-container');
+const rightContainer = document.querySelector('#right-container');
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Local Storage Helpers
+/////////////////////////////////////////////////////////////////////////////////////
+
+function getFromLocalStorage(key, defaultValue) {
+  const value = sessionStorage.getItem(key);
+  if (!value) {
+    storeInLocalStorage(key, defaultValue);
+    return defaultValue;
+  }
+  return JSON.parse(value);
+}
+
+function storeInLocalStorage(key, value) {
+  sessionStorage.setItem(key, JSON.stringify(value));
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Class Names
+/////////////////////////////////////////////////////////////////////////////////////
+
+function Names() {
+
+  this.malesAreLeft = getFromLocalStorage('malesAreLeft', Math.random() < MALES_ARE_LEFT_PROB);
+  this.leftNames = this.malesAreLeft ? MALE : FEMALE;
+  this.rightNames = this.malesAreLeft ? FEMALE : MALE;
+  this.MixedRanking = getFromLocalStorage('mixed', []);
+}
+
+Names.prototype.update = function () {
+  const currentMixedRanking = [...dropContainer.querySelectorAll('.draggable')]
+      .map(draggable => draggable.innerText);
+  storeInLocalStorage('mixed', currentMixedRanking);
+}
+
+Names.prototype.getMixedRanking = function () {
+  return getFromLocalStorage('mixed', []);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Container Initialization
+/////////////////////////////////////////////////////////////////////////////////////
+
+const names = new Names();
+
+function addNamesToContainer(nameArr, container) {
+  nameArr.forEach(name => {
+    const outerDiv = document.createElement('div');
+    outerDiv.style.height = "2rem";
+
+    const div = document.createElement('div');
+    div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center');
+    div.draggable = true;
+    div.innerText = name;
+
+    // Invisibly insert left/right names in their original position. Thus, every name
+    // appears in its original position and is not pushed upwards.
+    if (container !== dropContainer && names.getMixedRanking().includes(name)) {
+      div.classList.remove('draggable');
+      div.draggable = false;
+      div.style.opacity = "0";
+    }
+
+    div.addEventListener('dragstart', () => div.classList.add('dragging'));
+    div.addEventListener('dragend', () => div.classList.remove('dragging'));
+
+    outerDiv.appendChild(div);
+    container.appendChild(outerDiv);
+  })
+}
+
+function addNamesToDropContainer(nameArr, container) {
+  nameArr.forEach(name => {
+    const div = document.createElement('div');
+    div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center', 'mb-2');
+    div.draggable = true;
+    div.innerText = name;
+
+    div.addEventListener('dragstart', () => div.classList.add('dragging'));
+    div.addEventListener('dragend', () => div.classList.remove('dragging'));
+
+    container.appendChild(div);
+  })
+}
+
+function addRanksToContainer(arr, container) {
+  arr.forEach((_, idx) => {
+    const div = document.createElement('div');
+    div.style.height = "2rem";
+    div.innerText = (idx + 1).toString() + ')';
+    container.appendChild(div);
+  });
+}
+
+function displayCorrectRanking() {
+  const outerDiv = document.createElement('div');
+  outerDiv.classList.add('mb-3');
+
+//  const p = document.createElement('p');
+//  p.innerText = CORRECT_RANKING_EXPLANATION;
+//  outerDiv.appendChild(p);
+
+  CORRECT_RANKING.forEach((rank, idx) => {
+    const div = document.createElement('div');
+    div.innerText = (idx + 1).toString() + ') ' + rank;
+    outerDiv.appendChild(div);
+  })
+
+  document.querySelector('.container').insertBefore(outerDiv, document.querySelector('h1').nextSibling);
+}
+
+function isRankingCorrect() {
+  dropContainer.querySelectorAll('.draggable')
+      .forEach((draggable, idx) => {
+        if (CORRECT_RANKING.indexOf(draggable.innerText) === idx) {
+          draggable.classList.remove('bg-dark');
+          draggable.classList.add('bg-success');
+        } else {
+          draggable.classList.add('bg-dark');
+          draggable.classList.remove('bg-success');
+        }
+      });
+}
+
+function initializeContainers() {
+  addNamesToContainer(names.leftNames, leftContainer);
+  const leftContainerRanks = document.querySelector('#left-container-ranks');
+  addRanksToContainer(names.leftNames, leftContainerRanks);
+
+  addNamesToContainer(names.rightNames, rightContainer);
+  const rightContainerRanks = document.querySelector('#right-container-ranks');
+  addRanksToContainer(names.rightNames, rightContainerRanks);
+
+  addNamesToDropContainer(names.MixedRanking, dropContainer);
+  const dropContainerRanks = document.querySelector('#drop-container-ranks');
+  addRanksToContainer(
+      names.leftNames.concat(names.rightNames)
+          .filter(name => !names.MixedRanking.includes(name))
+          .concat(names.MixedRanking),
+      dropContainerRanks
+  );
+}
+
+initializeContainers();
+
+if (CORRECT_RANKING.length > 0) {
+  isRankingCorrect();
+  //displayCorrectRanking();
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Dragover Event Handling
+/////////////////////////////////////////////////////////////////////////////////////
+
+dropContainer.addEventListener('dragover', (e) => {
+
+  // This is necessary to change the mouse cursor into a symbol
+  // which signals that dropping is allowed here.
+  e.preventDefault();
+
+  // Only the currently dragged item has the class dragging.
+  const draggable = document.querySelector('.dragging');
+  draggable.classList.add('mb-2');
+
+  // This determines the element which comes after the current mouse position (in the case
+  // where there are no such elements, null is returned).
+  const afterElement = getDragAfterElement(dropContainer, e.clientY);
+
+  // Place the currently dragged element in the desired position.
+  if (afterElement === null) {
+    dropContainer.appendChild(draggable);
+  } else {
+    dropContainer.insertBefore(draggable, afterElement);
+  }
+
+  names.update();
+
+  isRankingCorrect();
+
+});
+
+function getDragAfterElement(container, y) {
+  // Get all elements in the container and place
+  // them in an array (so that the reduce function is available).
+  const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
+
+  // Determine the element after the current mouse position.
+  return draggableElements.reduce((closest, child) => {
+
+    // This returns information about the position of the currently inspected element.
+    const box = child.getBoundingClientRect();
+
+    // (1): box.top - box.height / 2 gives the exact position of the vertical center of
+    //      the current element
+    // (2): y - "vertical center" < 0 iff the child is below the current mouse position
+    const offset = y - box.top - box.height / 2
+
+    // This condition only holds when the child is the closest child to the current
+    // mouse position.
+    if (offset < 0 && offset > closest.offset) {
+      return {offset: offset, element: child};
+    } else {
+      return closest;
+    }
+  }, {offset: Number.NEGATIVE_INFINITY}).element
+}
+
+if (names.malesAreLeft == true) {
+    document.getElementById("leftranking").innerHTML= "Males";
+    document.getElementById("rightranking").innerHTML= "Females";
+    }
+    else {
+        document.getElementById("rightranking").innerHTML= "Males";
+        document.getElementById("leftranking").innerHTML= "Females";
+    }
+/////////////////////////////////////////////////////////////////////////////////////
+// Submit Functionality
+/////////////////////////////////////////////////////////////////////////////////////
+
+document.querySelector('#submit-btn')
+    .addEventListener('click', () => {
+
+      // Create an empty invisible form
+      const form = document.createElement('form');
+      document.body.appendChild(form);
+      form.style.display = 'none';
+
+      // Select appropriate method and action (i.e. target location) here
+      form.method = 'POST';
+      form.action = '#';
+
+      // Add the currently chosen ranking to the input's value
+      //const rankingInput = document.createElement('input');
+      //form.appendChild(rankingInput);
+      //rankingInput.name = 'ranking[]';
+      //rankingInput.value = names.getMixedRanking();
+
+      // Provide some information whether male names were in the left-hand side container
+      //const malesAreLeftInput = document.createElement('input');
+      //form.appendChild(malesAreLeftInput);
+      //malesAreLeftInput.name = 'males_are_left';
+      //malesAreLeftInput.value = names.malesAreLeft;
+
+      // Submit to Otree form ranking
+      document.getElementById('ranking').value = names.getMixedRanking();
+      document.getElementById('malesleft').value = names.malesAreLeft;
+
+      // Submit the form (this uses the method and action from above)
+      form.submit();
+    });
+
+
+
+// ----------------------------------------------------------
+// endregion Submit Functionality
+// ----------------------------------------------------------
+
+</script>
+{{ endblock }}
