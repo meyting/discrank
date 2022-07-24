@@ -1,0 +1,70 @@
+{{ block title }}
+Part I
+{{ endblock %}
+
+{{ block content }}
+
+<hr>
+<p><i>Please read the following explanations carefully!!</i></p>
+<hr>
+
+{{ if player.participant.task == "logic" }}
+
+<h5><u>Your task</u></h5>
+<p>
+  In this part, you will be asked to rank a set of workers.
+  You will see two sets of workers, each contains {{ C.number_of_workers_sep }} workers ranked from 1
+  (best performance in the logic task) to 15 (lowest performance in the logic task).
+  You task is to create a mixed ranking of all {{ C.number_of_workers_tot }} workers.
+  Next to each worker’s name, you will also see their ranking within their group of {{ C.number_of_workers_sep }}.
+</p>
+{{ endif }}
+
+
+{{ if player.participant.task == "realeffort" }}
+
+<h5><u>Your task</u></h5>
+<p>
+  In this part, you will be asked to rank a set of workers.
+  You will see two sets of workers, each contains {{ C.number_of_workers_sep }} workers ranked from 1
+  (best performance in the effort task) to 15 (lowest performance in the effort task).
+  You task is to create a mixed ranking of all {{ C.number_of_workers_tot }} workers.
+  Next to each worker’s name, you will also see their ranking within their group of {{ C.number_of_workers_sep }}.
+</p>
+{{ endif }}
+
+<br />
+
+<h5><u>Your bonus payment</u></h5>
+<p>
+  Your bonus payment is determined by the performance of the worker that is allocated to you.
+  For each point that your assigned worker has, you receive y pounds.
+</p>
+<p>
+  In total, {{C.number_of_other_subjects}} other participants will also all do the ranking that you are doing.
+  Which worker is allocated to you, depends on your ranking and the ranking of  the other participants.
+</p>
+<p>
+  After all {{ C.number_of_workers_tot }} participants, have ranked the workers, we will randomly a number between
+  1-{{ C.number_of_workers_tot }} to each participant. This number determines your position of when you can pick a
+  worker.
+</p>
+<p> Example: After the study is completed by all participants, we assign you the number 4. Thus, your worker
+  choice will be the worker that ranks highest in your ranking and which is still available after the first 3
+  other participants have chosen their worker.
+</p>
+<br />
+<h5><u>Data</u></h5>
+    <i>
+    Remember: All data that you enter in this survey will be treated anonymously and will solely be used for academic research.
+    Neither the experimenter nor anyone else will be able to identify you from the answers that you give in this survey.
+    </i>
+
+<hr>
+<p>
+    If you have read and understood these explanations, please click "Next" to enter a short training phase.
+</p>
+    {% next_button %}
+
+{% endblock %}
+

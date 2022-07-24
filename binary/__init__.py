@@ -21,14 +21,12 @@ class C(BaseConstants):
                      'name': df1['name'][i],
                      'gender':df1['gender'][i],
                      'mat_range': df1["mat_range"][i],
-                     're_range': df1["re_range"][i]
                      }
                     for i in range(NUM_ROUNDS*2)]
 
     profiles_re = [{'prolificid': df2['prolificid'][i],
                      'name': df2['name'][i],
                      'gender':df2['gender'][i],
-                     'mat_range': df2["mat_range"][i],
                      're_range': df2["re_range"][i],
                      }
                     for i in range(NUM_ROUNDS*2)]
@@ -62,6 +60,11 @@ class Player(BasePlayer):
 
 
 # PAGES
+class instructions_binary(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+
+
 class binary(Page):
     form_model = 'player'
     form_fields = ['decision', 'offer1', 'offer2','decision_gender']
@@ -95,4 +98,6 @@ class binary(Page):
 
 
 
-page_sequence = [binary]
+page_sequence = [instructions_binary,
+                 binary
+                 ]

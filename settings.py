@@ -11,7 +11,7 @@ SESSION_CONFIGS = [
         name='beliefs',
         display_name='beliefs',
         num_demo_participants=20,
-        app_sequence=['beliefs'],
+        app_sequence=['welcome', 'beliefs'],
     ),
     dict(
         name='rank',
@@ -23,7 +23,7 @@ SESSION_CONFIGS = [
         name='rank_with_refresh',
         display_name='rank with refresh',
         num_demo_participants=20,
-        app_sequence=['rank'],
+        app_sequence=['welcome', 'rank'],
     ),
     dict(
         name='binary',
@@ -35,7 +35,7 @@ SESSION_CONFIGS = [
         name='survey',
         display_name='survey',
         num_demo_participants=20,
-        app_sequence=['survey'],
+        app_sequence=['welcome', 'survey'],
         task='realeffort',
     ),
     dict(
