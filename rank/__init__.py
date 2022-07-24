@@ -103,10 +103,6 @@ class rank3(Page):
             return 'Please add all workers to the mixed ranking.'
 
 
-page_sequence = [#check,
-                 #rank,
-                 check3,
+page_sequence = [check3,
                  rank3,
-                 #check2,
-                 #rank2,
-]
+                 ]

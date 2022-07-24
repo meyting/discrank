@@ -18,17 +18,13 @@
 <label for="w1">
 {{i1 | safe}}
     <div class="avatar">
-    {% if profile1.race == "White" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_circle.jpg" %}" />
-    {% elif profile1.race == "Black or African American" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_square.jpg" %}" />
-    {% elif profile1.race == "Hispanic or Latin" %}
-    <img class="avatarimg"  src="{% static "avatar/avatar_n_diamond.jpg" %}" />
-    {% elif profile1.race == "Asian" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_triangular.jpg" %}" />
-    {% endif %}
+    {{ if profile1.gender == "female" }}
+    <img class="avatarimg" src="{% static "global/avatar_f_white.png" %}" />
+    {{ elif profile1.gender == "male" }}
+    <img class="avatarimg" src="{% static "global/avatar_m_white.png" %}" />
+    {{ endif }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> &nbsp;  - worker</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.name }}</h3>
     </div>
 </div>
 </label>
@@ -41,17 +37,13 @@
 <label for="w2">
 {{i2 | safe}}
     <div class="avatar">
-    {% if profile2.race == "White" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_circle.jpg" %}" />
-    {% elif profile2.race == "Black or African American" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_square.jpg" %}" />
-    {% elif profile2.race == "Hispanic or Latin" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_diamond.jpg" %}" />
-    {% elif profile2.race == "Asian" %}
-    <img class="avatarimg" src="{% static "avatar/avatar_n_triangular.jpg" %}" />
-    {% endif %}
+    {{ if profile2.gender == "female" }}
+    <img class="avatarimg" src="{% static "global/avatar_f_white.png" %}" />
+    {{ elif profile2.gender == "male" }}
+    <img class="avatarimg" src="{% static "global/avatar_m_white.png" %}" />
+    {{ endif }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> &nbsp;   - worker</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.name }}</h3>
     </div>
 </div>
 </label>
@@ -61,30 +53,35 @@
 </form>
 
     <br/>
-
-<table id="racetable" style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
+{{ if player.participant.task == "logic" }}
+<table id="ranktable" style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
     <tr style="line-height: 5px;">
         <td style="width:40%;font-weight:bold"> &nbsp; </td>
         <td style="width:20%;font-weight:bold"> &nbsp; </td>
         <td style="width:40%;font-weight:bold"> &nbsp; </td>
     </tr>
-    <tr id="race">
-        <td style = "width:40%;text-align:center;font-weight:bold">
-            {% if profile1.race == "White" %}Circle
-            {% elif profile1.race == "Black or African American" %}Square
-            {% elif profile1.race == "Hispanic or Latin" %}Diamond
-            {% elif profile1.race == "Asian" %}Triangular
-            {% endif %}</td>
-        <td style = "width:20%;text-align:center;font-weight:bold">Group</td>
-        <td style = "width:40%;text-align:center;font-weight:bold">
-            {% if profile2.race == "White" %}Circle
-            {% elif profile2.race == "Black or African American" %}Square
-            {% elif profile2.race == "Hispanic or Latin" %}Diamond
-            {% elif profile2.race == "Asian" %}Triangular
-            {% endif %}
-        </td>
+    <tr id="ranking">
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.mat_range }}</td>
+        <td style = "width:20%;text-align:center;font-weight:bold">Ranking</td>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.mat_range }}</td>
     </tr>
 </table>
+{{ endif }}
+
+{{ if player.participant.task == "realeffort" }}
+<table id="ranktable" style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
+    <tr style="line-height: 5px;">
+        <td style="width:40%;font-weight:bold"> &nbsp; </td>
+        <td style="width:20%;font-weight:bold"> &nbsp; </td>
+        <td style="width:40%;font-weight:bold"> &nbsp; </td>
+    </tr>
+    <tr id="ranking">
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.re_range }}</td>
+        <td style = "width:20%;text-align:center;font-weight:bold">Ranking</td>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.re_range }}</td>
+    </tr>
+</table>
+{{ endif }}
 
     <hr>
     <br>
@@ -93,21 +90,23 @@
     {% next_button %}
     </div>
     <br>
-<div style="text-align:center;"> (Decision {{ player.round_number }} of {{ Constants.num_rounds }})</div>
+<div style="text-align:center;"> (Decision {{ player.round_number }} of {{ C.NUM_ROUNDS }})</div>
 
 
 <input type="hidden" name="offer1" value="{{profile1_id}}" id="offer1"/>
 <input type="hidden" name="offer2" value="{{profile2_id}}" id="offer2"/>
+<input type="hidden" name="decision_gender" value=""/>
 
-{{ form.offer1.errors }}
-{{ form.offer2.errors }}
-{{ form.decision.errors }}
+{{ formfield_errors 'offer1' }}
+{{ formfield_errors 'offer2' }}
+{{ formfield_errors 'decision' }}
+{{ formfield_errors 'decision_gender' }}
 
     {% endblock %}
 
 
 {% block styles %}
-<link href="{% static 'sel_bin/custom.css' %}" rel="stylesheet">
+<link href="{% static 'global/custom.css' %}" rel="stylesheet">
 <style type="text/css">
 
 #content{
@@ -195,17 +194,9 @@ label > input:checked + .avatar{ /* (RADIO CHECKED) IMAGE STYLES */
 
     .avatar .avatarimg{
         position: relative;
-        width: 35%;
+        width: 100x;
         height: 100%;
         float:left;
-        overflow: hidden;
-    }
-
-    .avatarimg_info{
-        display:inline;
-        width: 100%;
-        height: 100%;
-        margin-bottom:0.5%;
         overflow: hidden;
     }
 
@@ -215,18 +206,7 @@ label > input:checked + .avatar{ /* (RADIO CHECKED) IMAGE STYLES */
         height: 150px;
         float: left;
         margin-top:1%;
-        }
-
-    .avatarimg_small{
-        display:inline;
-        width: 2%;
-        height: 100%;
-        overflow: hidden;
-        margin-bottom:0.5%;
-    }
-    .flag {
-        position:relative;
-        bottom: 2px;
+        margin-left: 20px;
         }
 
     .divBox{
@@ -304,6 +284,6 @@ label > input:checked + .avatar{ /* (RADIO CHECKED) IMAGE STYLES */
 
 {% block scripts %}
 
-<script src="{% static 'sel_pro_post/prev_next_button.js' %}"></script>
+<script src="{% static 'global/prev_next_button.js' %}"></script>
 <script src="https://kit.fontawesome.com/291f047144.js" crossorigin="anonymous"></script>
 {% endblock %}

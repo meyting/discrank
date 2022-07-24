@@ -26,30 +26,37 @@ SESSION_CONFIGS = [
         app_sequence=['rank'],
     ),
     dict(
+        name='binary',
+        display_name='binary',
+        num_demo_participants=20,
+        app_sequence=['welcome', 'binary'],
+    ),
+    dict(
         name='survey',
         display_name='survey',
         num_demo_participants=20,
         app_sequence=['survey'],
+        task='realeffort',
     ),
     dict(
         name='all_realeffort',
         display_name='all (realeffort)',
         num_demo_participants=20,
-        app_sequence=['welcome', 'beliefs', 'rank', 'survey'],
+        app_sequence=['welcome', 'beliefs', 'rank', 'binary', 'survey'],
         task='realeffort',
     ),
     dict(
         name='all_logic',
         display_name='all (logic)',
         num_demo_participants=20,
-        app_sequence=['welcome','beliefs', 'rank', 'survey'],
+        app_sequence=['welcome','beliefs', 'rank', 'binary', 'survey'],
         task="logic",
     ),
     dict(
         name='all',
         display_name='all',
         num_demo_participants=20,
-        app_sequence=['welcome','beliefs', 'rank', 'survey'],
+        app_sequence=['welcome','beliefs', 'rank', 'binary', 'survey'],
     ),
 ]
 
@@ -62,7 +69,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=5.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ["task"]
+PARTICIPANT_FIELDS = ["task", "usedprofiles"]
 SESSION_FIELDS = []
 
 # ISO-639 code
