@@ -3,9 +3,17 @@ Before we start...
 {{ endblock }}
 
 {{ block content }}
+
+{{ if player.participant.task == "logic" }}
 <p>
-    ... we would like to ask you to indicate your beliefs about how well subgroups of workers performed in the assessment test.
+    ... we would like to ask you to indicate your beliefs about how well subgroups of workers performed in the logic/math test.
 </p>
+{{ endif }}
+{{ if player.participant.task == "realeffort" }}
+<p>
+    ... we would like to ask you to indicate your beliefs about how well subgroups of workers performed in the effort test.
+</p>
+{{ endif }}
 <p>
     <i>
     Please make sure, that the respective total for each subgroup sums up to 100%.

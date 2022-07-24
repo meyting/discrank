@@ -1,0 +1,309 @@
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">
+    Which of these two workers do you hire?
+</h3>
+<p style="text-align: center;"><i>(Please just click on the shape of the worker who you want to hire.)
+    </i>
+    </p>
+<hr>
+
+<form>
+<div class="profiles">
+<div class="profileleft">
+<div id="bordermiddle"></div>
+<div class="profilecontent">
+<label for="w1">
+{{i1 | safe}}
+    <div class="avatar">
+    {% if profile1.race == "White" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_circle.jpg" %}" />
+    {% elif profile1.race == "Black or African American" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_square.jpg" %}" />
+    {% elif profile1.race == "Hispanic or Latin" %}
+    <img class="avatarimg"  src="{% static "avatar/avatar_n_diamond.jpg" %}" />
+    {% elif profile1.race == "Asian" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_triangular.jpg" %}" />
+    {% endif %}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> &nbsp;  - worker</h3>
+    </div>
+</div>
+</label>
+</div>
+</div>
+
+
+<div class="profileright">
+<div class="profilecontent">
+<label for="w2">
+{{i2 | safe}}
+    <div class="avatar">
+    {% if profile2.race == "White" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_circle.jpg" %}" />
+    {% elif profile2.race == "Black or African American" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_square.jpg" %}" />
+    {% elif profile2.race == "Hispanic or Latin" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_diamond.jpg" %}" />
+    {% elif profile2.race == "Asian" %}
+    <img class="avatarimg" src="{% static "avatar/avatar_n_triangular.jpg" %}" />
+    {% endif %}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> &nbsp;   - worker</h3>
+    </div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</form>
+
+    <br/>
+
+<table id="racetable" style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
+    <tr style="line-height: 5px;">
+        <td style="width:40%;font-weight:bold"> &nbsp; </td>
+        <td style="width:20%;font-weight:bold"> &nbsp; </td>
+        <td style="width:40%;font-weight:bold"> &nbsp; </td>
+    </tr>
+    <tr id="race">
+        <td style = "width:40%;text-align:center;font-weight:bold">
+            {% if profile1.race == "White" %}Circle
+            {% elif profile1.race == "Black or African American" %}Square
+            {% elif profile1.race == "Hispanic or Latin" %}Diamond
+            {% elif profile1.race == "Asian" %}Triangular
+            {% endif %}</td>
+        <td style = "width:20%;text-align:center;font-weight:bold">Group</td>
+        <td style = "width:40%;text-align:center;font-weight:bold">
+            {% if profile2.race == "White" %}Circle
+            {% elif profile2.race == "Black or African American" %}Square
+            {% elif profile2.race == "Hispanic or Latin" %}Diamond
+            {% elif profile2.race == "Asian" %}Triangular
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+    <hr>
+    <br>
+
+    <div class="center">
+    {% next_button %}
+    </div>
+    <br>
+<div style="text-align:center;"> (Decision {{ player.round_number }} of {{ Constants.num_rounds }})</div>
+
+
+<input type="hidden" name="offer1" value="{{profile1_id}}" id="offer1"/>
+<input type="hidden" name="offer2" value="{{profile2_id}}" id="offer2"/>
+
+{{ form.offer1.errors }}
+{{ form.offer2.errors }}
+{{ form.decision.errors }}
+
+    {% endblock %}
+
+
+{% block styles %}
+<link href="{% static 'sel_bin/custom.css' %}" rel="stylesheet">
+<style type="text/css">
+
+#content{
+  width:100%;
+  heigth:500px;
+  margin 0 10% 0 10%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+.compare{
+  float:left;
+  width:45%;
+  margin-left:2.5%;
+  margin-right:2.5%;
+}
+
+.pictures{
+  max-width:100%;
+  heigth:auto;
+}
+
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + .avatar{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:8px solid transparent;
+}
+label > input:checked + .avatar{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:8px solid #008000;
+}
+
+
+    .vertical-line{
+        height: 50%;
+        }
+
+    .profiles{
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+     }
+
+    .profiles .profileleft{
+        border-right: 2px solid gray;
+        height: 100%;
+        width: 50%;
+        overflow: hidden;
+        float: left;
+        padding-right: 30px;
+    }
+
+
+    .profiles .profileright{
+        height: 100%;
+        width: 50%;
+        overflow: hidden;
+        float:right;
+        padding-left: 30px;
+
+    }
+
+    .profilecontent{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+    .profilecontent .avatar{
+        position:relative;
+        float: left;
+        width:100%;
+        height: 130px;
+        margin-left: 90px;
+        overflow: hidden;
+    }
+
+    .avatar .avatarimg{
+        position: relative;
+        width: 35%;
+        height: 100%;
+        float:left;
+        overflow: hidden;
+    }
+
+    .avatarimg_info{
+        display:inline;
+        width: 100%;
+        height: 100%;
+        margin-bottom:0.5%;
+        overflow: hidden;
+    }
+
+    .avatar .name{
+        position: relative;
+        width: 50%;
+        height: 150px;
+        float: left;
+        margin-top:1%;
+        }
+
+    .avatarimg_small{
+        display:inline;
+        width: 2%;
+        height: 100%;
+        overflow: hidden;
+        margin-bottom:0.5%;
+    }
+    .flag {
+        position:relative;
+        bottom: 2px;
+        }
+
+    .divBox{
+        margin-top: 80px;
+        margin-bottom: 5px;
+    }
+
+    .display{
+        visibility: visible;
+        }
+
+    .label{
+        font-size: 1.5rem;
+        float: left;
+        position:relative;
+        }
+
+    .max{
+        color: #2db92d;
+        font-weight: bold;
+        }
+
+    .min{
+        color: #CD5C5C;
+        font-weight: bold;
+        }
+
+    .equal{
+        font-weight: normal;
+        }
+
+    .info {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+        }
+
+    .info .infotext {
+        visibility: hidden;
+        width: 500px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -50px;
+        left: 150%;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height:130%
+    }
+
+    .info .infotext::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent black transparent transparent;
+
+        }
+
+    .info:hover .infotext {
+        visibility: visible;
+        }
+
+</style>
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{% static 'sel_pro_post/prev_next_button.js' %}"></script>
+<script src="https://kit.fontawesome.com/291f047144.js" crossorigin="anonymous"></script>
+{% endblock %}
