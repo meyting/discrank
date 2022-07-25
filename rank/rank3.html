@@ -4,14 +4,30 @@
   which are supposed to be dragged. -->
 <h2>Ranking</h2>
 <br />
+{{ if player.participant.task == "realeffort" }}
 <p>
-    On the left side, you a selection of female workers from our pool of workers, ranked according to their performance
-    in the counting task.
-    On the right side, you a selection of male workers from our pool of workers, ranked according to their performance
-    in the counting task.
-    In the middle, you see an empty "Mixed Ranking".
-    You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the mixed ranking.
+  Below you see again three columns: On the sides, you see two sets of workers.
+  One set contains a random selection of female workers from the total pool of wokers, the other set contains a random
+  selection of male workers.
+  The numbers next to each name indicate their respective rank according to their performance in the counting task
+  within their gender.
+  In the middle, you see an empty "Mixed Ranking".
+  You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
+  mixed ranking.
 </p>
+{{ endif }}
+{{ if player.participant.task == "realeffort" }}
+<p>
+  Below you see again three columns: On the sides, you see two sets of workers.
+  One set contains a random selection of female workers from the total pool of wokers, the other set contains a random
+  selection of male workers.
+  The numbers next to each name indicate their respective rank according to their performance in the counting task
+  within their gender.
+  In the middle, you see an empty "Mixed Ranking".
+  You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
+  mixed ranking.
+</p>
+{{ endif }}
 <p><b>Please rank all workers into one mixed ranking.</b></p>
 
 <br />

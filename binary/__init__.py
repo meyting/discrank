@@ -15,7 +15,7 @@ df2 = df2.replace("",999999999)
 class C(BaseConstants):
     NAME_IN_URL = 'binary'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 7
+    NUM_ROUNDS = 9
 
     profiles_mat = [{'prolificid': df1['prolificid'][i],
                      'name': df1['name'][i],

@@ -53,11 +53,11 @@ class Player(BasePlayer):
                                   blank=True,
                                   verbose_name='What job do you work in?')
 
-    religion = models.CharField(initial=None,
-                                verbose_name='To which religious group do you belong?',
-                                choices=['Catholic', 'Protestant', 'Mormon',
-                                         'Atheist', 'Jewish', 'Muslim', 'Hindu',
-                                         'Buddhist', 'other'], )
+#    religion = models.CharField(initial=None,
+#                                verbose_name='To which religious group do you belong?',
+#                                choices=['Catholic', 'Protestant', 'Mormon',
+#                                         'Atheist', 'Jewish', 'Muslim', 'Hindu',
+#                                         'Buddhist', 'other'], )
     race = models.CharField(initial=None,
                             verbose_name="What is your race/ethnicity?",
                             choices=["Hispanic or Latin", "Asian", "White", "Black or African American",
@@ -65,14 +65,14 @@ class Player(BasePlayer):
     party = models.CharField(initial=None,
                              verbose_name='In politics today, do you consider yourself a Republican, a Democrat , or an Independent?',
                              choices=['Republican', 'Democrat', 'Independent'], )
-    favmovie = models.CharField(initial=None, blank=True,
-                                verbose_name="What is your favorite movie?")
-    favtvshow = models.CharField(initial=None, blank=True,
-                                 verbose_name="What is your favorite TV show?")
-    favbook = models.CharField(initial=None, blank=True,
-                               verbose_name="What is your favorite book?")
-    favanimal = models.CharField(initial=None, blank=True,
-                                 verbose_name="What is your favorite animal?")
+#    favmovie = models.CharField(initial=None, blank=True,
+#                                verbose_name="What is your favorite movie?")
+#    favtvshow = models.CharField(initial=None, blank=True,
+#                                 verbose_name="What is your favorite TV show?")
+#    favbook = models.CharField(initial=None, blank=True,
+#                               verbose_name="What is your favorite book?")
+#    favanimal = models.CharField(initial=None, blank=True,
+#                                 verbose_name="What is your favorite animal?")
     purpose = models.LongStringField(initial=None,
                                      blank=True,
                                      verbose_name="What do you think this experiment is about?")
@@ -87,7 +87,7 @@ class survey(Page):
     form_model = 'player'
     form_fields = ['birthday', 'gender', 'profession', 'fieldofstudy', 'occupation', 'nationality',
                    'education', 'race', 'state',
-                   'religion', 'party', 'favmovie', 'favtvshow', 'favbook','favanimal',
+                   'party',
                    'purpose',  'gpa_college', 'gpa_hs',
                    ]
 

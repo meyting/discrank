@@ -28,6 +28,9 @@ class C(BaseConstants):
     number_of_workers_tot = 24
     number_of_workers_sep = int(number_of_workers_tot/2)
     number_of_other_subjects = int(number_of_workers_tot-1)
+    conversionrate = cu(0.1)
+    examplescore = 5
+    examplebonus = examplescore * conversionrate
 
     names_mat_f = [{'name': df1_female['name'][i],
                   'gender': df1_female['gender'][i],
