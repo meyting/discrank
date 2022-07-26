@@ -5,11 +5,46 @@ doc = """
 Your app description
 """
 import pandas as pd
+import random
+import numpy as np
 
+random.seed(0)
 df1 = pd.read_excel('_static/global/workers_rank_mat.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
 df1 = df1.replace("",999999999)
+df1['random'] = np.random.uniform(0, 0.5, df1.shape[0])
+df1.matrices = df1.matrices+df1["random"]
+df1.mat_rank = df1.matrices.rank()
 df2 = pd.read_excel('_static/global/workers_rank_re.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
 df2 = df2.replace("",999999999)
+df2['random'] = np.random.uniform(0, 0.5, df2.shape[0])
+df2.realeffort = df2.realeffort+df2["random"]
+df2.re_rank = df2.realeffort.rank()
+
+df1f = df1[df1.gender=="female"].reset_index()
+df1m = df1[df1.gender=="male"].reset_index()
+df2f = df2[df2.gender=="female"].reset_index()
+df2m = df2[df2.gender=="male"].reset_index()
+
+df1f = df1f[["name", "gender", "matrices"]].sample(n=12, random_state = 1)
+df1m = df1m[["name", "gender", "matrices",]].sample(n=12, random_state = 1)
+df2f = df2f[["name", "gender", "realeffort"]].sample(n=12, random_state = 1)
+df2m = df2m[["name", "gender", "realeffort"]].sample(n=12, random_state = 1)
+
+df1m["mat_rank"] = df1m.matrices.rank()
+df1f["mat_rank"] = df1f.matrices.rank()
+df2m["re_rank"] = df2m.realeffort.rank()
+df2f["re_rank"] = df2f.realeffort.rank()
+
+df1m = df1m.sort_values(by=['mat_rank']).reset_index()
+df1f = df1f.sort_values(by=['mat_rank']).reset_index()
+df2m = df2m.sort_values(by=['re_rank']).reset_index()
+df2f = df2f.sort_values(by=['re_rank']).reset_index()
+
+print("DF1F!",df1f)
+print("DF1M!",df1m)
+print(df2f)
+print(df2m)
+
 
 df1 = df1.sort_values(by=['mat_rank'])
 df2 = df2.sort_values(by=['re_rank'])
@@ -32,29 +67,29 @@ class C(BaseConstants):
     examplescore = 5
     examplebonus = examplescore * conversionrate
 
-    names_mat_f = [{'name': df1_female['name'][i],
-                  'gender': df1_female['gender'][i],
-                  'mat_rank': df1_female["mat_rank"][i]
+    names_mat_f = [{'name': df1f['name'][i],
+                  'gender': df1f['gender'][i],
+                  'mat_rank': df1f["mat_rank"][i]
                      }
-                  for i in range(len(df1_female))]
+                  for i in range(len(df1f))]
 
-    names_mat_m = [{'name': df1_male['name'][i],
-                  'gender': df1_male['gender'][i],
-                  'mat_rank': df1_male["mat_rank"][i]
+    names_mat_m = [{'name': df1m['name'][i],
+                  'gender': df1m['gender'][i],
+                  'mat_rank': df1m["mat_rank"][i]
                      }
-                  for i in range(len(df1_male))]
+                  for i in range(len(df1m))]
 
-    names_re_f = [{'name': df2_female['name'][i],
-                  'gender': df2_female['gender'][i],
-                  're_rank': df2_female["re_rank"][i]
+    names_re_f = [{'name': df2f['name'][i],
+                  'gender': df2f['gender'][i],
+                  're_rank': df2f["re_rank"][i]
                      }
-                  for i in range(len(df2_female))]
+                  for i in range(len(df2f))]
 
-    names_re_m = [{'name': df2_male['name'][i],
-                  'gender': df2_male['gender'][i],
-                  're_rank': df2_male["re_rank"][i]
+    names_re_m = [{'name': df2m['name'][i],
+                  'gender': df2m['gender'][i],
+                  're_rank': df2m["re_rank"][i]
                   }
-                  for i in range(len(df2_male))]
+                  for i in range(len(df2m))]
 
 class Subsession(BaseSubsession):
     pass
@@ -69,57 +104,10 @@ class Player(BasePlayer):
     check = models.CharField(blank=True)
     abcdleft = models.CharField(blank=True)
     malesleft = models.CharField(blank=True)
-
-
-# PAGES
-'''
-class check(Page):
-    form_model = 'player'
-    form_fields = ['check',]
-
-    def error_message(player, values):
-        checklist = values["check"].split(",")
-        if len(checklist) < 8:
-            return 'Please add all items to the mixed ranking.'
-        if checklist != c.checksolution:
-            return 'Please add all items to the mixed ranking.'
-
-
-class rank(Page):
-    form_model = 'player'
-    form_fields = ['ranking',]
-
-    def error_message(player, values):
-        rankinglist = values["ranking"].split(",")
-        if len(rankinglist) < 30:
-            return 'Please add all workers to the mixed ranking.'
-
-
-class check2(Page):
-    form_model = 'player'
-    form_fields = ['check',]
-
-    def error_message(player, values):
-        checklist = values["check"].split(",")
-        print(checklist)
-        print(C.checksolution)
-        if len(checklist) < 8:
-            return 'Please add all items to the mixed ranking.'
-        if checklist != C.checksolution:
-            return 'Please make sure that you create the correct mixed ranking: A,B,C,D,E,F,G,H'
-
-
-
-class rank2(Page):
-    form_model = 'player'
-    form_fields = ['ranking',]
-
-    def error_message(player, values):
-        rankinglist = values["ranking"].split(",")
-        if len(rankinglist) < 30:
-            print(len(rankinglist))
-            return 'Please add all workers to the mixed ranking.'
-'''
+    femaleranking_mat = models.CharField()
+    femaleranking_re = models.CharField()
+    maleranking_mat = models.CharField()
+    maleranking_re = models.CharField()
 
 
 class check3(Page):
@@ -144,6 +132,12 @@ class instructions_rank(Page):
 class rank3(Page):
     form_model = 'player'
     form_fields = ['ranking', 'malesleft']
+
+    def vars_for_template(player):
+        player.femaleranking_mat = str(C.names_mat_f)
+        player.maleranking_mat = str(C.names_mat_m)
+        player.femaleranking_re = str(C.names_re_f)
+        player.maleranking_re = str(C.names_re_m)
 
     def error_message(player, values):
         rankinglist = values["ranking"].split(",")

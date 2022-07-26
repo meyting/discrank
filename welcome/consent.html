@@ -1,5 +1,9 @@
+
 {{ block title }}
-Instructions
+<div>
+    Welcome!
+<img class="logo" src="{% static "global/uva_logo.png" %}" alt="logo of University of Amsterdam">
+</div>
 {{ endblock %}
 
 {{ block content }}
@@ -7,58 +11,41 @@ Instructions
 <hr>
 <p><i>Please read the following explanations carefully!!</i></p>
 <hr>
-
-
-
-<h5><u>Background</u></h5>
-
+<h5><u>Introduction</u></h5>
 <p>
-    This study is based on a previous survey.
-    In this previous survey, we set up a pool of potential "workers".
-
-    {{ if player.participant.task == "logic" }}
-    These workers are US residents who completed a <b>logic/math test</b>, including simple
-    math exercises as well as questions in which the workers had to find a pattern in a logical sequence of figures in
-    order to find the next figure of the sequence.
-    The total number of correctly solved questions constitutes a workers <b>productivity score</b>.
-        Click <b id="trigger" style="color:darkred"> here </b> for an example screenshot.
-        <div id="modal" class="modal">
-            <span id="close" class="close">&times;</span>
-            <img class="modal-content" id="img" src="{% static "screenshots/ass.JPG" %}" alt="logic/math test example screenshot" style="width:100%;max-width:800px">
-            <div id="caption"></div>
-        </div>
-
-    {{ endif }}
-
-{{ if player.participant.task == "realeffort" }}
-    These workers are US residents who completed a <b>counting task</b> in which we repeatedly presented each worker
-    with a matrix of zeros and ones and asked to indicate how many times the number "1" appears in that matrix.
-    They had 5 minutes to solve as many matrices as possible.
-    However, they always had the opportunity to abort the task and skip the remainder of it by just clicking an "Abort task & skip part" button.
-    The total number of correctly solved matrices constitutes a workers <b>productivity score</b>.
-    Click <b id="trigger" style="color:darkred"> here </b> for an example screenshot.
-        <div id="modal" class="modal">
-            <span id="close" class="close">&times;</span>
-            <img class="modal-content" id="img" src="{% static "screenshots/re.JPG" %}" alt="effort test example screenshot" style="width:100%;max-width:1000px">
-            <div id="caption"></div>
-        </div>
- {{ endif }}
+    Thank you for participating in our study, which is conducted by CREED at the University of Amsterdam.
+    The objective of this study is to collect information for research into economic decision making.
+</p>
+<h5><u>Data</u></h5>
+<p>
+    Before you start, we would like to ask you for your consent for participation.
+    You may withdraw your consent at any time by closing this survey/tab.
+    Once you have withdrawn your consent, your personal data will no longer be used.
+    All your data is anonymous, so that your responses and personal data cannot be associated with your person.
+    The University of Amsterdam is committed to protecting your privacy.
+<!--
+    The University of Amsterdam has a privacy statement, which can be read
+    <a href="https://www.uva.nl/en/home/disclaimers/privacy.html">here</a>.
+-->
+</p>
+<p>
+    If you have any questions about this study, desire additional information or wish to withdraw your consent, please get in touch with the researcher via Prolific.
+    If you have read this information and have decided to participate in this project, please understand that your participation is voluntary and that you have the right to discontinue participation at any time without penalty.
+    Your individual privacy will be maintained in all published and written data resulting from the study.
+</p>
+<p>
+    All data that you enter in this survey will be treated anonymously and will solely be used for academic research.
+    Neither the experimenter nor anyone else will be able to identify you from the answers that you give in this survey.
+    If you would like to participate, please mark the box below indicate your decision to participate and consent to the data being used as described above.
 </p>
 
-<h5><u>Your bonus payment</u></h5>
-<p>
-    In this study, you get the chance to earn a bonus payment.
-    This study consists of two main parts.
-    At the end of this experiment, one of these two parts will be randomly selected as the "part-that-counts".
-    The bonus that you earned in the "part-that-counts" will be paid out to you.
-    Please not that your decisions in part I have no consequences for your decisions in part II.
-    More details on how to earn the bonus in the respective parts will be provided on the next pages.
-</p>
+<label for="consent"><b>I consent to participating in this study:</b></label>
+&nbsp;
+<input type="checkbox" name="consent" id="consent">
+{{ formfield_errors 'consent' }}
+
 <hr>
 
-<p>
-    If you have read and understood all explanations, please click "Next" to start.
-</p>
     {% next_button %}
 
 {% endblock %}
@@ -66,6 +53,10 @@ Instructions
 
 {% block styles %}
 <style>
+.logo {
+    width:25%;
+    margin-left: 55%;
+   }
 
     #consent:hover{
         cursor: pointer;

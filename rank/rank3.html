@@ -1,9 +1,10 @@
-
+{{ block title }}
+Ranking
+{{ endblock }}
 {{ block content }}
 <!-- The only relevant part is the dragging attribute assigned to the items
   which are supposed to be dragged. -->
-<h2>Ranking</h2>
-<br />
+
 {{ if player.participant.task == "realeffort" }}
 <p>
   Below you see again three columns: On the sides, you see two sets of workers.
@@ -16,7 +17,7 @@
   mixed ranking.
 </p>
 {{ endif }}
-{{ if player.participant.task == "realeffort" }}
+{{ if player.participant.task == "logic" }}
 <p>
   Below you see again three columns: On the sides, you see two sets of workers.
   One set contains a random selection of female workers from the total pool of wokers, the other set contains a random

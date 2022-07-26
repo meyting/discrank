@@ -33,11 +33,15 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     task = models.CharField()
-
+    consent = models.BooleanField()
 
 # PAGES
+class consent(Page):
+    form_model = 'player'
+    form_fields = ['consent']
+
 class instructions(Page):
     pass
 
-
-page_sequence = [instructions]
+page_sequence = [consent,
+                 instructions]
