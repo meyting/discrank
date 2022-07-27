@@ -11,7 +11,7 @@ Ranking
   One set contains a random selection of female workers from the total pool of wokers, the other set contains a random
   selection of male workers.
   The numbers next to each name indicate their respective rank according to their performance in the counting task
-  within their gender.
+  within their set from 1-{{ C.number_of_workers_sep }}.
   In the middle, you see an empty "Mixed Ranking".
   You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
   mixed ranking.
@@ -22,8 +22,8 @@ Ranking
   Below you see again three columns: On the sides, you see two sets of workers.
   One set contains a random selection of female workers from the total pool of wokers, the other set contains a random
   selection of male workers.
-  The numbers next to each name indicate their respective rank according to their performance in the counting task
-  within their gender.
+  The numbers next to each name indicate their respective rank according to their performance in the math/logic test
+  within their set from 1-{{ C.number_of_workers_sep }}.
   In the middle, you see an empty "Mixed Ranking".
   You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
   mixed ranking.
@@ -31,6 +31,8 @@ Ranking
 {{ endif }}
 <p><b>Please rank all workers into one mixed ranking.</b></p>
 
+<br />
+{% include "rank/instructionsonpage.html" %}
 <br />
 
 
@@ -78,7 +80,6 @@ Ranking
   </div>
 <br/>
 <br/>
-{% include "rank/instructionsonpage.html" %}
 
 
 

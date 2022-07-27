@@ -10,37 +10,29 @@ Part II
 
 <h5><u>Your task</u></h5>
 <p>
-  In this part, you will be asked to choose one of two workers.
-<p>
-<p>
-  You will repeatedly be presented with a randomly drawn pair of workers from our pool of workers.
-  It is your task to hire one of the two workers.
+    In this part, you will be asked to choose between two workers.
 </p>
-
+<p>
+    You will make 9 decisions.
+    In each decision, you have to choose between two workers.
+    For each worker, you will see information about: A) whether they performed in the top 4, middle 4 or bottom 4
+    within their set from 1-{{ C.number_of_workers_sep }} and B) their gender (shown by an avatar).
+</p>
+<p>
+    EXPLAIN AVATARS
+</p>
 
 <br />
 
-{{ if player.participant.task == "logic" }}
 <h5><u>Your bonus payment</u></h5>
 <p>
     If this part will be drawn as the part-that-counts, one of your decisions will also be randomly drawn as the <b>decision-that-counts</b>.
-    If you hired the <b>better</b> of the two workers in the decision-that-counts (i.e. the one with the
-    <b>higher total score in the logic/math test</b>), you will get a bonus payment of <b>{{ C.flatbonus }}</b>.
-    However, if you hired the worse of the two workers in the decision-that-counts (i.e. the one with the
-    <b>lower score in the logic/math test</b>), you will get <b>no bonus</b> payment.
+    Your bonus payment is determined by the performance of the worker that your hired in the decision-that-counts.
+    For each point that your assigned worker has, you receive {{ C.conversionrate }}.
+    Example: If that worker who you hired in the decision-that-counts got a productivity score of {{ C.examplescore }},
+    you will receive a bonus payment of {{ C.examplebonus}}.
 </p>
-{{ endif }}
 
-{{ if player.participant.task == "realeffort" }}
-<h5><u>Your bonus payment</u></h5>
-<p>
-    In the end one of your decisions will be randomly drawn as the <b>decision-that-counts</b>.
-    If you hired the <b>better</b> of the two workers in the decision-that-counts (i.e. the one with the
-    <b>higher total score in the counting task</b>), you will get a bonus payment of <b>{{ C.flatbonus }}</b>.
-    However, if you hired the worse of the two workers in the decision-that-counts (i.e. the one with the
-    <b>lower score in the counting task</b>), you will get <b>no bonus</b> payment.
-</p>
-{{ endif }}
 
 <br />
 

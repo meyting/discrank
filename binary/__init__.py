@@ -64,6 +64,9 @@ class C(BaseConstants):
     NAME_IN_URL = 'binary'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 9
+    conversionrate = cu(0.1)
+    examplescore = 5
+    examplebonus = examplescore * conversionrate
 
     profiles_mat = [{'prolificid': df1['prolificid'][i],
                      'name': df1['name'][i],

@@ -13,13 +13,15 @@ Part I
 <h5><u>Your task</u></h5>
 <p>
     In this part, you will be asked to rank a set of workers.
-    You will see two sets of workers, each contains {{ C.number_of_workers_sep }} workers ranked from 1
-    (best performance in the logic/math test) to {{ C.number_of_workers_sep }} (lowest performance in the logic/math test).
-    Note that order to prevent that two workers share a rank due to the same achieved productivity score in the counting
-    task, we added a random number between 0 and 0.5 to each worker's score.
+    You will see two sets of workers (male and female).
+    Both of these two sets contain {{ C.number_of_workers_sep }} workers.
+    For each worker, you will see their name and their rank within their set (within male or female workers).
+    Here, the rank  #1 is the best performance in the counting task within the set, and #{{ C.number_of_workers_sep }} is the lowest
+    performance within the set.
+    To ensure that no rank is shared by two workers within a set, we added a random number between 0 and 0.5
+    to each worker's productivity score.
     Your task is to create a mixed ranking of all {{ C.number_of_workers_tot }} workers.
-    Next to each worker’s name, you will also see their ranking within their group of {{ C.number_of_workers_sep }}.
-</p>
+ </p>
 {{ endif }}
 
 
@@ -28,13 +30,15 @@ Part I
 <h5><u>Your task</u></h5>
 <p>
     In this part, you will be asked to rank a set of workers.
-    You will see two sets of workers, each contains {{ C.number_of_workers_sep }} workers ranked from 1
-    (best performance in the counting task) to {{ C.number_of_workers_sep }} (lowest performance in the counting task).
-    Note that order to prevent that two workers share a rank due to the same achieved productivity score in the counting
-    task, we added a random number between 0 and 0.5 to each worker's score.
+    You will see two sets of workers (male and female).
+    Both of these two sets contain {{ C.number_of_workers_sep }} workers.
+    For each worker, you will see their name and their rank within their set (within male or female workers).
+    Here, the rank  #1 is the best performance in the counting task within the set, and #{{ C.number_of_workers_sep }} is the lowest
+    performance within the set.
+    To ensure that no rank is shared by two workers within a set, we added a random number between 0 and 0.5
+    to each worker's score.
     Your task is to create a mixed ranking of all {{ C.number_of_workers_tot }} workers.
-    Next to each worker’s name, you will also see their ranking within their group of {{ C.number_of_workers_sep }}.
-</p>
+ </p>
 {{ endif }}
 
 
@@ -55,7 +59,7 @@ Part I
 <p> Example: After the study is completed by all participants, we assign you the number 4. Thus, your worker
     choice will be the worker that ranks highest in your ranking and which is still available after the first 3
     other participants have chosen their worker.
-    If that worker got a productivity score of {{ C.examplescore }}, you will receive {{ C.examplebonus}}.
+    If that worker got a productivity score of {{ C.examplescore }}, you will receive a bonus payment of {{ C.examplebonus}}.
 </p>
 <h5><u>Data</u></h5>
     <i>
