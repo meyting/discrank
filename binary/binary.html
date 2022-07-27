@@ -23,10 +23,16 @@
     {{ elif profile1.gender == "male" }}
     <img class="avatarimg" src="{% static "global/avatar_m_white.png" %}" />
     {{ endif }}
+    {{ if player.participant.task == "logic" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.name }}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }}</h3>
     </div>
-</div>
+    {{ elif player.participant.task == "realeffort" }}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.re_range }}</h3>
+    </div>
+    {{ endif }}
+    </div>
 </label>
 </div>
 </div>
@@ -42,46 +48,22 @@
     {{ elif profile2.gender == "male" }}
     <img class="avatarimg" src="{% static "global/avatar_m_white.png" %}" />
     {{ endif }}
+    {{ if player.participant.task == "logic" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.name }}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.mat_range }}</h3>
     </div>
-</div>
+    {{ elif player.participant.task == "realeffort" }}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.re_range }}</h3>
+    </div>
+    {{ endif }}
+    </div>
 </label>
 </div>
 </div>
 </div>
 </form>
 
-    <br/>
-{{ if player.participant.task == "logic" }}
-<table id="ranktable" style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
-    <tr style="line-height: 5px;">
-        <td style="width:40%;font-weight:bold"> &nbsp; </td>
-        <td style="width:20%;font-weight:bold"> &nbsp; </td>
-        <td style="width:40%;font-weight:bold"> &nbsp; </td>
-    </tr>
-    <tr id="ranking">
-        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.mat_range }}</td>
-        <td style = "width:20%;text-align:center;font-weight:bold">Ranking</td>
-        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.mat_range }}</td>
-    </tr>
-</table>
-{{ endif }}
-
-{{ if player.participant.task == "realeffort" }}
-<table id="ranktable" style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
-    <tr style="line-height: 5px;">
-        <td style="width:40%;font-weight:bold"> &nbsp; </td>
-        <td style="width:20%;font-weight:bold"> &nbsp; </td>
-        <td style="width:40%;font-weight:bold"> &nbsp; </td>
-    </tr>
-    <tr id="ranking">
-        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.re_range }}</td>
-        <td style = "width:20%;text-align:center;font-weight:bold">Ranking</td>
-        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.re_range }}</td>
-    </tr>
-</table>
-{{ endif }}
 
     <hr>
     <br>

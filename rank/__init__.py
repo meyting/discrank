@@ -8,17 +8,16 @@ import pandas as pd
 import random
 import numpy as np
 
-random.seed(0)
 df1 = pd.read_excel('_static/global/workers_rank_mat.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
 df1 = df1.replace("",999999999)
+random.seed(0)
 df1['random'] = np.random.uniform(0, 0.5, df1.shape[0])
 df1.matrices = df1.matrices+df1["random"]
-df1.mat_rank = df1.matrices.rank()
 df2 = pd.read_excel('_static/global/workers_rank_re.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
 df2 = df2.replace("",999999999)
+random.seed(0)
 df2['random'] = np.random.uniform(0, 0.5, df2.shape[0])
 df2.realeffort = df2.realeffort+df2["random"]
-df2.re_rank = df2.realeffort.rank()
 
 df1f = df1[df1.gender=="female"].reset_index()
 df1m = df1[df1.gender=="male"].reset_index()
@@ -30,30 +29,21 @@ df1m = df1m[["name", "gender", "matrices",]].sample(n=12, random_state = 1)
 df2f = df2f[["name", "gender", "realeffort"]].sample(n=12, random_state = 1)
 df2m = df2m[["name", "gender", "realeffort"]].sample(n=12, random_state = 1)
 
-df1m["mat_rank"] = df1m.matrices.rank()
-df1f["mat_rank"] = df1f.matrices.rank()
-df2m["re_rank"] = df2m.realeffort.rank()
-df2f["re_rank"] = df2f.realeffort.rank()
+df1m["mat_rank"] = df1m.matrices.rank(ascending=False)
+df1f["mat_rank"] = df1f.matrices.rank(ascending=False)
+df2m["re_rank"] = df2m.realeffort.rank(ascending=False)
+df2f["re_rank"] = df2f.realeffort.rank(ascending=False)
 
 df1m = df1m.sort_values(by=['mat_rank']).reset_index()
 df1f = df1f.sort_values(by=['mat_rank']).reset_index()
 df2m = df2m.sort_values(by=['re_rank']).reset_index()
 df2f = df2f.sort_values(by=['re_rank']).reset_index()
 
-print("DF1F!",df1f)
-print("DF1M!",df1m)
-print(df2f)
-print(df2m)
 
-
-df1 = df1.sort_values(by=['mat_rank'])
-df2 = df2.sort_values(by=['re_rank'])
-
-df1_female = df1[df1.gender=="female"].reset_index()
-df1_male = df1[df1.gender=="male"].reset_index()
-df2_female = df2[df2.gender=="female"].reset_index()
-df2_male = df2[df2.gender=="male"].reset_index()
-
+df1f.to_csv('_static/global/rankrankings/workers_rank_mat_female.csv')
+df1m.to_csv('_static/global/rankrankings/workers_rank_mat_male.csv')
+df2f.to_csv('_static/global/rankrankings/workers_rank_re_female.csv')
+df2m.to_csv('_static/global/rankrankings/workers_rank_re_male.csv')
 
 class C(BaseConstants):
     NAME_IN_URL = 'rank'
