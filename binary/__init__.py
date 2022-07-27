@@ -176,17 +176,17 @@ class binary(Page):
                 profile1 = C.profiles_mat[4]
                 profile2 = C.profiles_mat[17]
             if player.round_number == 3:
-                profile1 = C.profiles_mat[8]
-                profile2 = C.profiles_mat[0]
+                profile1 = C.profiles_mat[12]
+                profile2 = C.profiles_mat[8]
             if player.round_number == 4:
-                profile1 = C.profiles_mat[5]
-                profile2 = C.profiles_mat[20]
+                profile1 = C.profiles_mat[20]
+                profile2 = C.profiles_mat[5]
             if player.round_number == 5:
                 profile1 = C.profiles_mat[1]
-                profile2 = C.profiles_mat[1]
+                profile2 = C.profiles_mat[13]
             if player.round_number == 6:
-                profile1 = C.profiles_mat[9]
-                profile2 = C.profiles_mat[18]
+                profile1 = C.profiles_mat[18]
+                profile2 = C.profiles_mat[9]
             if player.round_number == 7:
                 profile1 = C.profiles_mat[2]
                 profile2 = C.profiles_mat[21]
@@ -194,8 +194,8 @@ class binary(Page):
                 profile1 = C.profiles_mat[10]
                 profile2 = C.profiles_mat[22]
             if player.round_number == 9:
-                profile1 = C.profiles_mat[6]
-                profile2 = C.profiles_mat[2]
+                profile1 = C.profiles_mat[14]
+                profile2 = C.profiles_mat[6]
             profile1_id = profile1["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_id = profile2["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
         if player.participant.task == 'realeffort':
@@ -206,17 +206,17 @@ class binary(Page):
                 profile1 = C.profiles_re[4]
                 profile2 = C.profiles_re[17]
             if player.round_number == 3:
-                profile1 = C.profiles_re[8]
-                profile2 = C.profiles_re[0]
+                profile1 = C.profiles_re[12]
+                profile2 = C.profiles_re[8]
             if player.round_number == 4:
-                profile1 = C.profiles_re[5]
-                profile2 = C.profiles_re[20]
+                profile1 = C.profiles_re[20]
+                profile2 = C.profiles_re[5]
             if player.round_number == 5:
                 profile1 = C.profiles_re[1]
-                profile2 = C.profiles_re[1]
+                profile2 = C.profiles_re[13]
             if player.round_number == 6:
-                profile1 = C.profiles_re[9]
-                profile2 = C.profiles_re[18]
+                profile1 = C.profiles_re[18]
+                profile2 = C.profiles_re[9]
             if player.round_number == 7:
                 profile1 = C.profiles_re[2]
                 profile2 = C.profiles_re[21]
@@ -224,8 +224,8 @@ class binary(Page):
                 profile1 = C.profiles_re[10]
                 profile2 = C.profiles_re[22]
             if player.round_number == 9:
-                profile1 = C.profiles_re[6]
-                profile2 = C.profiles_re[2]
+                profile1 = C.profiles_re[14]
+                profile2 = C.profiles_re[6]
             profile1_id = profile1["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_id = profile2["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
         return {
