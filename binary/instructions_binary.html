@@ -10,16 +10,17 @@ Part II
 
 <h5><u>Your task</u></h5>
 <p>
-    In this part, you will be asked to choose between two workers.
+    In this part, you will repeatedly be asked to choose between two workers.
 </p>
 <p>
     You will make 9 decisions.
-    In each decision, you have to choose between two workers.
-    For each worker, you will see information about: A) whether they performed in the top 4, middle 4 or bottom 4
-    within their set from 1-{{ C.number_of_workers_sep }} and B) their gender (shown by an avatar).
+    For each worker, you will see information about: <br>
+    A) whether they performed in the top 4, middle 4 or bottom 4 within their set from 1-{{ C.number_of_workers_sep }} <br>
+    B) their gender (shown by an avatar).
 </p>
 <p>
-    EXPLAIN AVATARS
+    <img class="avatarimg_small" src="{% static "global/avatar_f.png" %}" /> refers to a female worker.
+    <img class="avatarimg_small" src="{% static "global/avatar_m.png" %}" /> refers to a male worker.
 </p>
 
 <br />
@@ -48,4 +49,16 @@ Part II
 </p>
     {% next_button %}
 
+{% endblock %}
+
+{% block styles %}
+<style>
+    .avatarimg_small{
+        margin-bottom:0.5%;
+        display:inline;
+        width: 5%;
+        height: 100%;
+        overflow: hidden;
+    }
+</style>
 {% endblock %}
