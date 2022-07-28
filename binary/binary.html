@@ -25,11 +25,11 @@
     {{ endif }}
     {{ if player.participant.task == "logic" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }} &nbsp; ({{profile1.gender}})</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }} {{profile1.gender}}</h3>
     </div>
     {{ elif player.participant.task == "realeffort" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.re_range }} &nbsp; ({{profile1.gender}})</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.re_range }} {{profile1.gender}}</h3>
     </div>
     {{ endif }}
     </div>
@@ -50,11 +50,11 @@
     {{ endif }}
     {{ if player.participant.task == "logic" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.mat_range }} &nbsp; ({{profile2.gender}})</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.mat_range }} {{profile2.gender}}</h3>
     </div>
     {{ elif player.participant.task == "realeffort" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.re_range }} &nbsp; ({{profile2.gender}})</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.re_range }} {{profile2.gender}}</h3>
     </div>
     {{ endif }}
     </div>
@@ -164,23 +164,21 @@ label > input:checked + .avatar{ /* (RADIO CHECKED) IMAGE STYLES */
         overflow: hidden;
     }
 
-
-
     .profileright .profilecontent .avatar{
         position:relative;
         float: left;
-        width: 300px;
+        width: 430px;
         height: 130px;
-        margin-left: 10%;
+        margin-left: 0px;
         overflow: hidden;
     }
 
     .profileleft .profilecontent .avatar{
         position:relative;
         float: left;
-        width: 300px;
+        width: 430px;
         height: 130px;
-        margin-left: 80px;
+        margin-left: 10px;
         overflow: hidden;
     }
 
