@@ -12,13 +12,10 @@ Almost done!
     Please answer the following questions to finish this survey.
 </p>
 <hr>
-<label for="birthday">Please provide your date of birth:</label><br />
-<input type="date" id="start" name="birthday" min="1900-01-01" max="2020-12-31" required class="form-control" >
-<br/>
+       {{  formfield 'age' }}
        {{  formfield 'gender' }}
 <hr>
        {{  formfield 'race' }}
-       {{  formfield 'nationality' }}
        {{  formfield 'state' }}
 <hr>
        {{  formfield 'education' }}
@@ -85,7 +82,7 @@ function yesnoCheckocc(that) {
 {{ formfield_errors 'state' }}
 {{ formfield_errors 'race' }}
 {{ formfield_errors 'gender' }}
-{{ formfield_errors 'birthday' }}
+{{ formfield_errors 'age' }}
 {{ formfield_errors 'nationality' }}
 
 {% endblock %}

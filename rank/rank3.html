@@ -7,11 +7,11 @@ Ranking
 
 {{ if player.participant.task == "realeffort" }}
 <p>
-  Below you see again three columns: On the sides, you see two sets of workers.
-  One set contains a random selection of female workers from the total pool of wokers, the other set contains a random
-  selection of male workers.
+  Below you see again three columns: On the sides, you see the two subgroups of workers.
+  One subgroup contains a random selection of female workers from the total pool of wokers, the other subgroup
+  contains a random selection of male workers.
   The numbers next to each name indicate their respective rank according to their performance in the counting task
-  within their set from 1-{{ C.number_of_workers_sep }}.
+  within their subgroup from 1-{{ C.number_of_workers_sep }}.
   In the middle, you see an empty "Mixed Ranking".
   You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
   mixed ranking.
@@ -19,11 +19,11 @@ Ranking
 {{ endif }}
 {{ if player.participant.task == "logic" }}
 <p>
-  Below you see again three columns: On the sides, you see two sets of workers.
-  One set contains a random selection of female workers from the total pool of wokers, the other set contains a random
+  Below you see again three columns: On the sides, you see the two subgoups of workers.
+  One subgroup contains a random selection of female workers from the total pool of wokers, the other subgroup contains a random
   selection of male workers.
   The numbers next to each name indicate their respective rank according to their performance in the math/logic test
-  within their set from 1-{{ C.number_of_workers_sep }}.
+  within their subgroup from 1-{{ C.number_of_workers_sep }}.
   In the middle, you see an empty "Mixed Ranking".
   You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
   mixed ranking.
@@ -129,15 +129,15 @@ Ranking
 // Initial names and correct ranking
 /////////////////////////////////////////////////////////////////////////////////////
 
-const FEMALE = [js_vars.female1+' (1)', js_vars.female2+' (2)', js_vars.female3+' (3)',
-                js_vars.female4+' (4)', js_vars.female5+' (5)', js_vars.female6+' (6)',
-                js_vars.female7+' (7)', js_vars.female8+' (8)', js_vars.female9+' (9)',
-                js_vars.female10+' (10)', js_vars.female11+' (11)', js_vars.female12+' (12)'];
+const FEMALE = [js_vars.female1+' (f-1)', js_vars.female2+' (f-2)', js_vars.female3+' (f-3)',
+                js_vars.female4+' (f-4)', js_vars.female5+' (f-5)', js_vars.female6+' (f-6)',
+                js_vars.female7+' (f-7)', js_vars.female8+' (f-8)', js_vars.female9+' (f-9)',
+                js_vars.female10+' (f-10)', js_vars.female11+' (f-11)', js_vars.female12+' (f-12)'];
 
-const MALE = [js_vars.male1+' (1)', js_vars.male2+' (2)', js_vars.male3+' (3)',
-              js_vars.male4+' (4)', js_vars.male5+' (5)', js_vars.male6+' (6)',
-              js_vars.male7+' (7)',js_vars.male8+' (8)', js_vars.male9+' (9)',
-              js_vars.male10+' (10)', js_vars.male11+' (11)', js_vars.male12+' (12)'];
+const MALE = [js_vars.male1+' (m-1)', js_vars.male2+' (m-2)', js_vars.male3+' (m-3)',
+              js_vars.male4+' (m-4)', js_vars.male5+' (m-5)', js_vars.male6+' (m-6)',
+              js_vars.male7+' (m-7)',js_vars.male8+' (m-8)', js_vars.male9+' (m-9)',
+              js_vars.male10+' (m-10)', js_vars.male11+' (m-11)', js_vars.male12+' (m-12)'];
 const MALES_ARE_LEFT_PROB = .5;
 
 // Leave empty (i.e. []) if there is no correct answer (or green highlighting is not desired)

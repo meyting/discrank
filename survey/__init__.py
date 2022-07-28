@@ -28,14 +28,15 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    birthday = models.CharField(verbose_name='Please provide your date of birth:')
+    age = models.IntegerField(verbose_name='How old are you?')
+#    birthday = models.CharField(verbose_name='Please provide your date of birth:')
     gender = models.CharField(initial=None,
                               choices=['female', 'male', 'non-binary'],
                               verbose_name='What is your gender?',
                               widget=widgets.RadioSelect())
-    nationality = models.CharField(initial=None,
-                                   choices=nationalities,
-                                   verbose_name='What is your nationality? (If you possess more than one nationality, please provide the one with which you identify the most.)')
+#    nationality = models.CharField(initial=None,
+#                                   choices=nationalities,
+#                                   verbose_name='What is your nationality? (If you possess more than one nationality, please provide the one with which you identify the most.)')
     state = models.CharField(initial=None,
                              choices=states,
                              verbose_name='Which state do you currently live in?')
@@ -85,7 +86,7 @@ class Player(BasePlayer):
 # PAGES
 class survey(Page):
     form_model = 'player'
-    form_fields = ['birthday', 'gender', 'profession', 'fieldofstudy', 'occupation', 'nationality',
+    form_fields = ['age', 'gender', 'profession', 'fieldofstudy', 'occupation',
                    'education', 'race', 'state',
                    'party',
                    'purpose',  'gpa_college', 'gpa_hs',

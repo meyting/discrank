@@ -6,12 +6,12 @@ Before we start...
 
 {{ if player.participant.task == "logic" }}
 <p>
-    ... we would like to ask you to indicate your beliefs about how well subgroups of workers performed in the logic/math test.
+    ... we would like to ask you to indicate how well you think subgroups of workers performed the logic/math test.
 </p>
 {{ endif }}
 {{ if player.participant.task == "realeffort" }}
 <p>
-    ... we would like to ask you to indicate your beliefs about how well subgroups of workers performed in the counting test.
+    ... we would like to ask you to indicate how well you think subgroups of workers performed the counting task.
 </p>
 {{ endif }}
 <p>
@@ -92,19 +92,6 @@ Before we start...
         </td>
         <td style="width:65%">
             <input name="f5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange5">
-        </td>
-    </tr>
-    <tr class="emptyrow">
-    </tr>
-    <tr style="width:100%">
-        <td style="width:30%">
-            <h6>...{{ C.t10 }} and {{ C.t11 }}? </h6>
-        </td>
-        <td style="width:5%">
-            <h6><span style="color:#B22222" id="f6">0</span>%</h6>
-        </td>
-        <td style="width:65%">
-            <input name="f6" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange6">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -200,19 +187,6 @@ Before we start...
     </tr>
     <tr class="emptyrow">
     </tr>
-    <tr style="width:100%">
-        <td style="width:30%">
-            <h6>...{{ C.t10 }} and {{ C.t11 }}? </h6>
-        </td>
-        <td style="width:5%">
-            <h6><span style="color:#B22222" id="m6">0</span>%</h6>
-        </td>
-        <td style="width:65%">
-            <input name="m6" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange6">
-        </td>
-    </tr>
-    <tr class="emptyrow">
-    </tr>
     <tr  style="color:grey" id="msum">
         <td >
             <h6>Total: </h6>
@@ -243,14 +217,12 @@ Before we start...
 {{ formfield_errors 'f3' }}
 {{ formfield_errors 'f4' }}
 {{ formfield_errors 'f5' }}
-{{ formfield_errors 'f6' }}
 {{ formfield_errors 'ftotal' }}
 {{ formfield_errors 'm1' }}
 {{ formfield_errors 'm2' }}
 {{ formfield_errors 'm3' }}
 {{ formfield_errors 'm4' }}
 {{ formfield_errors 'm5' }}
-{{ formfield_errors 'm6' }}
 {{ formfield_errors 'mtotal' }}
 
 
@@ -301,15 +273,6 @@ Before we start...
             };
         };
 
-        var slider6= document.getElementById("frange6");
-        var output6 = document.getElementById("f6");
-        if(document.getElementById("f6") != null){
-        output6.innerHTML;
-        slider6.oninput = function() {
-            output6.innerHTML = parseFloat(this.value).toFixed(0);
-            };
-        };
-
         var slider7 = document.getElementById("mrange1");
         var output7 = document.getElementById("m1");
         if(document.getElementById("m1") != null){
@@ -355,14 +318,6 @@ Before we start...
             };
         };
 
-        var slider12= document.getElementById("mrange6");
-        var output12 = document.getElementById("m6");
-        if(document.getElementById("m6") != null){
-        output12.innerHTML;
-        slider12.oninput = function() {
-            output12.innerHTML = parseFloat(this.value).toFixed(0);
-            };
-        };
 
     $(function() {
     $('input[type=range]').change(getTotal);
@@ -375,17 +330,15 @@ Before we start...
         var s3 = parseInt(slider3.value) || 0;
         var s4 = parseInt(slider4.value) || 0;
         var s5 = parseInt(slider5.value) || 0;
-        var s6 = parseInt(slider6.value) || 0;
         var s7 = parseInt(slider7.value) || 0;
         var s8 = parseInt(slider8.value) || 0;
         var s9 = parseInt(slider9.value) || 0;
         var s10 = parseInt(slider10.value) || 0;
         var s11 = parseInt(slider11.value) || 0;
-        var s12 = parseInt(slider12.value) || 0;
 
         slider1.oninput = function() {
             output1.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("ftotal").innerHTML = parseFloat(this.value) + s2 + s3 + s4 + s5 + s6;
+            document.getElementById("ftotal").innerHTML = parseFloat(this.value) + s2 + s3 + s4 + s5;
             document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
@@ -398,7 +351,7 @@ Before we start...
 
         slider2.oninput = function() {
             output2.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("ftotal").innerHTML = s1 + parseFloat(this.value) + s3 + s4 + s5 + s6;
+            document.getElementById("ftotal").innerHTML = s1 + parseFloat(this.value) + s3 + s4 + s5;
             document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
@@ -411,7 +364,7 @@ Before we start...
 
         slider3.oninput = function() {
             output3.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("ftotal").innerHTML = s1 + s2 + parseFloat(this.value) + s4 + s5 + s6;
+            document.getElementById("ftotal").innerHTML = s1 + s2 + parseFloat(this.value) + s4 + s5;
             document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
@@ -424,7 +377,7 @@ Before we start...
 
         slider4.oninput = function() {
             output4.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + parseFloat(this.value) + s5 + s6;
+            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + parseFloat(this.value) + s5;
             document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
@@ -437,7 +390,7 @@ Before we start...
 
         slider5.oninput = function() {
             output5.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + parseFloat(this.value) + s6;
+            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + parseFloat(this.value);
             document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
@@ -448,21 +401,9 @@ Before we start...
                   document.getElementById('ftotal').style.color = "red";
             };};
 
-        slider6.oninput = function() {
-            output6.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + s5 + parseFloat(this.value);
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
-            if (document.getElementById("ftotal").innerHTML == 100) {
-                  document.getElementById('fsum').style.color = "green";
-                  document.getElementById('ftotal').style.color = "green";
-            };
-            if (document.getElementById("ftotal").innerHTML != 100) {
-                  document.getElementById('fsum').style.color = "red";
-                  document.getElementById('ftotal').style.color = "red";
-            };};
         slider7.oninput = function() {
             output7.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("mtotal").innerHTML = parseFloat(this.value) + s8 + s9 + s10 + s11 + s12;
+            document.getElementById("mtotal").innerHTML = parseFloat(this.value) + s8 + s9 + s10 + s11;
             document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
@@ -475,7 +416,7 @@ Before we start...
 
         slider8.oninput = function() {
             output8.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("mtotal").innerHTML = s7 + parseFloat(this.value) + s9 + s10 + s11 + s12;
+            document.getElementById("mtotal").innerHTML = s7 + parseFloat(this.value) + s9 + s10 + s11;
             document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
@@ -488,7 +429,7 @@ Before we start...
 
         slider9.oninput = function() {
             output9.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("mtotal").innerHTML = s7 + s8 + parseFloat(this.value) + s10 + s11 + s12;
+            document.getElementById("mtotal").innerHTML = s7 + s8 + parseFloat(this.value) + s10 + s11;
             document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
@@ -500,7 +441,7 @@ Before we start...
             };};
         slider10.oninput = function() {
             output10.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + parseFloat(this.value) + s11 + s12;
+            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + parseFloat(this.value) + s11;
             document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
@@ -512,7 +453,7 @@ Before we start...
             };};
         slider11.oninput = function() {
             output11.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + parseFloat(this.value) + s12;
+            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + parseFloat(this.value);
             document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
@@ -522,18 +463,7 @@ Before we start...
                   document.getElementById('msum').style.color = "red";
                   document.getElementById('mtotal').style.color = "red";
             };};
-        slider12.oninput = function() {
-            output12.innerHTML = parseFloat(this.value).toFixed(0);
-            document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + s11 + parseFloat(this.value);
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
-            if (document.getElementById("mtotal").innerHTML == 100) {
-                  document.getElementById('msum').style.color = "green";
-                  document.getElementById('mtotal').style.color = "green";
-            };
-            if (document.getElementById("mtotal").innerHTML != 100) {
-                  document.getElementById('msum').style.color = "red";
-                  document.getElementById('mtotal').style.color = "red";
-            };};
+
         }
 
         document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;

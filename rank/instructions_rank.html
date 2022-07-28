@@ -12,15 +12,18 @@ Part I
 
 <h5><u>Your task</u></h5>
 <p>
-    In this part, you will be asked to rank a set of workers.
-    You will see two sets of workers (male and female).
-    Both of these two sets contain {{ C.number_of_workers_sep }} workers.
-    For each worker, you will see their name and their rank within their set (within male or female workers).
-    Here, the rank  #1 is the best performance in the counting task within the set, and #{{ C.number_of_workers_sep }} is the lowest
-    performance within the set.
-    To ensure that no rank is shared by two workers within a set, we added a random number between 0 and 0.5
+    In this part, you will be asked to rank the workers that we surveyed in the previous study.
+    The workers are initially divided into two subgroups of (male and female) and <b>you have to create a mixed ranking of all
+    workers</b>.
+</p>
+<p>
+    Both subgroups contain {{ C.number_of_workers_sep }} workers, i.e., there are {{ C.number_of_workers_sep }}
+    female workers and {{ C.number_of_workers_sep }} male workers.
+    For each worker, you will see their first name and their rank <b>within their subgroup</b> (i.e., within male or female workers).
+    Here, rank #1 refers to the best performance in the counting task among all workers of the respective subgroup,
+    and rank #{{ C.number_of_workers_sep }} refers to the lowest performance among all workers of the respective subgroup.
+    To ensure that no rank is shared by two workers within a subgroup, we added a random number between 0 and 0.5
     to each worker's productivity score.
-    Your task is to create a mixed ranking of all {{ C.number_of_workers_tot }} workers.
  </p>
 {{ endif }}
 
@@ -29,36 +32,47 @@ Part I
 
 <h5><u>Your task</u></h5>
 <p>
-    In this part, you will be asked to rank a set of workers.
-    You will see two sets of workers (male and female).
-    Both of these two sets contain {{ C.number_of_workers_sep }} workers.
-    For each worker, you will see their name and their rank within their set (within male or female workers).
-    Here, the rank  #1 is the best performance in the counting task within the set, and #{{ C.number_of_workers_sep }} is the lowest
-    performance within the set.
-    To ensure that no rank is shared by two workers within a set, we added a random number between 0 and 0.5
-    to each worker's score.
-    Your task is to create a mixed ranking of all {{ C.number_of_workers_tot }} workers.
+    In this part, you will be asked to rank the workers that we surveyed in the previous study.
+    The workers are initially divided into two subgroups of (male and female) and <b>you have to create a mixed ranking of all
+    workers</b>.
+</p>
+<p>
+    Both subgroups contain {{ C.number_of_workers_sep }} workers, i.e., there are {{ C.number_of_workers_sep }}
+    female workers and {{ C.number_of_workers_sep }} male workers.
+    For each worker, you will see their first name and their rank <b>within their subgroup</b> (i.e., within male or female workers).
+    Here, rank #1 refers to the best performance in the logic/math test among all workers of the respective subgroup,
+    and rank #{{ C.number_of_workers_sep }} refers to the lowest performance among all workers of the respective subgroup.
+    To ensure that no rank is shared by two workers within a subgroup, we added a random number between 0 and 0.5
+    to each worker's productivity score.
  </p>
+<p>
+
+</p>
 {{ endif }}
 
 
 <h5><u>Your bonus payment</u></h5>
-<p> If this part will be drawn as the part-that-counts, your bonus payment is determined by the performance of the
-    worker that is allocated to you.
-    For each point that your assigned worker has, you receive {{ C.conversionrate }}.
+<p>
+    In total, {{C.number_of_other_subjects}} other participants will also all rank the same workers as you.
+    After all participants have ranked the workers, we will randomly assign a number between
+    1 and {{ C.number_of_workers_tot }} to each participant.
+    This number determines your position of when a worker will be allocated to you.
 </p>
 <p>
-  In total, {{C.number_of_other_subjects}} other participants will also all do the ranking that you are doing.
-  Which worker is allocated to you, depends on your ranking and the ranking of  the other participants.
+    The person with the number 1 gets their top-ranked worker (rank 1).
+    The chosen worker is then not available anymore.
+    The person with the number 2 gets their top-ranked worker unless this worker has already been allocated before,
+    in which case they get the second-ranked worker, etc..
+    This means that the worker allocated to each participant is always their respective best-ranked worker who
+    is still available.
 </p>
 <p>
-  After all {{ C.number_of_workers_tot }} participants, have ranked the workers, we will randomly assign a number between
-  1-{{ C.number_of_workers_tot }} to each participant. This number determines your position of when you can pick a
-  worker.
+    If this part will be drawn as the part-that-counts, you will receive {{ C.conversionrate }} for each point
+    of the productivity score of the worker that has been allocated to you.
 </p>
-<p> Example: After the study is completed by all participants, we assign you the number 4. Thus, your worker
-    choice will be the worker that ranks highest in your ranking and which is still available after the first 3
-    other participants have chosen their worker.
+<p> Example: After the study is completed by all participants, we assign you the number 4. Thus, the worker that will
+    be allocated to you will be the worker that ranks highest in your ranking and that is still available after the
+    first 3 other participants have been allocated their worker.
     If that worker got a productivity score of {{ C.examplescore }}, you will receive a bonus payment of {{ C.examplebonus}}.
 </p>
 <h5><u>Data</u></h5>
