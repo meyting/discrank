@@ -1,5 +1,5 @@
 from otree.api import *
-
+import random
 
 doc = """
 Your app description
@@ -25,6 +25,8 @@ def creating_session(subsession: Subsession):
             player.participant.task = next(task)
         player.task = player.participant.task
         print("MMMMMMMMMMMMM",player.participant.task)
+        player.variant = random.randint(1,2)
+        player.participant.variant = player.variant
 
 
 class Group(BaseGroup):
@@ -34,6 +36,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     task = models.CharField()
     consent = models.BooleanField()
+    variant = models.IntegerField()
 
 # PAGES
 class consent(Page):
