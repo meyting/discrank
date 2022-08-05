@@ -37,6 +37,8 @@ class Player(BasePlayer):
     task = models.CharField()
     consent = models.BooleanField()
     variant = models.IntegerField()
+    prolificid = models.CharField(initial=None,
+                                  verbose_name="Before we start, please provide your Prolific ID.")
 
 # PAGES
 class consent(Page):
@@ -44,7 +46,8 @@ class consent(Page):
     form_fields = ['consent']
 
 class instructions(Page):
-    pass
+    form_model = 'player'
+    form_fields = ['prolificid']
 
 page_sequence = [consent,
                  instructions]
