@@ -42,21 +42,21 @@ SESSION_CONFIGS = [
         name='all_realeffort',
         display_name='all (realeffort)',
         num_demo_participants=20,
-        app_sequence=['welcome', 'beliefs', 'rank', 'binary', 'survey'],
+        app_sequence=['welcome', 'beliefs', 'rank', 'binary', 'survey', 'end'],
         task='realeffort',
     ),
     dict(
         name='all_logic',
         display_name='all (logic)',
         num_demo_participants=20,
-        app_sequence=['welcome','beliefs', 'rank', 'binary', 'survey'],
+        app_sequence=['welcome','beliefs', 'rank', 'binary', 'survey', 'end'],
         task="logic",
     ),
     dict(
         name='all',
         display_name='all',
         num_demo_participants=20,
-        app_sequence=['welcome','beliefs', 'rank', 'binary', 'survey'],
+        app_sequence=['welcome','beliefs', 'rank', 'binary', 'survey', 'end'],
     ),
 ]
 
