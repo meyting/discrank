@@ -77,10 +77,19 @@
 
 <input type="hidden" name="offer1" value="{{profile1_id}}" id="offer1"/>
 <input type="hidden" name="offer2" value="{{profile2_id}}" id="offer2"/>
+<input type="hidden" name="range1" value="{{profile1_range}}" id="range1"/>
+<input type="hidden" name="range2" value="{{profile2_range}}" id="range2"/>
 <input type="hidden" name="decision_gender" value=""/>
+<input type="hidden" name="score1" value="{{profile1_score}}" id="score1"/>
+<input type="hidden" name="score2" value="{{profile2_score}}" id="score2"/>
+
 
 {{ formfield_errors 'offer1' }}
 {{ formfield_errors 'offer2' }}
+{{ formfield_errors 'range1' }}
+{{ formfield_errors 'range2' }}
+{{ formfield_errors 'score1' }}
+{{ formfield_errors 'score2' }}
 {{ formfield_errors 'decision' }}
 {{ formfield_errors 'decision_gender' }}
 

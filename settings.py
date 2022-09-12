@@ -32,6 +32,20 @@ SESSION_CONFIGS = [
         app_sequence=['welcome', 'binary'],
     ),
     dict(
+        name='binary_logic',
+        display_name='binary (logic)',
+        num_demo_participants=20,
+        app_sequence=['welcome', 'binary'],
+        task='logic',
+    ),
+    dict(
+        name='binary_realeffort',
+        display_name='binary (realeffort)',
+        num_demo_participants=20,
+        app_sequence=['welcome', 'binary'],
+        task='realeffort',
+    ),
+    dict(
         name='survey',
         display_name='survey',
         num_demo_participants=20,
@@ -69,7 +83,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=5.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ["task", "usedprofiles", "variant"]
+PARTICIPANT_FIELDS = ["task", "usedprofiles", "variant", "profiles"]
 SESSION_FIELDS = []
 
 # ISO-639 code
