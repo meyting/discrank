@@ -25,10 +25,10 @@ df1m = df1[df1.gender=="male"].reset_index()
 df2f = df2[df2.gender=="female"].reset_index()
 df2m = df2[df2.gender=="male"].reset_index()
 
-df1f = df1f[["prolificid", "name", "gender", "matrices"]].sample(n=12, random_state = 1)
-df1m = df1m[["prolificid", "name", "gender", "matrices",]].sample(n=12, random_state = 1)
-df2f = df2f[["prolificid", "name", "gender", "realeffort"]].sample(n=12, random_state = 1)
-df2m = df2m[["prolificid", "name", "gender", "realeffort"]].sample(n=12, random_state = 1)
+df1f = df1f[["prolificid", "name", "gender", "matrices", "age", "nationality"]].sample(n=12, random_state = 1)
+df1m = df1m[["prolificid", "name", "gender", "matrices", "age", "nationality"]].sample(n=12, random_state = 1)
+df2f = df2f[["prolificid", "name", "gender", "realeffort", "age", "nationality"]].sample(n=12, random_state = 1)
+df2m = df2m[["prolificid", "name", "gender", "realeffort", "age", "nationality"]].sample(n=12, random_state = 1)
 
 df1m["mat_rank"] = df1m.matrices.rank(ascending=False)
 df1f["mat_rank"] = df1f.matrices.rank(ascending=False)
@@ -56,7 +56,8 @@ df2.loc[(df2.re_rank >= 9), "re_range"] = "bottom 4"
 #print(df2m)
 
 print("DF1!",df1)
-#print("DF2!",df2)
+print(round(df1.age.median(),0))
+
 df1.to_csv('_static/global/binaryrankings/workers_rank_mat.csv')
 df2.to_csv('_static/global/binaryrankings/workers_rank_re.csv')
 
@@ -70,11 +71,14 @@ class C(BaseConstants):
     conversionrate = cu(0.1)
     examplescore = 5
     examplebonus = examplescore * conversionrate
+    mat_medianage = df1.age.median()
     profiles_mat = [{'prolificid': df1['prolificid'][i],
                      'name': df1['name'][i],
                      'gender':df1['gender'][i],
                      'mat_range': df1["mat_range"][i],
                      'matrices': df1["matrices"][i],
+                     'age': df1["age"][i],
+                     'nat': df1["nationality"][i],
                      }
                     for i in range(len(df1))]
 
@@ -83,6 +87,8 @@ class C(BaseConstants):
                      'gender':df2['gender'][i],
                      're_range': df2["re_range"][i],
                      'realeffort':df2["realeffort"][i],
+                     'age': df2["age"][i],
+                     'nat': df2["nationality"][i],
                      }
                     for i in range(len(df2))]
     bonus_employer = 50
@@ -96,13 +102,11 @@ def creating_session(subsession: Subsession):
         profiles = []
         if player.participant.task == "logic":
             mat_topf_topm = [C.profiles_mat[0], C.profiles_mat[12]]
-            print("WWWW", mat_topf_topm)
             random.shuffle(mat_topf_topm)
             profiles.append(mat_topf_topm)
             mat_topf_midm = [C.profiles_mat[1], C.profiles_mat[16]]
             random.shuffle(mat_topf_midm)
             profiles.append(mat_topf_midm)
-            print("IIIIIIIIIII", mat_topf_midm)
             mat_topf_botm = [C.profiles_mat[2], C.profiles_mat[20]]
             random.shuffle(mat_topf_botm)
             profiles.append(mat_topf_botm)

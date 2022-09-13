@@ -8,20 +8,36 @@ Before we start...
 <p>
     ... we would like to ask you to indicate how well you think subgroups of the workers from our previous study performed the logic/math test.
 </p>
+<p>
+    Therefore, we divided all workers from the previous study into the following subgroups:
+<ul>
+    <li><b>male</b> workers (identified as male) vs. <b>female</b> workers (identified as female)</li>
+    <li><b>US</b>-workers (born in the US) vs. <b>Non-US</b>-workers (born outside of the US)</li>
+    <li><b>old</b> workers (at least 23 years old) vs. <b>young</b> workers (22 years or younger)</li>
+</ul>
+</p>
 {{ endif }}
 {{ if player.participant.task == "realeffort" }}
 <p>
     ... we would like to ask you to indicate how well you think subgroups of the workers from our previous study performed the counting task.
 </p>
+<p>
+    Therefore, we divided all workers from the previous study into the following subgroups:
+<ul>
+    <li>male workers (identified as male) vs. female workers (identified as female)</li>
+    <li>US-workers (born in the US) vs. Non-US-workers (born outside of the US)</li>
+    <li>old workers (at least 23 years old) vs. young (22 years or younger) workers.</li>
+</ul>
+</p>
 {{ endif }}
 <p>
+    <hr>
     <i>
     Please make sure, that the respective total for each subgroup sums up to 100%.
     </i>
 </p>
-
-<div style="background-color:#ffffff; padding-left:25px">
 <hr>
+<div style="background-color:#ffffff; padding-left:25px">
     <br>
 <table>
     <tr>
@@ -108,9 +124,8 @@ Before we start...
     </tr>
 </table>
     <br>
-    <hr>
 </div>
-
+<hr>
 <br>
 
 <div style="background-color:#ffffff; padding-left:25px">
@@ -201,12 +216,407 @@ Before we start...
     <br>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
 <hr>
+
+
+
+
+<div style="background-color:#ffffff; padding-left:25px">
+    <br>
+<table>
+    <tr>
+        <td>
+            <h6> Out of all US-workers in our pool of workers, what fraction got a score between ...</h6>
+        </td>
+    </tr>
+</table>
+<table style="width:100%">
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t0 }} and {{ C.t1 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="us1">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="us1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="usrange1">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t2 }} and {{ C.t3 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="us2">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="us2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="usrange2">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t4 }} and {{ C.t5 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="us3">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="us3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="usrange3">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t6 }} and {{ C.t7 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="us4">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="us4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="usrange4">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t8 }} and {{ C.t9 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="us5">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="us5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="usrange5">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr  style="color:grey" id="ussum">
+        <td >
+            <h6>Total: </h6>
+        </td>
+        <td >
+            <div><h6><span id="ustotal" >0</span>%</h6></div>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+    <br>
+</div>
+
+<hr>
+<br>
+
+<div style="background-color:#ffffff; padding-left:25px">
+<table>
+    <tr>
+        <td>
+            <h6> Out of all Non-US-workers in our pool of workers, what fraction got a score between ...</h6>
+        </td>
+    </tr>
+</table>
+<table style="width:100%">
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t0 }} and {{ C.t1 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="nus1">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="nus1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="nusrange1">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t2 }} and {{ C.t3 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="nus2">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="nus2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="nusrange2">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t4 }} and {{ C.t5 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="nus3">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="nus3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="nusrange3">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t6 }} and {{ C.t7 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="nus4">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="nus4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="nusrange4">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t8 }} and {{ C.t9 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="nus5">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="nus5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="nusrange5">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr  style="color:grey" id="nussum">
+        <td >
+            <h6>Total: </h6>
+        </td>
+        <td >
+            <div><h6><span id="nustotal" >0</span>%</h6></div>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+    <br>
+</div>
+
+
+
+
+<hr>
+
+
+
+
+<div style="background-color:#ffffff; padding-left:25px">
+    <br>
+<table>
+    <tr>
+        <td>
+            <h6> Out of all old workers in our pool of workers, what fraction got a score between ...</h6>
+        </td>
+    </tr>
+</table>
+<table style="width:100%">
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t0 }} and {{ C.t1 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="old1">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="o1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="oldrange1">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t2 }} and {{ C.t3 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="old2">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="o2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="oldrange2">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t4 }} and {{ C.t5 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="old3">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="o3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="oldrange3">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t6 }} and {{ C.t7 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="old4">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="o4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="oldrange4">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t8 }} and {{ C.t9 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="old5">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="o5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="oldrange5">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr  style="color:grey" id="oldsum">
+        <td >
+            <h6>Total: </h6>
+        </td>
+        <td >
+            <div><h6><span id="oldtotal" >0</span>%</h6></div>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+    <br>
+</div>
+
+<hr>
+<br>
+
+<div style="background-color:#ffffff; padding-left:25px">
+<table>
+    <tr>
+        <td>
+            <h6> Out of all young workers in our pool of workers, what fraction got a score between ...</h6>
+        </td>
+    </tr>
+</table>
+<table style="width:100%">
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t0 }} and {{ C.t1 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="y1">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="y1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="yrange1">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t2 }} and {{ C.t3 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="y2">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="y2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="yrange2">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t4 }} and {{ C.t5 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="y3">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="y3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="yrange3">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t6 }} and {{ C.t7 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="y4">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="y4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="yrange4">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr style="width:100%">
+        <td style="width:30%">
+            <h6>...{{ C.t8 }} and {{ C.t9 }}? </h6>
+        </td>
+        <td style="width:5%">
+            <h6><span style="color:#B22222" id="y5">0</span>%</h6>
+        </td>
+        <td style="width:65%">
+            <input name="y5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="yrange5">
+        </td>
+    </tr>
+    <tr class="emptyrow">
+    </tr>
+    <tr  style="color:grey" id="ysum">
+        <td >
+            <h6>Total: </h6>
+        </td>
+        <td >
+            <div><h6><span id="ytotal" >0</span>%</h6></div>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+    <br>
+</div>
+
+
+
+<hr>
+<br>
+
     {{ next_button }}
 
 
     <input type="hidden" name="ftotal" id="femaletotal" />
     <input type="hidden" name="mtotal" id="maletotal" />
+    <input type="hidden" name="ustotal" id="usworkertotal" />
+    <input type="hidden" name="nustotal" id="nusworkertotal" />
+    <input type="hidden" name="ototal" id="oldworkertotal" />
+    <input type="hidden" name="ytotal" id="yworkertotal" />
+
+
+
 
 
 
@@ -224,6 +634,33 @@ Before we start...
 {{ formfield_errors 'm4' }}
 {{ formfield_errors 'm5' }}
 {{ formfield_errors 'mtotal' }}
+
+{{ formfield_errors 'us1' }}
+{{ formfield_errors 'us2' }}
+{{ formfield_errors 'us3' }}
+{{ formfield_errors 'us4' }}
+{{ formfield_errors 'us5' }}
+{{ formfield_errors 'ustotal' }}
+{{ formfield_errors 'nus1' }}
+{{ formfield_errors 'nus2' }}
+{{ formfield_errors 'nus3' }}
+{{ formfield_errors 'nus4' }}
+{{ formfield_errors 'nus5' }}
+{{ formfield_errors 'nustotal' }}
+
+
+{{ formfield_errors 'o1' }}
+{{ formfield_errors 'o2' }}
+{{ formfield_errors 'o3' }}
+{{ formfield_errors 'o4' }}
+{{ formfield_errors 'o5' }}
+{{ formfield_errors 'ototal' }}
+{{ formfield_errors 'y1' }}
+{{ formfield_errors 'y2' }}
+{{ formfield_errors 'y3' }}
+{{ formfield_errors 'y4' }}
+{{ formfield_errors 'y5' }}
+{{ formfield_errors 'ytotal' }}
 
 
 {{ block app_scripts }}
@@ -468,6 +905,517 @@ Before we start...
 
         document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
         document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+
+
+
+
+
+
+
+        var sliderus1 = document.getElementById("usrange1");
+        var outputus1 = document.getElementById("us1");
+        if(document.getElementById("us1") != null){
+        outputus1.innerHTML;
+        sliderus1.oninput = function() {
+            outputus1.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderus2 = document.getElementById("usrange2");
+        var outputus2 = document.getElementById("us2");
+        if(document.getElementById("us2") != null){
+        outputus2.innerHTML;
+        sliderus2.oninput = function() {
+            outputus2.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderus3 = document.getElementById("usrange3");
+        var outputus3 = document.getElementById("us3");
+        if(document.getElementById("us3") != null){
+        outputus3.innerHTML;
+        sliderus3.oninput = function() {
+            outputus3.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderus4 = document.getElementById("usrange4");
+        var outputus4 = document.getElementById("us4");
+        if(document.getElementById("us4") != null){
+        outputus4.innerHTML;
+        sliderus4.oninput = function() {
+            outputus4.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderus5 = document.getElementById("usrange5");
+        var outputus5 = document.getElementById("us5");
+        if(document.getElementById("us5") != null){
+        outputus5.innerHTML;
+        sliderus5.oninput = function() {
+            outputus5.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidernus7 = document.getElementById("nusrange1");
+        var outputnus7 = document.getElementById("nus1");
+        if(document.getElementById("nus1") != null){
+        outputnus7.innerHTML;
+        slidernus7.oninput = function() {
+            outputnus7.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidernus8 = document.getElementById("nusrange2");
+        var outputnus8 = document.getElementById("nus2");
+        if(document.getElementById("nus2") != null){
+        outputnus8.innerHTML;
+        slidernus8.oninput = function() {
+            outputnus8.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidernus9 = document.getElementById("nusrange3");
+        var outputnus9 = document.getElementById("nus3");
+        if(document.getElementById("nus3") != null){
+        outputnus9.innerHTML;
+        slidernus9.oninput = function() {
+            outputnus9.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidernus10 = document.getElementById("nusrange4");
+        var outputnus10 = document.getElementById("nus4");
+        if(document.getElementById("nus4") != null){
+        outputnus10.innerHTML;
+        slidernus10.oninput = function() {
+            outputnus10.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidernus11 = document.getElementById("nusrange5");
+        var outputnus11 = document.getElementById("nus5");
+        if(document.getElementById("nus5") != null){
+        outputnus11.innerHTML;
+        slidernus11.oninput = function() {
+            outputnus11.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+
+    $(function() {
+    $('input[type=range]').change(getTotalusnus);
+    getTotalusnus();
+    });
+
+    function getTotalusnus() {
+        var us1 = parseInt(sliderus1.value) || 0;
+        var us2 = parseInt(sliderus2.value) || 0;
+        var us3 = parseInt(sliderus3.value) || 0;
+        var us4 = parseInt(sliderus4.value) || 0;
+        var us5 = parseInt(sliderus5.value) || 0;
+        var nus7 = parseInt(slidernus7.value) || 0;
+        var nus8 = parseInt(slidernus8.value) || 0;
+        var nus9 = parseInt(slidernus9.value) || 0;
+        var nus10 = parseInt(slidernus10.value) || 0;
+        var nus11 = parseInt(slidernus11.value) || 0;
+
+        sliderus1.oninput = function() {
+            outputus1.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ustotal").innerHTML = parseFloat(this.value) + us2 + us3 + us4 + us5;
+            document.getElementById('usworkertotal').value = document.getElementById("ustotal").innerHTML;
+            if (document.getElementById("ustotal").innerHTML == 100) {
+                  document.getElementById('ussum').style.color = "green";
+                  document.getElementById('ustotal').style.color = "green";
+            };
+            if (document.getElementById("ustotal").innerHTML != 100) {
+                  document.getElementById('ussum').style.color = "red";
+                  document.getElementById('ustotal').style.color = "red";
+            };};
+
+        sliderus2.oninput = function() {
+            outputus2.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ustotal").innerHTML = us1 + parseFloat(this.value) + us3 + us4 + us5;
+            document.getElementById('usworkertotal').value = document.getElementById("ustotal").innerHTML;
+            if (document.getElementById("ustotal").innerHTML == 100) {
+                  document.getElementById('ussum').style.color = "green";
+                  document.getElementById('ustotal').style.color = "green";
+            };
+            if (document.getElementById("ustotal").innerHTML != 100) {
+                  document.getElementById('ussum').style.color = "red";
+                  document.getElementById('ustotal').style.color = "red";
+            };};
+
+        sliderus3.oninput = function() {
+            outputus3.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ustotal").innerHTML = us1 +  us2 + parseFloat(this.value) + us4 + us5;
+            document.getElementById('usworkertotal').value = document.getElementById("ustotal").innerHTML;
+            if (document.getElementById("ustotal").innerHTML == 100) {
+                  document.getElementById('ussum').style.color = "green";
+                  document.getElementById('ustotal').style.color = "green";
+            };
+            if (document.getElementById("ustotal").innerHTML != 100) {
+                  document.getElementById('ussum').style.color = "red";
+                  document.getElementById('ustotal').style.color = "red";
+            };};
+
+
+        sliderus4.oninput = function() {
+            outputus4.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ustotal").innerHTML = us1 + us2 + us3 +  parseFloat(this.value) + us5;
+            document.getElementById('usworkertotal').value = document.getElementById("ustotal").innerHTML;
+            if (document.getElementById("ustotal").innerHTML == 100) {
+                  document.getElementById('ussum').style.color = "green";
+                  document.getElementById('ustotal').style.color = "green";
+            };
+            if (document.getElementById("ustotal").innerHTML != 100) {
+                  document.getElementById('ussum').style.color = "red";
+                  document.getElementById('ustotal').style.color = "red";
+            };};
+
+
+        sliderus5.oninput = function() {
+            outputus5.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ustotal").innerHTML = us1 + us2 + us3 + us4 + parseFloat(this.value);
+            document.getElementById('usworkertotal').value = document.getElementById("ustotal").innerHTML;
+            if (document.getElementById("ustotal").innerHTML == 100) {
+                  document.getElementById('ussum').style.color = "green";
+                  document.getElementById('ustotal').style.color = "green";
+            };
+            if (document.getElementById("ustotal").innerHTML != 100) {
+                  document.getElementById('ussum').style.color = "red";
+                  document.getElementById('ustotal').style.color = "red";
+            };};
+
+
+        slidernus7.oninput = function() {
+            outputnus7.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("nustotal").innerHTML = parseFloat(this.value) + nus8 + nus9 + nus10 + nus11;
+            document.getElementById('nusworkertotal').value = document.getElementById("nustotal").innerHTML;
+            if (document.getElementById("nustotal").innerHTML == 100) {
+                  document.getElementById('nussum').style.color = "green";
+                  document.getElementById('nustotal').style.color = "green";
+            };
+            if (document.getElementById("nustotal").innerHTML != 100) {
+                  document.getElementById('nussum').style.color = "red";
+                  document.getElementById('nustotal').style.color = "red";
+            };};
+
+        slidernus8.oninput = function() {
+            outputnus8.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("nustotal").innerHTML = nus7 + parseFloat(this.value) + nus9 + nus10 + nus11;
+            document.getElementById('nusworkertotal').value = document.getElementById("nustotal").innerHTML;
+            if (document.getElementById("nustotal").innerHTML == 100) {
+                  document.getElementById('nussum').style.color = "green";
+                  document.getElementById('nustotal').style.color = "green";
+            };
+            if (document.getElementById("nustotal").innerHTML != 100) {
+                  document.getElementById('nussum').style.color = "red";
+                  document.getElementById('nustotal').style.color = "red";
+            };};
+
+        slidernus9.oninput = function() {
+            outputnus9.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("nustotal").innerHTML = nus7 + nus8 + parseFloat(this.value)  + nus10 + nus11;
+            document.getElementById('nusworkertotal').value = document.getElementById("nustotal").innerHTML;
+            if (document.getElementById("nustotal").innerHTML == 100) {
+                  document.getElementById('nussum').style.color = "green";
+                  document.getElementById('nustotal').style.color = "green";
+            };
+            if (document.getElementById("nustotal").innerHTML != 100) {
+                  document.getElementById('nussum').style.color = "red";
+                  document.getElementById('nustotal').style.color = "red";
+            };};
+
+        slidernus10.oninput = function() {
+            outputnus10.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("nustotal").innerHTML = nus7 + nus8 + nus9 + parseFloat(this.value) + nus11;
+            document.getElementById('nusworkertotal').value = document.getElementById("nustotal").innerHTML;
+            if (document.getElementById("nustotal").innerHTML == 100) {
+                  document.getElementById('nussum').style.color = "green";
+                  document.getElementById('nustotal').style.color = "green";
+            };
+            if (document.getElementById("nustotal").innerHTML != 100) {
+                  document.getElementById('nussum').style.color = "red";
+                  document.getElementById('nustotal').style.color = "red";
+            };};
+
+        slidernus11.oninput = function() {
+            outputnus11.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("nustotal").innerHTML = nus7 + nus8 + nus9 + nus10 + parseFloat(this.value);
+            document.getElementById('nusworkertotal').value = document.getElementById("nustotal").innerHTML;
+            if (document.getElementById("nustotal").innerHTML == 100) {
+                  document.getElementById('nussum').style.color = "green";
+                  document.getElementById('nustotal').style.color = "green";
+            };
+            if (document.getElementById("nustotal").innerHTML != 100) {
+                  document.getElementById('nussum').style.color = "red";
+                  document.getElementById('nustotal').style.color = "red";
+            };};
+
+        }
+
+        document.getElementById('usworkertotal').value = document.getElementById("ustotal").innerHTML;
+        document.getElementById('nusworkertotal').value = document.getElementById("nustotal").innerHTML;
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var sliderold1 = document.getElementById("oldrange1");
+        var outputold1 = document.getElementById("old1");
+        if(document.getElementById("old1") != null){
+        outputold1.innerHTML;
+        sliderold1.oninput = function() {
+            outputold1.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderold2 = document.getElementById("oldrange2");
+        var outputold2 = document.getElementById("old2");
+        if(document.getElementById("old2") != null){
+        outputold2.innerHTML;
+        sliderold2.oninput = function() {
+            outputold2.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderold3 = document.getElementById("oldrange3");
+        var outputold3 = document.getElementById("old3");
+        if(document.getElementById("old3") != null){
+        outputold3.innerHTML;
+        sliderold3.oninput = function() {
+            outputold3.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderold4 = document.getElementById("oldrange4");
+        var outputold4 = document.getElementById("old4");
+        if(document.getElementById("old4") != null){
+        outputold4.innerHTML;
+        sliderold4.oninput = function() {
+            outputold4.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var sliderold5 = document.getElementById("oldrange5");
+        var outputold5 = document.getElementById("old5");
+        if(document.getElementById("old5") != null){
+        outputold5.innerHTML;
+        sliderold5.oninput = function() {
+            outputold5.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidery7 = document.getElementById("yrange1");
+        var outputy7 = document.getElementById("y1");
+        if(document.getElementById("y1") != null){
+        outputy7.innerHTML;
+        slidery7.oninput = function() {
+            outputy7.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidery8 = document.getElementById("yrange2");
+        var outputy8 = document.getElementById("y2");
+        if(document.getElementById("y2") != null){
+        outputy8.innerHTML;
+        slidery8.oninput = function() {
+            outputy8.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidery9 = document.getElementById("yrange3");
+        var outputy9 = document.getElementById("y3");
+        if(document.getElementById("y3") != null){
+        outputy9.innerHTML;
+        slidery9.oninput = function() {
+            outputy9.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidery10 = document.getElementById("yrange4");
+        var outputy10 = document.getElementById("y4");
+        if(document.getElementById("y4") != null){
+        outputy10.innerHTML;
+        slidery10.oninput = function() {
+            outputy10.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+        var slidery11 = document.getElementById("yrange5");
+        var outputy11 = document.getElementById("y5");
+        if(document.getElementById("y5") != null){
+        outputy11.innerHTML;
+        slidery11.oninput = function() {
+            outputy11.innerHTML = parseFloat(this.value).toFixed(0);
+            };
+        };
+
+
+    $(function() {
+    $('input[type=range]').change(getTotaloy);
+    getTotaloy();
+    });
+
+    function getTotaloy() {
+        var o1 = parseInt(sliderold1.value) || 0;
+        var o2 = parseInt(sliderold2.value) || 0;
+        var o3 = parseInt(sliderold3.value) || 0;
+        var o4 = parseInt(sliderold4.value) || 0;
+        var o5 = parseInt(sliderold5.value) || 0;
+        var y7 = parseInt(slidery7.value) || 0;
+        var y8 = parseInt(slidery8.value) || 0;
+        var y9 = parseInt(slidery9.value) || 0;
+        var y10 = parseInt(slidery10.value) || 0;
+        var y11 = parseInt(slidery11.value) || 0;
+
+        sliderold1.oninput = function() {
+            outputold1.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("oldtotal").innerHTML = parseFloat(this.value) + o2 + o3 + o4 + o5;
+            document.getElementById('oldworkertotal').value = document.getElementById("oldtotal").innerHTML;
+            if (document.getElementById("oldtotal").innerHTML == 100) {
+                  document.getElementById('oldsum').style.color = "green";
+                  document.getElementById('oldtotal').style.color = "green";
+            };
+            if (document.getElementById("oldtotal").innerHTML != 100) {
+                  document.getElementById('oldsum').style.color = "red";
+                  document.getElementById('oldtotal').style.color = "red";
+            };};
+
+        sliderold2.oninput = function() {
+            outputold2.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("oldtotal").innerHTML = o1 + parseFloat(this.value) + o3 + o4 + o5;
+            document.getElementById('oldworkertotal').value = document.getElementById("oldtotal").innerHTML;
+            if (document.getElementById("oldtotal").innerHTML == 100) {
+                  document.getElementById('oldsum').style.color = "green";
+                  document.getElementById('oldtotal').style.color = "green";
+            };
+            if (document.getElementById("oldtotal").innerHTML != 100) {
+                  document.getElementById('oldsum').style.color = "red";
+                  document.getElementById('oldtotal').style.color = "red";
+            };};
+
+        sliderold3.oninput = function() {
+            outputold3.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("oldtotal").innerHTML = o1 +  o2 + parseFloat(this.value) + o4 + o5;
+            document.getElementById('oldworkertotal').value = document.getElementById("oldtotal").innerHTML;
+            if (document.getElementById("oldtotal").innerHTML == 100) {
+                  document.getElementById('oldsum').style.color = "green";
+                  document.getElementById('oldtotal').style.color = "green";
+            };
+            if (document.getElementById("oldtotal").innerHTML != 100) {
+                  document.getElementById('oldsum').style.color = "red";
+                  document.getElementById('oldtotal').style.color = "red";
+            };};
+
+
+        sliderold4.oninput = function() {
+            outputold4.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("oldtotal").innerHTML = o1 + o2 + o3 +  parseFloat(this.value) + o5;
+            document.getElementById('oldworkertotal').value = document.getElementById("oldtotal").innerHTML;
+            if (document.getElementById("oldtotal").innerHTML == 100) {
+                  document.getElementById('oldsum').style.color = "green";
+                  document.getElementById('oldtotal').style.color = "green";
+            };
+            if (document.getElementById("oldtotal").innerHTML != 100) {
+                  document.getElementById('oldsum').style.color = "red";
+                  document.getElementById('oldtotal').style.color = "red";
+            };};
+
+
+        sliderold5.oninput = function() {
+            outputold5.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("oldtotal").innerHTML = o1 + o2 + o3 + o4 + parseFloat(this.value);
+            document.getElementById('oldworkertotal').value = document.getElementById("oldtotal").innerHTML;
+            if (document.getElementById("oldtotal").innerHTML == 100) {
+                  document.getElementById('oldsum').style.color = "green";
+                  document.getElementById('oldtotal').style.color = "green";
+            };
+            if (document.getElementById("oldtotal").innerHTML != 100) {
+                  document.getElementById('oldsum').style.color = "red";
+                  document.getElementById('oldtotal').style.color = "red";
+            };};
+
+
+        slidery7.oninput = function() {
+            outputy7.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ytotal").innerHTML = parseFloat(this.value) + y8 + y9 + y10 + y11;
+            document.getElementById('yworkertotal').value = document.getElementById("ytotal").innerHTML;
+            if (document.getElementById("ytotal").innerHTML == 100) {
+                  document.getElementById('ysum').style.color = "green";
+                  document.getElementById('ytotal').style.color = "green";
+            };
+            if (document.getElementById("ytotal").innerHTML != 100) {
+                  document.getElementById('ysum').style.color = "red";
+                  document.getElementById('ytotal').style.color = "red";
+            };};
+
+        slidery8.oninput = function() {
+            outputy8.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ytotal").innerHTML = y7 + parseFloat(this.value) + y9 + y10 + y11;
+            document.getElementById('yworkertotal').value = document.getElementById("ytotal").innerHTML;
+            if (document.getElementById("ytotal").innerHTML == 100) {
+                  document.getElementById('ysum').style.color = "green";
+                  document.getElementById('ytotal').style.color = "green";
+            };
+            if (document.getElementById("ytotal").innerHTML != 100) {
+                  document.getElementById('ysum').style.color = "red";
+                  document.getElementById('ytotal').style.color = "red";
+            };};
+
+        slidery9.oninput = function() {
+            outputy9.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ytotal").innerHTML = y7 + y8 + parseFloat(this.value)  + y10 + y11;
+            document.getElementById('yworkertotal').value = document.getElementById("ytotal").innerHTML;
+            if (document.getElementById("ytotal").innerHTML == 100) {
+                  document.getElementById('ysum').style.color = "green";
+                  document.getElementById('ytotal').style.color = "green";
+            };
+            if (document.getElementById("ytotal").innerHTML != 100) {
+                  document.getElementById('ysum').style.color = "red";
+                  document.getElementById('ytotal').style.color = "red";
+            };};
+
+        slidery10.oninput = function() {
+            outputy10.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ytotal").innerHTML = y7 + y8 + y9 + parseFloat(this.value) + y11;
+            document.getElementById('yworkertotal').value = document.getElementById("ytotal").innerHTML;
+            if (document.getElementById("ytotal").innerHTML == 100) {
+                  document.getElementById('ysum').style.color = "green";
+                  document.getElementById('ytotal').style.color = "green";
+            };
+            if (document.getElementById("ytotal").innerHTML != 100) {
+                  document.getElementById('ysum').style.color = "red";
+                  document.getElementById('ytotal').style.color = "red";
+            };};
+
+        slidery11.oninput = function() {
+            outputy11.innerHTML = parseFloat(this.value).toFixed(0);
+            document.getElementById("ytotal").innerHTML = y7 + y8 + y9 + y10 + parseFloat(this.value);
+            document.getElementById('yworkertotal').value = document.getElementById("ytotal").innerHTML;
+            if (document.getElementById("ytotal").innerHTML == 100) {
+                  document.getElementById('ysum').style.color = "green";
+                  document.getElementById('ytotal').style.color = "green";
+            };
+            if (document.getElementById("ytotal").innerHTML != 100) {
+                  document.getElementById('ysum').style.color = "red";
+                  document.getElementById('ytotal').style.color = "red";
+            };};
+
+        }
+
+        document.getElementById('yworkertotal').value = document.getElementById("ytotal").innerHTML;
+        document.getElementById('oldworkertotal').value = document.getElementById("oldtotal").innerHTML;
+
 
 </script>
 {{ endblock }}

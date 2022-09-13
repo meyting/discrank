@@ -24,10 +24,10 @@ df1m = df1[df1.gender=="male"].reset_index()
 df2f = df2[df2.gender=="female"].reset_index()
 df2m = df2[df2.gender=="male"].reset_index()
 
-df1f = df1f[["name", "gender", "matrices"]].sample(n=12, random_state = 1)
-df1m = df1m[["name", "gender", "matrices",]].sample(n=12, random_state = 1)
-df2f = df2f[["name", "gender", "realeffort"]].sample(n=12, random_state = 1)
-df2m = df2m[["name", "gender", "realeffort"]].sample(n=12, random_state = 1)
+df1f = df1f[["name", "gender", "matrices", "age", "nationality"]].sample(n=12, random_state = 1)
+df1m = df1m[["name", "gender", "matrices", "age", "nationality"]].sample(n=12, random_state = 1)
+df2f = df2f[["name", "gender", "realeffort", "age", "nationality"]].sample(n=12, random_state = 1)
+df2m = df2m[["name", "gender", "realeffort", "age", "nationality"]].sample(n=12, random_state = 1)
 
 df1m["mat_rank"] = df1m.matrices.rank(ascending=False)
 df1f["mat_rank"] = df1f.matrices.rank(ascending=False)
@@ -58,27 +58,35 @@ class C(BaseConstants):
     examplebonus = examplescore * conversionrate
 
     names_mat_f = [{'name': df1f['name'][i],
-                  'gender': df1f['gender'][i],
-                  'mat_rank': df1f["mat_rank"][i]
+                    'gender': df1f['gender'][i],
+                    'mat_rank': df1f["mat_rank"][i],
+                    'age': int(df1f["age"][i]),
+                    'nat': df1f["nationality"][i],
                      }
                   for i in range(len(df1f))]
 
     names_mat_m = [{'name': df1m['name'][i],
-                  'gender': df1m['gender'][i],
-                  'mat_rank': df1m["mat_rank"][i]
-                     }
+                    'gender': df1m['gender'][i],
+                    'mat_rank': df1m["mat_rank"][i],
+                    'age': int(df1m["age"][i]),
+                    'nat': df1m["nationality"][i],
+                    }
                   for i in range(len(df1m))]
 
     names_re_f = [{'name': df2f['name'][i],
-                  'gender': df2f['gender'][i],
-                  're_rank': df2f["re_rank"][i]
-                     }
+                   'gender': df2f['gender'][i],
+                   're_rank': df2f["re_rank"][i],
+                   'age': int(df2f["age"][i]),
+                   'nat': df2f["nationality"][i],
+                   }
                   for i in range(len(df2f))]
 
     names_re_m = [{'name': df2m['name'][i],
-                  'gender': df2m['gender'][i],
-                  're_rank': df2m["re_rank"][i]
-                  }
+                   'gender': df2m['gender'][i],
+                   're_rank': df2m["re_rank"][i],
+                   'age': int(df2m["age"][i]),
+                   'nat': df2m["nationality"][i],
+                   }
                   for i in range(len(df2m))]
 
 class Subsession(BaseSubsession):
@@ -139,9 +147,17 @@ class rank3(Page):
         if player.participant.task == 'logic':
             names_f = [C.names_mat_f[i]["name"] for i in range(len(C.names_mat_f))]
             names_m = [C.names_mat_m[i]["name"] for i in range(len(C.names_mat_m))]
+            age_f = [C.names_mat_f[i]["age"] for i in range(len(C.names_mat_f))]
+            age_m = [C.names_mat_m[i]["age"] for i in range(len(C.names_mat_m))]
+            nat_f = [C.names_mat_f[i]["nat"] for i in range(len(C.names_mat_f))]
+            nat_m = [C.names_mat_m[i]["nat"] for i in range(len(C.names_mat_m))]
         if player.participant.task == 'realeffort':
             names_f = [C.names_re_f[i]["name"] for i in range(len(C.names_re_f))]
             names_m = [C.names_re_m[i]["name"] for i in range(len(C.names_re_m))]
+            age_f = [C.names_re_f[i]["age"] for i in range(len(C.names_re_f))]
+            age_m = [C.names_re_m[i]["age"] for i in range(len(C.names_re_m))]
+            nat_f = [C.names_re_f[i]["nat"] for i in range(len(C.names_re_f))]
+            nat_m = [C.names_re_m[i]["nat"] for i in range(len(C.names_re_m))]
         return dict(
             female1=names_f[0],
             female2=names_f[1],
@@ -167,7 +183,55 @@ class rank3(Page):
             male10=names_m[9],
             male11=names_m[10],
             male12=names_m[11],
-                )
+            m_age1=age_m[0],
+            m_age2=age_m[1],
+            m_age3=age_m[2],
+            m_age4=age_m[3],
+            m_age5=age_m[4],
+            m_age6=age_m[5],
+            m_age7=age_m[6],
+            m_age8=age_m[7],
+            m_age9=age_m[8],
+            m_age10=age_m[9],
+            m_age11=age_m[10],
+            m_age12=age_m[11],
+            f_age1=age_f[0],
+            f_age2=age_f[1],
+            f_age3=age_f[2],
+            f_age4=age_f[3],
+            f_age5=age_f[4],
+            f_age6=age_f[5],
+            f_age7=age_f[6],
+            f_age8=age_f[7],
+            f_age9=age_f[8],
+            f_age10=age_f[9],
+            f_age11=age_f[10],
+            f_age12=age_f[11],
+            m_nat1=nat_m[0],
+            m_nat2=nat_m[1],
+            m_nat3=nat_m[2],
+            m_nat4=nat_m[3],
+            m_nat5=nat_m[4],
+            m_nat6=nat_m[5],
+            m_nat7=nat_m[6],
+            m_nat8=nat_m[7],
+            m_nat9=nat_m[8],
+            m_nat10=nat_m[9],
+            m_nat11=nat_m[10],
+            m_nat12=nat_m[11],
+            f_nat1=nat_f[0],
+            f_nat2=nat_f[1],
+            f_nat3=nat_f[2],
+            f_nat4=nat_f[3],
+            f_nat5=nat_f[4],
+            f_nat6=nat_f[5],
+            f_nat7=nat_f[6],
+            f_nat8=nat_f[7],
+            f_nat9=nat_f[8],
+            f_nat10=nat_f[9],
+            f_nat11=nat_f[10],
+            f_nat12=nat_f[11],
+        )
 
 
 page_sequence = [instructions_rank,

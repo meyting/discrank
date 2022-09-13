@@ -25,11 +25,11 @@
     {{ endif }}
     {{ if player.participant.task == "logic" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }} {{profile1.gender}}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }} </h3>
     </div>
     {{ elif player.participant.task == "realeffort" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.re_range }} {{profile1.gender}}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.re_range }} </h3>
     </div>
     {{ endif }}
     </div>
@@ -50,11 +50,11 @@
     {{ endif }}
     {{ if player.participant.task == "logic" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.mat_range }} {{profile2.gender}}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.mat_range }} </h3>
     </div>
     {{ elif player.participant.task == "realeffort" }}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.re_range }} {{profile2.gender}}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.re_range }} </h3>
     </div>
     {{ endif }}
     </div>
@@ -63,6 +63,30 @@
 </div>
 </div>
 </form>
+
+<br >
+<table style="font-size:1.1rem; table-layout: fixed; width:80%; margin-left:auto; margin-right:auto;">
+    <tr style="line-height: 5px;">
+        <td style="width:40%;font-weight:bold"> &nbsp; </td>
+        <td style="width:20%;font-weight:bold"> &nbsp; </td>
+        <td style="width:40%;font-weight:bold"> &nbsp; </td>
+    </tr>
+    <tr>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.gender }}</td>
+        <td style = "width:20%;text-align:center;font-weight:bold">Gender</td>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.gender }}</td>
+    </tr>
+    <tr>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.age }}</td>
+        <td style = "width:20%;text-align:center;font-weight:bold">Age</td>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.age }}</td>
+    </tr>
+    <tr>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile1.nat }}</td>
+        <td style = "width:20%;text-align:center;font-weight:bold">Nationality</td>
+        <td style = "width:40%;text-align:center;font-weight:bold">{{ profile2.nat }}</td>
+    </tr>
+</table>
 
 
     <hr>
