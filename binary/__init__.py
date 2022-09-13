@@ -70,7 +70,6 @@ class C(BaseConstants):
     conversionrate = cu(0.1)
     examplescore = 5
     examplebonus = examplescore * conversionrate
-
     profiles_mat = [{'prolificid': df1['prolificid'][i],
                      'name': df1['name'][i],
                      'gender':df1['gender'][i],
@@ -93,50 +92,68 @@ class Subsession(BaseSubsession):
     pass
 
 def creating_session(subsession: Subsession):
-    print(C.profiles_mat)
     for player in subsession.get_players():
+        profiles = []
         if player.participant.task == "logic":
             mat_topf_topm = [C.profiles_mat[0], C.profiles_mat[12]]
+            print("WWWW", mat_topf_topm)
             random.shuffle(mat_topf_topm)
+            profiles.append(mat_topf_topm)
             mat_topf_midm = [C.profiles_mat[1], C.profiles_mat[16]]
             random.shuffle(mat_topf_midm)
+            profiles.append(mat_topf_midm)
+            print("IIIIIIIIIII", mat_topf_midm)
             mat_topf_botm = [C.profiles_mat[2], C.profiles_mat[20]]
             random.shuffle(mat_topf_botm)
+            profiles.append(mat_topf_botm)
             mat_midf_topm = [C.profiles_mat[4], C.profiles_mat[13]]
             random.shuffle(mat_midf_topm)
+            profiles.append(mat_midf_topm)
             mat_midf_midm = [C.profiles_mat[5], C.profiles_mat[17]]
             random.shuffle(mat_midf_midm)
+            profiles.append(mat_midf_midm)
             mat_midf_botm = [C.profiles_mat[6], C.profiles_mat[21]]
             random.shuffle(mat_midf_botm)
+            profiles.append(mat_midf_botm)
             mat_botf_topm = [C.profiles_mat[8], C.profiles_mat[14]]
             random.shuffle(mat_botf_topm)
+            profiles.append(mat_botf_topm)
             mat_botf_midm = [C.profiles_mat[9], C.profiles_mat[18]]
             random.shuffle(mat_botf_midm)
+            profiles.append(mat_botf_midm)
             mat_botf_botm = [C.profiles_mat[10], C.profiles_mat[22]]
             random.shuffle(mat_botf_botm)
-            profiles = [mat_topf_topm, mat_topf_midm, mat_topf_botm, mat_midf_topm, mat_midf_midm, mat_midf_botm, mat_botf_topm, mat_botf_midm, mat_botf_botm]
+            profiles.append(mat_botf_botm)
         if player.participant.task == "realeffort":
             re_topf_topm = [C.profiles_re[0], C.profiles_re[12]]
             random.shuffle(re_topf_topm)
+            profiles.append(re_topf_topm)
             re_topf_midm = [C.profiles_re[1], C.profiles_re[16]]
             random.shuffle(re_topf_midm)
+            profiles.append(re_topf_midm)
             re_topf_botm = [C.profiles_re[2], C.profiles_re[20]]
             random.shuffle(re_topf_botm)
+            profiles.append(re_topf_botm)
             re_midf_topm = [C.profiles_re[4], C.profiles_re[13]]
             random.shuffle(re_midf_topm)
+            profiles.append(re_midf_topm)
             re_midf_midm = [C.profiles_re[5], C.profiles_re[17]]
             random.shuffle(re_midf_midm)
+            profiles.append(re_midf_midm)
             re_midf_botm = [C.profiles_re[6], C.profiles_re[21]]
             random.shuffle(re_midf_botm)
+            profiles.append(re_midf_botm)
             re_botf_topm = [C.profiles_re[8], C.profiles_re[14]]
             random.shuffle(re_botf_topm)
+            profiles.append(re_botf_topm)
             re_botf_midm = [C.profiles_re[9], C.profiles_re[18]]
             random.shuffle(re_botf_midm)
+            profiles.append(re_botf_midm)
             re_botf_botm = [C.profiles_re[10], C.profiles_re[22]]
             random.shuffle(re_botf_botm)
-            profiles = [re_topf_topm, re_topf_midm, re_topf_botm, re_midf_topm, re_midf_midm, re_midf_botm, re_botf_topm, re_botf_midm, re_botf_botm]
-        player.participant.profiles = random.shuffle(profiles)
-    print(player.participant.profiles[0])
+            profiles.append(re_botf_botm)
+        player.participant.profiles = profiles
+        random.shuffle(player.participant.profiles)
 
 class Group(BaseGroup):
     pass

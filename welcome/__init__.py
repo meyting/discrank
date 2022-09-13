@@ -24,7 +24,6 @@ def creating_session(subsession: Subsession):
         else:
             player.participant.task = next(task)
         player.task = player.participant.task
-        print("MMMMMMMMMMMMM",player.participant.task)
         player.variant = random.randint(1,2)
         player.participant.variant = player.variant
 
