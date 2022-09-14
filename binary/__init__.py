@@ -75,6 +75,7 @@ class C(BaseConstants):
                      'name': df1['name'][i],
                      'gender':df1['gender'][i],
                      'mat_range': df1["mat_range"][i],
+                     'matrices': df1["matrices"][i],
                      }
                     for i in range(len(df1))]
 
@@ -82,6 +83,7 @@ class C(BaseConstants):
                      'name': df2['name'][i],
                      'gender':df2['gender'][i],
                      're_range': df2["re_range"][i],
+                     'realeffort': df2["realeffort"][i],
                      }
                     for i in range(len(df2))]
     bonus_employer = 50
@@ -92,120 +94,65 @@ class Subsession(BaseSubsession):
 
 def creating_session(subsession: Subsession):
     for player in subsession.get_players():
-        if player.participant.variant == 1:
-            if player.participant.task== "logic":
-                if player.round_number == 1:
-                    player.worker1_id = C.profiles_mat[0]["prolificid"]
-                    player.worker2_id = C.profiles_mat[16]["prolificid"]
-                if player.round_number == 2:
-                    player.worker1_id = C.profiles_mat[4]["prolificid"]
-                    player.worker2_id = C.profiles_mat[17]["prolificid"]
-                if player.round_number == 3:
-                    player.worker1_id = C.profiles_mat[12]["prolificid"]
-                    player.worker2_id = C.profiles_mat[8]["prolificid"]
-                if player.round_number == 4:
-                    player.worker1_id = C.profiles_mat[20]["prolificid"]
-                    player.worker2_id = C.profiles_mat[5]["prolificid"]
-                if player.round_number == 5:
-                    player.worker1_id = C.profiles_mat[1]["prolificid"]
-                    player.worker2_id = C.profiles_mat[13]["prolificid"]
-                if player.round_number == 6:
-                    player.worker1_id = C.profiles_mat[18]["prolificid"]
-                    player.worker2_id = C.profiles_mat[9]["prolificid"]
-                if player.round_number == 7:
-                    player.worker1_id = C.profiles_mat[2]["prolificid"]
-                    player.worker2_id = C.profiles_mat[21]["prolificid"]
-                if player.round_number == 8:
-                    player.worker1_id = C.profiles_mat[10]["prolificid"]
-                    player.worker2_id = C.profiles_mat[22]["prolificid"]
-                if player.round_number == 9:
-                    player.worker1_id = C.profiles_mat[6]["prolificid"]
-                    player.worker2_id = C.profiles_mat[14]["prolificid"]
-            if player.participant.task== "realeffort":
-                if player.round_number == 1:
-                    player.worker1_id = C.profiles_re[0]["prolificid"]
-                    player.worker2_id = C.profiles_re[16]["prolificid"]
-                if player.round_number == 2:
-                    player.worker1_id = C.profiles_re[4]["prolificid"]
-                    player.worker2_id = C.profiles_re[17]["prolificid"]
-                if player.round_number == 3:
-                    player.worker1_id = C.profiles_re[12]["prolificid"]
-                    player.worker2_id = C.profiles_re[8]["prolificid"]
-                if player.round_number == 4:
-                    player.worker1_id = C.profiles_re[20]["prolificid"]
-                    player.worker2_id = C.profiles_re[5]["prolificid"]
-                if player.round_number == 5:
-                    player.worker1_id = C.profiles_re[1]["prolificid"]
-                    player.worker2_id = C.profiles_re[13]["prolificid"]
-                if player.round_number == 6:
-                    player.worker1_id = C.profiles_re[18]["prolificid"]
-                    player.worker2_id = C.profiles_re[9]["prolificid"]
-                if player.round_number == 7:
-                    player.worker1_id = C.profiles_re[2]["prolificid"]
-                    player.worker2_id = C.profiles_re[21]["prolificid"]
-                if player.round_number == 8:
-                    player.worker1_id = C.profiles_re[10]["prolificid"]
-                    player.worker2_id = C.profiles_re[22]["prolificid"]
-                if player.round_number == 9:
-                    player.worker1_id = C.profiles_re[6]["prolificid"]
-                    player.worker2_id = C.profiles_re[14]["prolificid"]
-        if player.participant.variant == 2:
-            if player.participant.task== "logic":
-                if player.round_number == 1:
-                    player.worker2_id = C.profiles_mat[0]["prolificid"]
-                    player.worker1_id = C.profiles_mat[16]["prolificid"]
-                if player.round_number == 2:
-                    player.worker2_id = C.profiles_mat[4]["prolificid"]
-                    player.worker1_id = C.profiles_mat[17]["prolificid"]
-                if player.round_number == 3:
-                    player.worker2_id = C.profiles_mat[12]["prolificid"]
-                    player.worker1_id = C.profiles_mat[8]["prolificid"]
-                if player.round_number == 4:
-                    player.worker2_id = C.profiles_mat[20]["prolificid"]
-                    player.worker1_id = C.profiles_mat[5]["prolificid"]
-                if player.round_number == 5:
-                    player.worker2_id = C.profiles_mat[1]["prolificid"]
-                    player.worker1_id = C.profiles_mat[13]["prolificid"]
-                if player.round_number == 6:
-                    player.worker2_id = C.profiles_mat[18]["prolificid"]
-                    player.worker1_id = C.profiles_mat[9]["prolificid"]
-                if player.round_number == 7:
-                    player.worker2_id = C.profiles_mat[2]["prolificid"]
-                    player.worker1_id = C.profiles_mat[21]["prolificid"]
-                if player.round_number == 8:
-                    player.worker2_id = C.profiles_mat[10]["prolificid"]
-                    player.worker1_id = C.profiles_mat[22]["prolificid"]
-                if player.round_number == 9:
-                    player.worker2_id = C.profiles_mat[6]["prolificid"]
-                    player.worker1_id = C.profiles_mat[14]["prolificid"]
-            if player.participant.task== "realeffort":
-                if player.round_number == 1:
-                    player.worker2_id = C.profiles_re[0]["prolificid"]
-                    player.worker1_id = C.profiles_re[16]["prolificid"]
-                if player.round_number == 2:
-                    player.worker2_id = C.profiles_re[4]["prolificid"]
-                    player.worker1_id = C.profiles_re[17]["prolificid"]
-                if player.round_number == 3:
-                    player.worker2_id = C.profiles_re[12]["prolificid"]
-                    player.worker1_id = C.profiles_re[8]["prolificid"]
-                if player.round_number == 4:
-                    player.worker2_id = C.profiles_re[20]["prolificid"]
-                    player.worker1_id = C.profiles_re[5]["prolificid"]
-                if player.round_number == 5:
-                    player.worker2_id = C.profiles_re[1]["prolificid"]
-                    player.worker1_id = C.profiles_re[13]["prolificid"]
-                if player.round_number == 6:
-                    player.worker2_id = C.profiles_re[18]["prolificid"]
-                    player.worker1_id = C.profiles_re[9]["prolificid"]
-                if player.round_number == 7:
-                    player.worker2_id = C.profiles_re[2]["prolificid"]
-                    player.worker1_id = C.profiles_re[21]["prolificid"]
-                if player.round_number == 8:
-                    player.worker2_id = C.profiles_re[10]["prolificid"]
-                    player.worker1_id = C.profiles_re[22]["prolificid"]
-                if player.round_number == 9:
-                    player.worker2_id = C.profiles_re[6]["prolificid"]
-                    player.worker1_id = C.profiles_re[14]["prolificid"]
+        profiles = []
+        if player.participant.task == "logic":
+            mat_topf_topm = [C.profiles_mat[0], C.profiles_mat[12]]
+            random.shuffle(mat_topf_topm)
+            profiles.append(mat_topf_topm)
+            mat_topf_midm = [C.profiles_mat[1], C.profiles_mat[16]]
+            random.shuffle(mat_topf_midm)
+            profiles.append(mat_topf_midm)
+            mat_topf_botm = [C.profiles_mat[2], C.profiles_mat[20]]
+            random.shuffle(mat_topf_botm)
+            profiles.append(mat_topf_botm)
+            mat_midf_topm = [C.profiles_mat[4], C.profiles_mat[13]]
+            random.shuffle(mat_midf_topm)
+            profiles.append(mat_midf_topm)
+            mat_midf_midm = [C.profiles_mat[5], C.profiles_mat[17]]
+            random.shuffle(mat_midf_midm)
+            profiles.append(mat_midf_midm)
+            mat_midf_botm = [C.profiles_mat[6], C.profiles_mat[21]]
+            random.shuffle(mat_midf_botm)
+            profiles.append(mat_midf_botm)
+            mat_botf_topm = [C.profiles_mat[8], C.profiles_mat[14]]
+            random.shuffle(mat_botf_topm)
+            profiles.append(mat_botf_topm)
+            mat_botf_midm = [C.profiles_mat[9], C.profiles_mat[18]]
+            random.shuffle(mat_botf_midm)
+            profiles.append(mat_botf_midm)
+            mat_botf_botm = [C.profiles_mat[10], C.profiles_mat[22]]
+            random.shuffle(mat_botf_botm)
+            profiles.append(mat_botf_botm)
+        if player.participant.task == "realeffort":
+            re_topf_topm = [C.profiles_re[0], C.profiles_re[12]]
+            random.shuffle(re_topf_topm)
+            profiles.append(re_topf_topm)
+            re_topf_midm = [C.profiles_re[1], C.profiles_re[16]]
+            random.shuffle(re_topf_midm)
+            profiles.append(re_topf_midm)
+            re_topf_botm = [C.profiles_re[2], C.profiles_re[20]]
+            random.shuffle(re_topf_botm)
+            profiles.append(re_topf_botm)
+            re_midf_topm = [C.profiles_re[4], C.profiles_re[13]]
+            random.shuffle(re_midf_topm)
+            profiles.append(re_midf_topm)
+            re_midf_midm = [C.profiles_re[5], C.profiles_re[17]]
+            random.shuffle(re_midf_midm)
+            profiles.append(re_midf_midm)
+            re_midf_botm = [C.profiles_re[6], C.profiles_re[21]]
+            random.shuffle(re_midf_botm)
+            profiles.append(re_midf_botm)
+            re_botf_topm = [C.profiles_re[8], C.profiles_re[14]]
+            random.shuffle(re_botf_topm)
+            profiles.append(re_botf_topm)
+            re_botf_midm = [C.profiles_re[9], C.profiles_re[18]]
+            random.shuffle(re_botf_midm)
+            profiles.append(re_botf_midm)
+            re_botf_botm = [C.profiles_re[10], C.profiles_re[22]]
+            random.shuffle(re_botf_botm)
+            profiles.append(re_botf_botm)
+        player.participant.profiles = profiles
+        random.shuffle(player.participant.profiles)
 
 class Group(BaseGroup):
     pass
@@ -216,8 +163,10 @@ class Player(BasePlayer):
     decision_gender = models.StringField(blank=True)
     offer1 = models.StringField(verbose_name='')
     offer2 = models.StringField(verbose_name='')
-    worker1_id = models.StringField()
-    worker2_id = models.StringField()
+    range1 = models.StringField(verbose_name='')
+    range2 = models.StringField(verbose_name='')
+    score1 = models.StringField(verbose_name='')
+    score2 = models.StringField(verbose_name='')
     usedprofiles = models.StringField()
 
 # PAGES
@@ -228,147 +177,95 @@ class instructions_binary(Page):
 
 class binary(Page):
     form_model = 'player'
-    form_fields = ['decision', 'offer1', 'offer2','decision_gender']
-
+    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_gender']
     def vars_for_template(player):
-        if player.participant.variant == 1:
-            if player.participant.task == "logic":
-                if player.round_number == 1:
-                    profile1 = C.profiles_mat[0]
-                    profile2 = C.profiles_mat[16]
-                if player.round_number == 2:
-                    profile1 = C.profiles_mat[4]
-                    profile2 = C.profiles_mat[17]
-                if player.round_number == 3:
-                    profile1 = C.profiles_mat[12]
-                    profile2 = C.profiles_mat[8]
-                if player.round_number == 4:
-                    profile1 = C.profiles_mat[20]
-                    profile2 = C.profiles_mat[5]
-                if player.round_number == 5:
-                    profile1 = C.profiles_mat[1]
-                    profile2 = C.profiles_mat[13]
-                if player.round_number == 6:
-                    profile1 = C.profiles_mat[18]
-                    profile2 = C.profiles_mat[9]
-                if player.round_number == 7:
-                    profile1 = C.profiles_mat[2]
-                    profile2 = C.profiles_mat[21]
-                if player.round_number == 8:
-                    profile1 = C.profiles_mat[10]
-                    profile2 = C.profiles_mat[22]
-                if player.round_number == 9:
-                    profile1 = C.profiles_mat[14]
-                    profile2 = C.profiles_mat[6]
-                profile1_id = profile1["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-                profile2_id = profile2["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-            if player.participant.task == 'realeffort':
-                if player.round_number == 1:
-                    profile1 = C.profiles_re[0]
-                    profile2 = C.profiles_re[16]
-                if player.round_number == 2:
-                    profile1 = C.profiles_re[4]
-                    profile2 = C.profiles_re[17]
-                if player.round_number == 3:
-                    profile1 = C.profiles_re[12]
-                    profile2 = C.profiles_re[8]
-                if player.round_number == 4:
-                    profile1 = C.profiles_re[20]
-                    profile2 = C.profiles_re[5]
-                if player.round_number == 5:
-                    profile1 = C.profiles_re[1]
-                    profile2 = C.profiles_re[13]
-                if player.round_number == 6:
-                    profile1 = C.profiles_re[18]
-                    profile2 = C.profiles_re[9]
-                if player.round_number == 7:
-                    profile1 = C.profiles_re[2]
-                    profile2 = C.profiles_re[21]
-                if player.round_number == 8:
-                    profile1 = C.profiles_re[10]
-                    profile2 = C.profiles_re[22]
-                if player.round_number == 9:
-                    profile1 = C.profiles_re[14]
-                    profile2 = C.profiles_re[6]
-                profile1_id = profile1["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-                profile2_id = profile2["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-        if player.participant.variant == 2:
-            if player.participant.task == "logic":
-                if player.round_number == 1:
-                    profile2 = C.profiles_mat[0]
-                    profile1 = C.profiles_mat[16]
-                if player.round_number == 2:
-                    profile2 = C.profiles_mat[4]
-                    profile1 = C.profiles_mat[17]
-                if player.round_number == 3:
-                    profile2 = C.profiles_mat[12]
-                    profile1 = C.profiles_mat[8]
-                if player.round_number == 4:
-                    profile2 = C.profiles_mat[20]
-                    profile1 = C.profiles_mat[5]
-                if player.round_number == 5:
-                    profile2 = C.profiles_mat[1]
-                    profile1 = C.profiles_mat[13]
-                if player.round_number == 6:
-                    profile2 = C.profiles_mat[18]
-                    profile1 = C.profiles_mat[9]
-                if player.round_number == 7:
-                    profile2 = C.profiles_mat[2]
-                    profile1 = C.profiles_mat[21]
-                if player.round_number == 8:
-                    profile2 = C.profiles_mat[10]
-                    profile1 = C.profiles_mat[22]
-                if player.round_number == 9:
-                    profile2 = C.profiles_mat[14]
-                    profile1 = C.profiles_mat[6]
-                profile1_id = profile1["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-                profile2_id = profile2["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-            if player.participant.task == 'realeffort':
-                if player.round_number == 1:
-                    profile2 = C.profiles_re[0]
-                    profile1 = C.profiles_re[16]
-                if player.round_number == 2:
-                    profile2 = C.profiles_re[4]
-                    profile1 = C.profiles_re[17]
-                if player.round_number == 3:
-                    profile2 = C.profiles_re[12]
-                    profile1 = C.profiles_re[8]
-                if player.round_number == 4:
-                    profile2 = C.profiles_re[20]
-                    profile1 = C.profiles_re[5]
-                if player.round_number == 5:
-                    profile2 = C.profiles_re[1]
-                    profile1 = C.profiles_re[13]
-                if player.round_number == 6:
-                    profile2 = C.profiles_re[18]
-                    profile1 = C.profiles_re[9]
-                if player.round_number == 7:
-                    profile2 = C.profiles_re[2]
-                    profile1 = C.profiles_re[21]
-                if player.round_number == 8:
-                    profile2 = C.profiles_re[10]
-                    profile1 = C.profiles_re[22]
-                if player.round_number == 9:
-                    profile2 = C.profiles_re[14]
-                    profile1 = C.profiles_re[6]
-                profile1_id = profile1["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
-                profile2_id = profile2["prolificid"] ###### CHANGE TO AN ID  - CREATE ONE FIRST
+        if player.participant.task == "logic":
+            if player.round_number == 1:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 2:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 3:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 4:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 5:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 6:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 7:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 8:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 9:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            profile1_id = profile1["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_id = profile2["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile1_range = profile1["mat_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_range = profile2["mat_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile1_score = profile1["matrices"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_score = profile2["matrices"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+        if player.participant.task == 'realeffort':
+            if player.round_number == 1:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 2:
+                profile1 = player.participant.profiles[player.round_number - 1][0]
+                profile2 = player.participant.profiles[player.round_number - 1][1]
+            if player.round_number == 3:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 4:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 5:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 6:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 7:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 8:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 9:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
+            profile1_id = profile1["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_id = profile2["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile1_range = profile1["re_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_range = profile2["re_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile1_score = profile1["realeffort"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_score = profile2["realeffort"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+
         return {
             'profile1' : profile1,
             'profile2' : profile2,
             'profile1_id' : profile1_id,
             'profile2_id' : profile2_id,
+            'profile1_range' : profile1_range,
+            'profile2_range' : profile2_range,
+            'profile1_score': profile1_score,
+            'profile2_score': profile2_score,
             'i1' : '<input name="decision" type="radio" id="w1" value="' + profile1_id + '"' +'/>',
             'i2' : '<input name="decision" type="radio" id="w2" value="' + profile2_id + '"' +'/>',
         }
-
     def before_next_page(player, timeout_happened):
         player.decision_gender = str(df1.loc[(df1.prolificid == player.decision), "gender"].values[0])
 
     def error_message(player, values):
         if values['decision'] == "":
             return 'You forgot to hire a worker. Please click on the worker who you want to hire.'
-
 
 
 page_sequence = [instructions_binary,
