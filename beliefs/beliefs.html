@@ -26,7 +26,7 @@ Before we start...
 <table>
     <tr>
         <td>
-            <h6> Out of all female workers in our pool of workers, what fraction got a score between ...</h6>
+            <h6> Out of all Asian workers in our pool of workers, what fraction got a score between ...</h6>
         </td>
     </tr>
 </table>
@@ -117,7 +117,7 @@ Before we start...
 <table>
     <tr>
         <td>
-            <h6> Out of all male workers in our pool of workers, what fraction got a score between ...</h6>
+            <h6> Out of all Hispanic workers in our pool of workers, what fraction got a score between ...</h6>
         </td>
     </tr>
 </table>
@@ -205,8 +205,8 @@ Before we start...
     {{ next_button }}
 
 
-    <input type="hidden" name="ftotal" id="femaletotal" />
-    <input type="hidden" name="mtotal" id="maletotal" />
+    <input type="hidden" name="asiantotal" id="asiantotal" />
+    <input type="hidden" name="hispanictotal" id="hispanictotal" />
 
 
 
@@ -217,13 +217,13 @@ Before we start...
 {{ formfield_errors 'f3' }}
 {{ formfield_errors 'f4' }}
 {{ formfield_errors 'f5' }}
-{{ formfield_errors 'ftotal' }}
+{{ formfield_errors 'asiantotal' }}
 {{ formfield_errors 'm1' }}
 {{ formfield_errors 'm2' }}
 {{ formfield_errors 'm3' }}
 {{ formfield_errors 'm4' }}
 {{ formfield_errors 'm5' }}
-{{ formfield_errors 'mtotal' }}
+{{ formfield_errors 'hispanictotal' }}
 
 
 {{ block app_scripts }}
@@ -339,7 +339,7 @@ Before we start...
         slider1.oninput = function() {
             output1.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = parseFloat(this.value) + s2 + s3 + s4 + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -352,7 +352,7 @@ Before we start...
         slider2.oninput = function() {
             output2.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + parseFloat(this.value) + s3 + s4 + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -365,7 +365,7 @@ Before we start...
         slider3.oninput = function() {
             output3.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + s2 + parseFloat(this.value) + s4 + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -378,7 +378,7 @@ Before we start...
         slider4.oninput = function() {
             output4.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + parseFloat(this.value) + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -391,7 +391,7 @@ Before we start...
         slider5.oninput = function() {
             output5.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + parseFloat(this.value);
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -404,7 +404,7 @@ Before we start...
         slider7.oninput = function() {
             output7.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = parseFloat(this.value) + s8 + s9 + s10 + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -417,7 +417,7 @@ Before we start...
         slider8.oninput = function() {
             output8.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + parseFloat(this.value) + s9 + s10 + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -430,7 +430,7 @@ Before we start...
         slider9.oninput = function() {
             output9.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + s8 + parseFloat(this.value) + s10 + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -442,7 +442,7 @@ Before we start...
         slider10.oninput = function() {
             output10.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + parseFloat(this.value) + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -454,7 +454,7 @@ Before we start...
         slider11.oninput = function() {
             output11.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + parseFloat(this.value);
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -466,8 +466,8 @@ Before we start...
 
         }
 
-        document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
-        document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+        document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
+        document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
 
 </script>
 {{ endblock }}

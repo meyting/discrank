@@ -36,26 +36,26 @@ class Player(BasePlayer):
     m3 = models.FloatField()
     m4 = models.FloatField()
     m5 = models.FloatField()
-    mtotal = models.FloatField()
+    hispanictotal = models.FloatField()
     f1 = models.FloatField()
     f2 = models.FloatField()
     f3 = models.FloatField()
     f4 = models.FloatField()
     f5 = models.FloatField()
-    ftotal = models.FloatField()
+    asiantotal = models.FloatField()
 
 # PAGES
 class beliefs(Page):
     form_model = 'player'
-    form_fields = ['m1', 'm2', 'm3', 'm4', 'm5', 'mtotal',
-                   'f1', 'f2', 'f3', 'f4', 'f5',  'ftotal',
+    form_fields = ['m1', 'm2', 'm3', 'm4', 'm5', 'hispanictotal',
+                   'f1', 'f2', 'f3', 'f4', 'f5',  'asiantotal',
                    ]
 
     def error_message(player, value):
         print('value is', value)
-        if value["mtotal"] != 100:
+        if value["hispanictotal"] != 100:
             return 'Please make sure that the total percentage that you allocated to all male workers sums up to 100%.'
-        if value["ftotal"] != 100:
+        if value["asiantotal"] != 100:
             return 'Please make sure that the total percentage that you allocated to all female workers sums up to 100%.'
 
 page_sequence = [beliefs,]
