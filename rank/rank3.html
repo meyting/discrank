@@ -129,15 +129,15 @@ Ranking
 // Initial names and correct ranking
 /////////////////////////////////////////////////////////////////////////////////////
 
-const ASIANS = [js_vars.asian1+' (a-1)', js_vars.asian2+' (a-2)', js_vars.asian3+' (a-3)',
-                js_vars.asian4+' (a-4)', js_vars.asian5+' (a-5)', js_vars.asian6+' (a-6)',
-                js_vars.asian7+' (a-7)', js_vars.asian8+' (a-8)', js_vars.asian9+' (a-9)',
-                js_vars.asian10+' (a-10)', js_vars.asian11+' (a-11)', js_vars.asian12+' (a-12)'];
+const ASIANS = [js_vars.asian1, js_vars.asian2, js_vars.asian3,
+                js_vars.asian4, js_vars.asian5, js_vars.asian6,
+                js_vars.asian7, js_vars.asian8, js_vars.asian9,
+                js_vars.asian, js_vars.asian11, js_vars.asian12];
 
-const HISPANICS = [js_vars.hispanic1+' (h-1)', js_vars.hispanic2+' (h-2)', js_vars.hispanic3+' (h-3)',
-              js_vars.hispanic4+' (h-4)', js_vars.hispanic5+' (h-5)', js_vars.hispanic6+' (h-6)',
-              js_vars.hispanic7+' (h-7)',js_vars.hispanic8+' (h-8)', js_vars.hispanic9+' (h-9)',
-              js_vars.hispanic10+' (h-10)', js_vars.hispanic11+' (h-11)', js_vars.hispanic12+' (h-12)'];
+const HISPANICS = [js_vars.hispanic1, js_vars.hispanic2, js_vars.hispanic3,
+              js_vars.hispanic4, js_vars.hispanic5, js_vars.hispanic6,
+              js_vars.hispanic7, js_vars.hispanic8, js_vars.hispanic9,
+              js_vars.hispanic10, js_vars.hispanic11, js_vars.hispanic12];
 const MALES_ARE_LEFT_PROB = .5;
 
 // Leave empty (i.e. []) if there is no correct answer (or green highlighting is not desired)
@@ -202,11 +202,13 @@ function addNamesToContainer(nameArr, container) {
   nameArr.forEach(name => {
     const outerDiv = document.createElement('div');
     outerDiv.style.height = "2rem";
+    outerDiv.setAttribute('id',name+"-container");
 
     const div = document.createElement('div');
     div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center');
     div.draggable = true;
     div.innerText = name;
+    div.setAttribute('id', name);
 
     // Invisibly insert left/right names in their original position. Thus, every name
     // appears in its original position and is not pushed upwards.
@@ -218,6 +220,14 @@ function addNamesToContainer(nameArr, container) {
 
     div.addEventListener('dragstart', () => div.classList.add('dragging'));
     div.addEventListener('dragend', () => div.classList.remove('dragging'));
+
+    div.addEventListener('dragend', function() {
+        nameArr.forEach(name => {
+            var leftover = document.getElementById(div.id+'-container');
+            leftover.classList.add('text-secondary', 'rounded-3', 'text-center');
+            leftover.innerText = document.getElementById(div.id).innerText;
+        });
+    });
 
     outerDiv.appendChild(div);
     container.appendChild(outerDiv);
