@@ -19,6 +19,11 @@ random.seed(0)
 df2['random'] = np.random.uniform(0, 0.5, df2.shape[0])
 df2.realeffort = df2.realeffort+df2["random"]
 
+df1 = df1.replace('American', 'US')
+df1.loc[~(df1.nationality == "US"), "nationality" ] = "Non-US"
+df2 = df2.replace('American', 'US')
+df2.loc[~(df2.nationality == "US"), "nationality" ] = "Non-US"
+
 df1f = df1[df1.gender=="female"].reset_index()
 df1m = df1[df1.gender=="male"].reset_index()
 df2f = df2[df2.gender=="female"].reset_index()
