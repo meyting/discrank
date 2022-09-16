@@ -62,9 +62,19 @@ Training
 </div>
 
 
-  <div class="text-center mt-5">
-     <p>Once you have added all items to the mixed ranking, please click on "Next" to start with the actual ranking.</p>
-    <button class="btn otree-btn-next btn-primary px-5" id="submit-btn">Next</button>
+  <div class="container mt-5">
+    <div class="row">
+      <p>Once you have added all items to the mixed ranking, please click on "Next" to start with the actual ranking.</p>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <button class="btn btn-secondary px-5" id="reset-btn" type="button">Reset</button>
+      </div>
+      <div class="col-4 text-center">
+        <button class="btn otree-btn-next btn-primary px-5" id="submit-btn">Next</button>
+      </div>
+      <div class="col-4"></div>
+    </div>
   </div>
 <br/>
 <br/>
@@ -399,6 +409,16 @@ document.querySelector('#submit-btn')
       form.submit();
     });
 
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Reset Button
+/////////////////////////////////////////////////////////////////////////////////////
+
+document.getElementById('reset-btn')
+    .addEventListener('click', () => {
+      window.sessionStorage.clear();
+      window.location.reload();
+    });
 
 
 // ----------------------------------------------------------
