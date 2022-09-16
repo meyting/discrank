@@ -186,27 +186,39 @@ const names = new Names();
 
 function addNamesToContainer(nameArr, container) {
   nameArr.forEach(name => {
+
+    // Create container for the name and a background element
     const outerDiv = document.createElement('div');
+    outerDiv.classList.add('position-relative');
     outerDiv.style.height = "2rem";
 
-    const div = document.createElement('div');
-    div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center');
-    div.draggable = true;
-    div.innerText = name;
+    // Add a background element which is only visible when the actual element has
+    // been dragged to the center. The background element is non-draggable and
+    // shows which element was originally placed there.
+    const backgroundDiv = document.createElement('div');
+    backgroundDiv.classList.add('position-absolute', 'text-center', 'rounded-3', 'w-100');
+    backgroundDiv.style.backgroundColor = '#dadada';
+    backgroundDiv.style.zIndex = '-1';
+    backgroundDiv.innerText = name;
 
-    // Invisibly insert left/right names in their original position. Thus, every name
-    // appears in its original position and is not pushed upwards.
-    if (container !== dropContainer && names.getMixedNames().includes(name)) {
-      div.classList.remove('draggable');
-      div.draggable = false;
-      div.style.opacity = "0";
+    outerDiv.appendChild(backgroundDiv);
+
+    // Add the actual draggable div in the case where it has not yet been moved
+    // to the drop container.
+    if (!names.getMixedNames().includes(name)) {
+      const div = document.createElement('div');
+      div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center');
+      div.draggable = true;
+      div.innerText = name;
+
+      div.addEventListener('dragstart', () => div.classList.add('dragging'));
+      div.addEventListener('dragend', () => div.classList.remove('dragging'));
+
+      outerDiv.appendChild(div);
     }
 
-    div.addEventListener('dragstart', () => div.classList.add('dragging'));
-    div.addEventListener('dragend', () => div.classList.remove('dragging'));
-
-    outerDiv.appendChild(div);
     container.appendChild(outerDiv);
+
   })
 }
 
