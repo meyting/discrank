@@ -9,42 +9,9 @@ import pandas as pd
 import random
 import numpy as np
 
-df1 = pd.read_excel('_static/global/workers_rank_mat.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
-df1 = df1.replace("",999999999)
-random.seed(0)
-df1['random'] = np.random.uniform(0, 0.5, df1.shape[0])
-df1.matrices = df1.matrices+df1["random"]
-df2 = pd.read_excel('_static/global/workers_rank_re.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
-df2 = df2.replace("",999999999)
-random.seed(0)
-df2['random'] = np.random.uniform(0, 0.5, df2.shape[0])
-df2.realeffort = df2.realeffort+df2["random"]
-df1['race'] = df1['race'].replace({'Hispanic or Latin':'Hispanic'})
-df2['race'] = df2['race'].replace({'Hispanic or Latin':'Hispanic'})
+df1 = pd.read_csv('_static/global/rankrankings/workers_rank_mat.csv', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
+df2 = pd.read_excel('_static/global/rankrankings/workers_rank_re.csv', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
 
-df1a = df1[df1.race=="Asian"].reset_index()
-df1h = df1[df1.race=="Hispanic"].reset_index()
-df2a = df2[df2.race=="Asian"].reset_index()
-df2h = df2[df2.race=="Hispanic"].reset_index()
-
-df1a = df1a[["prolificid", "name", "gender", "matrices", "race"]].sample(n=12, random_state = 1)
-df1h = df1h[["prolificid", "name", "gender", "matrices", "race"]].sample(n=12, random_state = 1)
-df2a = df2a[["prolificid", "name", "gender", "realeffort", "race"]].sample(n=12, random_state = 1)
-df2h = df2h[["prolificid", "name", "gender", "realeffort", "race"]].sample(n=12, random_state = 1)
-
-df1h["mat_rank"] = df1h.matrices.rank(ascending=False)
-df1a["mat_rank"] = df1a.matrices.rank(ascending=False)
-df2h["re_rank"] = df2h.realeffort.rank(ascending=False)
-df2a["re_rank"] = df2a.realeffort.rank(ascending=False)
-
-df1h = df1h.sort_values(by=['mat_rank']).reset_index()
-df1a = df1a.sort_values(by=['mat_rank']).reset_index()
-df2h = df2h.sort_values(by=['re_rank']).reset_index()
-df2a = df2a.sort_values(by=['re_rank']).reset_index()
-
-
-df1 = pd.concat([df1a, df1h], axis=0).reset_index()
-df2 = pd.concat([df2a, df2h], axis=0).reset_index()
 df1["mat_range"] = "middle 4"
 df1.loc[(df1.mat_rank <= 4), "mat_range"] = "top 4"
 df1.loc[(df1.mat_rank >= 9), "mat_range"] = "bottom 4"
@@ -52,10 +19,6 @@ df2["re_range"] = "middle 4"
 df2.loc[(df2.re_rank <= 4), "re_range"] = "top 4"
 df2.loc[(df2.re_rank >= 9), "re_range"] = "bottom 4"
 
-print("DF1A!",df1a)
-print("DF1H!",df1h)
-print(df2a)
-print(df2h)
 
 print("DF1!",df1)
 print("DF2!",df2)
