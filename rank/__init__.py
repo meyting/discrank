@@ -187,6 +187,6 @@ class rank3(Page):
 
 
 page_sequence = [instructions_rank,
-                 #check3,
-                 #rank3,
+                 check3,
+                 rank3,
                  ]
