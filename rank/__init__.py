@@ -42,15 +42,19 @@ df2h = df2h.sort_values(by=['re_rank']).reset_index()
 df2a = df2a.sort_values(by=['re_rank']).reset_index()
 
 
-df1h.to_csv('_static/global/rankrankings/workers_rank_mat_hispanic.csv')
-df1a.to_csv('_static/global/rankrankings/workers_rank_mat_asian.csv')
-df2h.to_csv('_static/global/rankrankings/workers_rank_re_hispanic.csv')
-df2a.to_csv('_static/global/rankrankings/workers_rank_re_asian.csv')
+df1h.to_excel('_static/global/rankrankings/workers_rank_mat_hispanic.xlsx')
+df1a.to_excel('_static/global/rankrankings/workers_rank_mat_asian.xlsx')
+df2h.to_excel('_static/global/rankrankings/workers_rank_re_hispanic.xlsx')
+df2a.to_excel('_static/global/rankrankings/workers_rank_re_asian.xlsx')
 
 df1 = pd.concat([df1a, df1h], axis=0).reset_index()
 df2 = pd.concat([df2a, df2h], axis=0).reset_index()
-df1.to_csv('_static/global/rankrankings/workers_rank_mat.csv')
-df2.to_csv('_static/global/rankrankings/workers_rank_re.csv')
+df1.to_excel('_static/global/rankrankings/workers_rank_mat.xlsx')
+df2.to_excel('_static/global/rankrankings/workers_rank_re.xlsx')
+
+
+print("DF1 IN RANK",df1)
+print("DF2 IN RANK",df2)
 
 class C(BaseConstants):
     NAME_IN_URL = 'rank'
