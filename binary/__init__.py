@@ -19,32 +19,34 @@ df2 = df2.replace("",999999999)
 random.seed(0)
 df2['random'] = np.random.uniform(0, 0.5, df2.shape[0])
 df2.realeffort = df2.realeffort+df2["random"]
+
 df1['race'] = df1['race'].replace({'Hispanic or Latin':'Hispanic'})
 df2['race'] = df2['race'].replace({'Hispanic or Latin':'Hispanic'})
 
-df1a = df1[df1.race=="Asian"].reset_index()
-df1h = df1[df1.race=="Hispanic"].reset_index()
-df2a = df2[df2.race=="Asian"].reset_index()
-df2h = df2[df2.race=="Hispanic"].reset_index()
+df1f = df1[df1.gender=="female"].reset_index()
+df1m = df1[df1.gender=="male"].reset_index()
+df2f = df2[df2.gender=="female"].reset_index()
+df2m = df2[df2.gender=="male"].reset_index()
 
-df1a = df1a[["prolificid", "name", "gender", "matrices", "race"]].sample(n=12, random_state = 1)
-df1h = df1h[["prolificid", "name", "gender", "matrices", "race"]].sample(n=12, random_state = 1)
-df2a = df2a[["prolificid", "name", "gender", "realeffort", "race"]].sample(n=12, random_state = 1)
-df2h = df2h[["prolificid", "name", "gender", "realeffort", "race"]].sample(n=12, random_state = 1)
+df1f = df1f[["prolificid", "name", "gender", "matrices"]].sample(n=12, random_state = 1)
+df1m = df1m[["prolificid", "name", "gender", "matrices",]].sample(n=12, random_state = 1)
+df2f = df2f[["prolificid", "name", "gender", "realeffort"]].sample(n=12, random_state = 1)
+df2m = df2m[["prolificid", "name", "gender", "realeffort"]].sample(n=12, random_state = 1)
 
-df1h["mat_rank"] = df1h.matrices.rank(ascending=False)
-df1a["mat_rank"] = df1a.matrices.rank(ascending=False)
-df2h["re_rank"] = df2h.realeffort.rank(ascending=False)
-df2a["re_rank"] = df2a.realeffort.rank(ascending=False)
+df1m["mat_rank"] = df1m.matrices.rank(ascending=False)
+df1f["mat_rank"] = df1f.matrices.rank(ascending=False)
+df2m["re_rank"] = df2m.realeffort.rank(ascending=False)
+df2f["re_rank"] = df2f.realeffort.rank(ascending=False)
 
-df1h = df1h.sort_values(by=['mat_rank']).reset_index()
-df1a = df1a.sort_values(by=['mat_rank']).reset_index()
-df2h = df2h.sort_values(by=['re_rank']).reset_index()
-df2a = df2a.sort_values(by=['re_rank']).reset_index()
+df1m = df1m.sort_values(by=['mat_rank']).reset_index()
+df1f = df1f.sort_values(by=['mat_rank']).reset_index()
+df2m = df2m.sort_values(by=['re_rank']).reset_index()
+df2f = df2f.sort_values(by=['re_rank']).reset_index()
 
 
-df1 = pd.concat([df1a, df1h], axis=0).reset_index()
-df2 = pd.concat([df2a, df2h], axis=0).reset_index()
+df1 = pd.concat([df1f, df1m], axis=0).reset_index()
+df2 = pd.concat([df2f, df2m], axis=0).reset_index()
+
 df1["mat_range"] = "middle 4"
 df1.loc[(df1.mat_rank <= 4), "mat_range"] = "top 4"
 df1.loc[(df1.mat_rank >= 9), "mat_range"] = "bottom 4"
@@ -52,10 +54,10 @@ df2["re_range"] = "middle 4"
 df2.loc[(df2.re_rank <= 4), "re_range"] = "top 4"
 df2.loc[(df2.re_rank >= 9), "re_range"] = "bottom 4"
 
-print("DF1A!",df1a)
-print("DF1H!",df1h)
-print(df2a)
-print(df2h)
+print("DF1F!",df1f)
+print("DF1M!",df1m)
+print(df2f)
+print(df2m)
 
 print("DF1!",df1)
 print("DF2!",df2)
