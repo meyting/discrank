@@ -1,13 +1,13 @@
-,index,name,gender,matrices,mat_rank
-0,3,Annes,female,13.378813656017622,1.0
-1,2,Colleen,female,13.148046186922796,2.0
-2,22,Khushi,female,8.160685385666957,3.0
-3,21,Bri,female,8.070687130538351,4.0
-4,19,Jewel,female,8.06821369256101,5.0
-5,32,Kellie,female,5.359975618142905,6.0
-6,30,Shadaisia,female,5.305003287409618,7.0
-7,33,Shaniek,female,5.216265180575279,8.0
-8,35,Lori,female,4.373001286826153,9.0
-9,34,Tina,female,4.1263167832977,10.0
-10,41,Giana,female,2.160437620709382,11.0
-11,44,Nansi,female,1.3898438892204992,12.0
+,index,name,gender,matrices,race,mat_rank
+0,2,Colleen,female,13.432250636190307,White,1.0
+1,3,Annes,female,13.034916813202361,Asian,2.0
+2,22,Khushi,female,8.403846102047346,Asian,3.0
+3,21,Bri,female,8.306460397252138,Black or African American,4.0
+4,19,Jewel,female,8.255382214481363,Black or African American,5.0
+5,30,Shadaisia,female,5.391783912463171,Black or African American,6.0
+6,32,Kellie,female,5.264060443171246,White,7.0
+7,33,Shaniek,female,5.058683953488068,Black or African American,8.0
+8,34,Tina,female,4.484631346861797,White,9.0
+9,35,Lori,female,4.257895238356264,White,10.0
+10,41,Giana,female,2.1969753802510152,White,11.0
+11,44,Nansi,female,1.2963851641148818,Asian,12.0

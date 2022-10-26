@@ -1,13 +1,13 @@
-,index,name,gender,matrices,mat_rank
-0,2,Corey,male,14.00430437089276,1.0
-1,3,Quinterius,male,13.197790024738094,2.0
-2,22,Edosagbe,male,8.112569987379972,3.0
-3,26,Juan,male,7.344035603161723,4.0
-4,27,Drew,male,6.192416073603668,5.0
-5,29,Eli,male,6.106320474331563,6.0
-6,32,Jamarii,male,5.431665785963529,7.0
-7,33,Brennan,male,5.2647796451981135,8.0
-8,30,Matthew,male,5.038946221716784,9.0
-9,44,Myles,male,3.0413103738924843,10.0
-10,49,Masuf,male,1.277851532272764,11.0
-11,50,Damian,male,0.17046697045324927,12.0
+,index,name,gender,matrices,race,mat_rank
+0,2,Corey,male,14.246355572356347,White,1.0
+1,3,Quinterius,male,13.348854948476301,Black or African American,2.0
+2,22,Edosagbe,male,8.237711025915967,Black or African American,3.0
+3,26,Juan,male,7.309401077733806,Hispanic,4.0
+4,29,Eli,male,6.369079993872778,White,5.0
+5,27,Drew,male,6.18177687315534,White,6.0
+6,33,Brennan,male,5.271117055866746,White,7.0
+7,32,Jamarii,male,5.089500187787722,Black or African American,8.0
+8,30,Matthew,male,5.023511464200493,White,9.0
+9,44,Myles,male,3.396624154630942,Black or African American,10.0
+10,49,Masuf,male,1.290497277292625,Asian,11.0
+11,50,Damian,male,0.29838941053129847,Black or African American,12.0

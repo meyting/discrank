@@ -1,25 +1,25 @@
 ,level_0,index,prolificid,name,gender,realeffort,race,re_rank,re_range
-0,0,1,60b1742bce2b39e0f1d19a1a,Sabrina,female,11.018504230546387,Asian,1.0,top 4
-1,1,4,5f7cbf8a2fe61814cae2ce8b,Aalap,male,10.485452412871835,Asian,2.0,top 4
-2,2,2,5f2c1a97a6809c060fec8820,Maggie,female,8.38439867789384,Asian,3.0,top 4
-3,3,10,60a71d27a66fac796ad4de6f,Jennifer,female,8.007887269790462,Asian,4.0,top 4
-4,4,14,60186dc2cc1aa8103499603a,Emily,female,7.275452680288248,Asian,5.0,middle 4
-5,5,16,60863a15760523386e761cfb,Roshni,female,6.49116257532486,Asian,6.0,middle 4
-6,6,13,5697d4ae7183b8000d0fc201,Tu,male,6.017898554001758,Asian,7.0,middle 4
-7,7,0,5c27de12a2b00a00018b2c16,Ankai,male,5.3108129235192,Asian,8.0,middle 4
-8,8,3,60bd88b8fc436774352f53b9,Annes,female,5.194641122720455,Asian,9.0,bottom 4
-9,9,6,60b7cd4be2d4cc6bb252e016,Chris,male,4.193097671483175,Asian,10.0,bottom 4
-10,10,7,5ff3974450a7199965624df7,Anh,male,2.0750083193654794,Asian,11.0,bottom 4
-11,11,15,60b76ee2219ac1ce25ccea43,Richie,male,0.02274625312865991,Asian,12.0,bottom 4
-12,0,2,60778ed0fde3e9c3a96f1d11,Melissa,female,8.497955016456713,Hispanic,1.0,top 4
-13,1,7,6024c18b094ac71dd93f4f5a,Katherine,female,8.331755804701212,Hispanic,2.0,top 4
-14,2,3,60ba8ba51a5e0a105396888a,Alfredo,male,7.25797587893889,Hispanic,3.0,top 4
-15,3,8,5f0142aa1eb1e528e7abce50,Valeria,female,7.021171804274022,Hispanic,4.0,top 4
-16,4,11,5f5ea8227fa75676f56f9276,Carlos,male,6.312453245062563,Hispanic,5.0,middle 4
-17,5,0,5eeaa065c7acf61c4322f6d9,Yonifredy,male,6.015295587698842,Hispanic,6.0,middle 4
-18,6,6,5dd671942b033b5ec8bc97b4,Juan,male,5.067764635932162,Hispanic,7.0,middle 4
-19,7,1,5e0adc8f4cac6834756db412,Mary,female,3.4332781175287184,Hispanic,8.0,middle 4
-20,8,4,5e706891c396cc64388ef760,Maria,female,3.0065090990190786,Hispanic,9.0,bottom 4
-21,9,10,60743a8fd12c5ffa72972fd5,Josue,male,2.1568020015570584,Hispanic,10.0,bottom 4
-22,10,12,5e58b3e415b8d40b5e1dabf1,Cristian,male,1.3458843064465698,Hispanic,11.0,bottom 4
-23,11,9,5e35d91ea42bce592e996843,Sergio,male,0.20330146515890002,Hispanic,12.0,bottom 4
+0,0,41,60bfcf5805c5ae12a546f9f3,Giana,female,7.011099401210296,White,1.0,top 4
+1,1,19,60b45e9961dd412bfb6780f8,Jewel,female,6.404863586052316,Black or African American,2.0,top 4
+2,2,2,5c5882fc5bfe7600011197cb,Colleen,female,6.280856205441891,White,3.0,top 4
+3,3,3,60bd88b8fc436774352f53b9,Annes,female,5.221583713796055,Asian,4.0,top 4
+4,4,34,5e96194b0a9fe909389e9f7b,Tina,female,5.117869088648055,White,5.0,middle 4
+5,5,44,60c0e5899d387663c07eb3a4,Nansi,female,4.260374190116406,Asian,6.0,middle 4
+6,6,22,608b14a312c099ac00b721b6,Khushi,female,1.4004357341524134,Asian,7.0,middle 4
+7,7,35,6077db0613ce87b4a62a78f9,Lori,female,1.16234995494629,White,8.0,middle 4
+8,8,32,6036f9b3b1842f8b659b18c7,Kellie,female,0.46927642370253675,White,9.0,bottom 4
+9,9,21,5c0e89c6c323400001e6c4a5,Bri,female,0.27447184038780953,Black or African American,10.0,bottom 4
+10,10,30,60d5775a99b502eec8cf56b4,Shadaisia,female,0.20586311832186022,Black or African American,11.0,bottom 4
+11,11,33,60cb36ee9f58331a33cf5506,Shaniek,female,0.042262251691761454,Black or African American,12.0,bottom 4
+12,0,44,60b091ed11ccda59e3fc7761,Myles,male,13.24466877954055,Black or African American,1.0,top 4
+13,1,3,601d69a993d94008fb2b25dc,Quinterius,male,8.432855906802619,Black or African American,2.0,top 4
+14,2,30,60c2341fe95d71ee52c043f0,Matthew,male,7.357007461209853,White,3.0,top 4
+15,3,27,5ff8ad350d084e10f500e48a,Drew,male,7.0573769075590285,White,4.0,top 4
+16,4,22,60db4fde6193c50664c9c478,Edosagbe,male,5.330457698460892,Black or African American,5.0,middle 4
+17,5,26,5dd671942b033b5ec8bc97b4,Juan,male,5.142493460683326,Hispanic,6.0,middle 4
+18,6,32,60bf9943e4e04642d4634ecc,Jamarii,male,5.1350682734536095,Black or African American,7.0,middle 4
+19,7,33,60b322994d0b901954690036,Brennan,male,4.08545359656406,White,8.0,middle 4
+20,8,2,5e2522d6b734b47915f88275,Corey,male,4.039033077350131,White,9.0,bottom 4
+21,9,49,6088fc724afd5c008db33e9d,Masuf,male,3.0136869349500435,Asian,10.0,bottom 4
+22,10,50,6097b95056caf5ebb2720002,Damian,male,2.4004668385842662,Black or African American,11.0,bottom 4
+23,11,29,60b83826821417f8e484a207,Eli,male,2.3806926906457613,White,12.0,bottom 4
