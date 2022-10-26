@@ -77,6 +77,9 @@ class Player(BasePlayer):
     purpose = models.LongStringField(initial=None,
                                      blank=True,
                                      verbose_name="What do you think this experiment is about?")
+    why = models.LongStringField(initial=None,
+                                     blank=True,
+                                     verbose_name="How did you decide how to rank the workers?")
     gpa_hs = models.FloatField(initial=None, blank=True,
                                verbose_name='What is your final (or current) high school GPA?')
     gpa_college = models.FloatField(initial=None, blank=True,
@@ -90,6 +93,7 @@ class survey(Page):
                    'education', 'race', 'state',
                    'party',
                    'purpose',  'gpa_college', 'gpa_hs',
+                   'why',
                    ]
 
 
