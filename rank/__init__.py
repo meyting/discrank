@@ -47,6 +47,11 @@ df1a.to_csv('_static/global/rankrankings/workers_rank_mat_asian.csv')
 df2h.to_csv('_static/global/rankrankings/workers_rank_re_hispanic.csv')
 df2a.to_csv('_static/global/rankrankings/workers_rank_re_asian.csv')
 
+df1 = pd.concat([df1a, df1h], axis=0).reset_index()
+df2 = pd.concat([df2a, df2h], axis=0).reset_index()
+df1.to_csv('_static/global/rankrankings/workers_rank_mat.csv')
+df2.to_csv('_static/global/rankrankings/workers_rank_re.csv')
+
 class C(BaseConstants):
     NAME_IN_URL = 'rank'
     PLAYERS_PER_GROUP = None
