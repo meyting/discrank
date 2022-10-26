@@ -8,9 +8,9 @@ Ranking
 {{ if player.participant.task == "realeffort" }}
 <p>
   Below you see again three columns: On the sides, you see the two subgroups of workers.
-  One subgroup contains a random selection of Asian workers from the total pool of workers, the other subgroup
-  contains a random selection of Hispanic workers.
-  Workers are ranked according to their performance in the counting task within their subgroup (Asians or Hispanics).
+  One subgroup contains a random selection of female workers from the total pool of workers, the other subgroup
+  contains a random selection of male workers.
+  Workers are ranked according to their performance in the counting task within their subgroup (females or males).
   In the middle, you see an empty "Mixed Ranking".
   You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
   mixed ranking.
@@ -18,10 +18,10 @@ Ranking
 {{ endif }}
 {{ if player.participant.task == "logic" }}
 <p>
-  Below you see again three columns: On the sides, you see the two subgoups of workers.
-  One subgroup contains a random selection of Asian workers from the total pool of workers, the other subgroup contains a random
-  selection of Hispanic workers.
-  Workers are ranked according to their performance in the counting task within their subgroup (Asians or Hispanics).
+  Below you see again three columns: On the sides, you see the two subgroups of workers.
+  One subgroup contains a random selection of female workers from the total pool of workers, the other subgroup
+  contains a random selection of male workers.
+  Workers are ranked according to their performance in the math/logic test within their subgroup (females or males).
   In the middle, you see an empty "Mixed Ranking".
   You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
   mixed ranking.
@@ -85,13 +85,13 @@ Ranking
 
 
     <input type="hidden" name="ranking" id="ranking" />
-    <input type="hidden" name="asiansleft" id="asiansleft" />
+    <input type="hidden" name="malesleft" id="malesleft" />
 
 {{ endblock }}
 
 
 {{ formfield_errors 'ranking' }}
-{{ formfield_errors 'asiansleft' }}
+{{ formfield_errors 'malesleft' }}
 
 
 
@@ -127,15 +127,15 @@ Ranking
 // Initial names and correct ranking
 /////////////////////////////////////////////////////////////////////////////////////
 
-const ASIANS = [js_vars.asian1, js_vars.asian2, js_vars.asian3,
-                js_vars.asian4, js_vars.asian5, js_vars.asian6,
-                js_vars.asian7, js_vars.asian8, js_vars.asian9,
-                js_vars.asian10, js_vars.asian11, js_vars.asian12];
+const FEMALE = [js_vars.female1, js_vars.female2, js_vars.female3,
+                js_vars.female4, js_vars.female5, js_vars.female6,
+                js_vars.female7, js_vars.female8, js_vars.female9,
+                js_vars.female10, js_vars.female11, js_vars.female12];
 
-const HISPANICS = [js_vars.hispanic1, js_vars.hispanic2, js_vars.hispanic3,
-              js_vars.hispanic4, js_vars.hispanic5, js_vars.hispanic6,
-              js_vars.hispanic7, js_vars.hispanic8, js_vars.hispanic9,
-              js_vars.hispanic10, js_vars.hispanic11, js_vars.hispanic12];
+const MALE = [js_vars.male1, js_vars.male2, js_vars.male3,
+              js_vars.male4, js_vars.male5, js_vars.male6,
+              js_vars.male7, js_vars.male8, js_vars.male9,
+              js_vars.male10, js_vars.male11, js_vars.male12];
 const MALES_ARE_LEFT_PROB = .5;
 
 // Leave empty (i.e. []) if there is no correct answer (or green highlighting is not desired)
@@ -175,8 +175,8 @@ function storeInLocalStorage(key, value) {
 function Names() {
 
   this.malesAreLeft = getFromLocalStorage('malesAreLeft', Math.random() < MALES_ARE_LEFT_PROB);
-  this.leftNames = this.malesAreLeft ? ASIANS : HISPANICS;
-  this.rightNames = this.malesAreLeft ? HISPANICS : ASIANS;
+  this.leftNames = this.malesAreLeft ? MALE : FEMALE;
+  this.rightNames = this.malesAreLeft ? FEMALE : MALE;
   this.MixedRanking = getFromLocalStorage('mixed', []);
 }
 
@@ -364,12 +364,12 @@ function getDragAfterElement(container, y) {
 }
 
 if (names.malesAreLeft == true) {
-    document.getElementById("leftranking").innerHTML= "Asians";
-    document.getElementById("rightranking").innerHTML= "Hispanics";
+    document.getElementById("leftranking").innerHTML= "males";
+    document.getElementById("rightranking").innerHTML= "female";
     }
     else {
-        document.getElementById("rightranking").innerHTML= "Asians";
-        document.getElementById("leftranking").innerHTML= "Hispanics";
+        document.getElementById("rightranking").innerHTML= "males";
+        document.getElementById("leftranking").innerHTML= "females";
     }
 /////////////////////////////////////////////////////////////////////////////////////
 // Submit Functionality
@@ -401,7 +401,7 @@ document.querySelector('#submit-btn')
 
       // Submit to Otree form ranking
       document.getElementById('ranking').value = names.getMixedRanking();
-      document.getElementById('asiansleft').value = names.malesAreLeft;
+      document.getElementById('malesleft').value = names.malesAreLeft;
 
       // Submit the form (this uses the method and action from above)
       form.submit();
