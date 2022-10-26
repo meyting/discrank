@@ -128,7 +128,6 @@ def creating_session(subsession: Subsession):
             profiles.append(re_botf_botm)
         player.participant.profiles = profiles
         random.shuffle(player.participant.profiles)
-        print("PROFILES",player.participant.profiles)
 
 class Group(BaseGroup):
     pass
