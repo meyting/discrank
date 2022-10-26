@@ -28,7 +28,7 @@ df2.to_excel('_static/global/binaryrankings/workers_rank_re.xlsx')
 class C(BaseConstants):
     NAME_IN_URL = 'binary'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 9
+    NUM_ROUNDS = 10
     number_of_workers_tot = 24
     number_of_workers_sep = int(number_of_workers_tot/2)
     number_of_other_subjects = int(number_of_workers_tot-1)
@@ -42,6 +42,7 @@ class C(BaseConstants):
                      'mat_range': df1["mat_range"][i],
                      'matrices': df1["matrices"][i],
                      'race': df1["race"][i],
+                     'mat_rank': df1["mat_rank"][i],
                      }
                     for i in range(len(df1))]
 
@@ -51,7 +52,8 @@ class C(BaseConstants):
                      're_range': df2["re_range"][i],
                      'realeffort': df2["realeffort"][i],
                      'race': df2["race"][i],
-                     }
+                     're_rank': df2["re_rank"][i],
+                    }
                     for i in range(len(df2))]
     bonus_employer = 50
     flatbonus = cu(2)
@@ -63,6 +65,9 @@ def creating_session(subsession: Subsession):
     for player in subsession.get_players():
         profiles = []
         if player.participant.task == "logic":
+            mat_noranks = [C.profiles_mat[3], C.profiles_mat[15]]
+            random.shuffle(mat_noranks)
+            profiles.append(mat_noranks)
             mat_topf_topm = [C.profiles_mat[0], C.profiles_mat[12]]
             random.shuffle(mat_topf_topm)
             profiles.append(mat_topf_topm)
@@ -91,6 +96,9 @@ def creating_session(subsession: Subsession):
             random.shuffle(mat_botf_botm)
             profiles.append(mat_botf_botm)
         if player.participant.task == "realeffort":
+            re_noranks = [C.profiles_re[3], C.profiles_re[15]]
+            random.shuffle(re_noranks)
+            profiles.append(re_noranks)
             re_topf_topm = [C.profiles_re[0], C.profiles_re[12]]
             random.shuffle(re_topf_topm)
             profiles.append(re_topf_topm)
@@ -120,6 +128,7 @@ def creating_session(subsession: Subsession):
             profiles.append(re_botf_botm)
         player.participant.profiles = profiles
         random.shuffle(player.participant.profiles)
+        print("PROFILES",player.participant.profiles)
 
 class Group(BaseGroup):
     pass
@@ -136,6 +145,7 @@ class Player(BasePlayer):
     range2 = models.StringField(verbose_name='')
     score1 = models.StringField(verbose_name='')
     score2 = models.StringField(verbose_name='')
+    norankdecision = models.IntegerField()
     usedprofiles = models.StringField()
 
 # PAGES
@@ -146,7 +156,8 @@ class instructions_binary(Page):
 
 class binary(Page):
     form_model = 'player'
-    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_gender']
+    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_gender',
+                   'gender1', 'gender2']
     def vars_for_template(player):
         if player.participant.task == "logic":
             if player.round_number == 1:
@@ -176,12 +187,17 @@ class binary(Page):
             if player.round_number == 9:
                 profile1 = player.participant.profiles[player.round_number-1][0]
                 profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 10:
+                profile1 = player.participant.profiles[player.round_number-1][0]
+                profile2 = player.participant.profiles[player.round_number-1][1]
             profile1_id = profile1["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_id = profile2["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile1_range = profile1["mat_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_range = profile2["mat_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile1_score = profile1["matrices"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_score = profile2["matrices"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile1_gender = profile1["gender"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_gender = profile2["gender"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
         if player.participant.task == 'realeffort':
             if player.round_number == 1:
                 profile1 = player.participant.profiles[player.round_number-1][0]
@@ -210,13 +226,17 @@ class binary(Page):
             if player.round_number == 9:
                 profile1 = player.participant.profiles[player.round_number-1][0]
                 profile2 = player.participant.profiles[player.round_number-1][1]
+            if player.round_number == 10:
+                profile1 = player.participant.profiles[player.round_number - 1][0]
+                profile2 = player.participant.profiles[player.round_number - 1][1]
             profile1_id = profile1["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_id = profile2["prolificid"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile1_range = profile1["re_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_range = profile2["re_range"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile1_score = profile1["realeffort"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
             profile2_score = profile2["realeffort"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
-
+            profile1_gender = profile1["gender"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
+            profile2_gender = profile2["gender"]  ###### CHANGE TO AN ID  - CREATE ONE FIRST
         return {
             'profile1' : profile1,
             'profile2' : profile2,
@@ -226,13 +246,17 @@ class binary(Page):
             'profile2_range' : profile2_range,
             'profile1_score': profile1_score,
             'profile2_score': profile2_score,
+            'profile1_gender': profile1_gender,
+            'profile2_gender': profile2_gender,
             'i1' : '<input name="decision" type="radio" id="w1" value="' + profile1_id + '"' +'/>',
             'i2' : '<input name="decision" type="radio" id="w2" value="' + profile2_id + '"' +'/>',
         }
     def before_next_page(player, timeout_happened):
         player.decision_gender = str(df1.loc[(df1.prolificid == player.decision), "gender"].values[0])
-        player.gender1 = str(df1.loc[(df1.prolificid == player.offer1), "gender"].values[0])
-        player.gender2 = str(df1.loc[(df1.prolificid == player.offer2), "gender"].values[0])
+        if player.participant.profiles[player.round_number - 1][0]["mat_rank"] == 4:
+            player.norankdecision = 1
+        else:
+            player.norankdecision = 0
 
     def error_message(player, values):
         if values['decision'] == "":
