@@ -127,7 +127,9 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     decision = models.StringField(blank=True)
-    decision_race = models.StringField(blank=True)
+    decision_gender = models.StringField(blank=True)
+    offer1_gender = models.StringField(verbose_name='')
+    offer2_gender = models.StringField(verbose_name='')
     offer1 = models.StringField(verbose_name='')
     offer2 = models.StringField(verbose_name='')
     range1 = models.StringField(verbose_name='')
@@ -144,7 +146,7 @@ class instructions_binary(Page):
 
 class binary(Page):
     form_model = 'player'
-    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_race']
+    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_gender']
     def vars_for_template(player):
         if player.participant.task == "logic":
             if player.round_number == 1:
@@ -228,7 +230,9 @@ class binary(Page):
             'i2' : '<input name="decision" type="radio" id="w2" value="' + profile2_id + '"' +'/>',
         }
     def before_next_page(player, timeout_happened):
-        player.decision_race = str(df1.loc[(df1.prolificid == player.decision), "race"].values[0])
+        player.decision_gender = str(df1.loc[(df1.prolificid == player.decision), "gender"].values[0])
+        player.offer1_gender = str(df1.loc[(df1.prolificid == player.offer1), "gender"].values[0])
+        player.offer2_gender = str(df1.loc[(df1.prolificid == player.offer2), "gender"].values[0])
 
     def error_message(player, values):
         if values['decision'] == "":
