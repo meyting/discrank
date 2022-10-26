@@ -24,13 +24,25 @@
     <img class="avatarimg" src="{% static "global/avatar_n.png" %}" />
     {{ endif }}
     {{ if player.participant.task == "logic" }}
+    {{ if profile1.mat_rank == 4}}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{profile1.race}}</h3>
+    </div>
+    {{ elif profile1.mat_rank != 4 }}
     <div class="name">
         <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }} {{profile1.race}}</h3>
     </div>
+    {{ endif }}
     {{ elif player.participant.task == "realeffort" }}
+        {{ if profile1.re_rank == 4}}
     <div class="name">
-        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.re_range }} {{profile1.race}}</h3>
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{profile1.race}}</h3>
     </div>
+    {{ elif profile1.re_rank != 4 }}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile1.mat_range }} {{profile1.race}}</h3>
+    </div>
+    {{ endif }}
     {{ endif }}
     </div>
 </label>
@@ -49,13 +61,25 @@
     <img class="avatarimg" src="{% static "global/avatar_n.png" %}" />
     {{ endif }}
     {{ if player.participant.task == "logic" }}
+    {{ if profile2.mat_rank == 4}}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{profile2.race}}</h3>
+    </div>
+    {{ elif profile2.mat_rank != 4 }}
     <div class="name">
         <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.mat_range }} {{profile2.race}}</h3>
     </div>
+    {{ endif }}
     {{ elif player.participant.task == "realeffort" }}
+    {{ if profile2.re_rank == 4}}
+    <div class="name">
+        <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{profile2.race}}</h3>
+    </div>
+    {{ elif profile2.re_rank != 4 }}
     <div class="name">
         <h3 style="text-align:left; vertical-align: middle; line-height:100px"> {{ profile2.re_range }} {{profile2.race}}</h3>
     </div>
+    {{ endif }}
     {{ endif }}
     </div>
 </label>
@@ -82,12 +106,15 @@
 <input type="hidden" name="decision_race" value=""/>
 <input type="hidden" name="score1" value="{{profile1_score}}" id="score1"/>
 <input type="hidden" name="score2" value="{{profile2_score}}" id="score2"/>
-
+<input type="hidden" name="race1" value="{{profile1_race}}" id="race1"/>
+<input type="hidden" name="race2" value="{{profile2_race}}" id="race2"/>
 
 {{ formfield_errors 'offer1' }}
 {{ formfield_errors 'offer2' }}
 {{ formfield_errors 'range1' }}
 {{ formfield_errors 'range2' }}
+{{ formfield_errors 'race1' }}
+{{ formfield_errors 'race2' }}
 {{ formfield_errors 'score1' }}
 {{ formfield_errors 'score2' }}
 {{ formfield_errors 'decision' }}
