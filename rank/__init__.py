@@ -46,7 +46,15 @@ df1m.to_csv('_static/global/rankrankings/workers_rank_mat_male.csv')
 df2f.to_csv('_static/global/rankrankings/workers_rank_re_female.csv')
 df2m.to_csv('_static/global/rankrankings/workers_rank_re_male.csv')
 
+df1 = pd.concat([df1f, df1m], axis=0).reset_index()
+df2 = pd.concat([df2f, df2m], axis=0).reset_index()
+df1.to_csv('_static/global/rankrankings/workers_rank_mat.csv')
+df2.to_csv('_static/global/rankrankings/workers_rank_re.csv')
 
+print("DF1F IN RANK!",df1f)
+print("DF1M IN RANK!",df1m)
+
+print("DF1 IN RANK",df1)
 class C(BaseConstants):
     NAME_IN_URL = 'rank'
     PLAYERS_PER_GROUP = None

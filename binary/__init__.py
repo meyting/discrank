@@ -43,7 +43,6 @@ df1f = df1f.sort_values(by=['mat_rank']).reset_index()
 df2m = df2m.sort_values(by=['re_rank']).reset_index()
 df2f = df2f.sort_values(by=['re_rank']).reset_index()
 
-
 df1 = pd.concat([df1f, df1m], axis=0).reset_index()
 df2 = pd.concat([df2f, df2m], axis=0).reset_index()
 
@@ -54,13 +53,11 @@ df2["re_range"] = "middle 4"
 df2.loc[(df2.re_rank <= 4), "re_range"] = "top 4"
 df2.loc[(df2.re_rank >= 9), "re_range"] = "bottom 4"
 
-print("DF1F!",df1f)
-print("DF1M!",df1m)
-print(df2f)
-print(df2m)
+print("DF1F IN BINARY!",df1f)
+print("DF1M IN BINARY!",df1m)
 
-print("DF1!",df1)
-print("DF2!",df2)
+print("DF1 IN BINARY",df1)
+
 df1.to_csv('_static/global/binaryrankings/workers_rank_mat.csv')
 df2.to_csv('_static/global/binaryrankings/workers_rank_re.csv')
 
