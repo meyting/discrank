@@ -19,10 +19,8 @@ df2["re_range"] = "middle 4"
 df2.loc[(df2.re_rank <= 4), "re_range"] = "top 4"
 df2.loc[(df2.re_rank >= 9), "re_range"] = "bottom 4"
 
-print("DF1F IN BINARY!",df1f)
-print("DF1M IN BINARY!",df1m)
-
-print("DF1 IN BINARY",df1)
+print("DF1 IN BINARY!",df1)
+print("DF2 IN BINARY",df2)
 
 df1.to_excel('_static/global/binaryrankings/workers_rank_mat.xlsx')
 df2.to_excel('_static/global/binaryrankings/workers_rank_re.xlsx')
