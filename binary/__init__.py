@@ -129,6 +129,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     decision = models.StringField(blank=True)
     decision_race = models.StringField(blank=True)
+    race1 = models.StringField(verbose_name='')
+    race2 = models.StringField(verbose_name='')
     offer1 = models.StringField(verbose_name='')
     offer2 = models.StringField(verbose_name='')
     range1 = models.StringField(verbose_name='')
@@ -230,6 +232,8 @@ class binary(Page):
         }
     def before_next_page(player, timeout_happened):
         player.decision_race = str(df1.loc[(df1.prolificid == player.decision), "race"].values[0])
+        player.race1 = str(df1.loc[(df1.prolificid == player.offer1), "race"].values[0])
+        player.race2 = str(df1.loc[(df1.prolificid == player.offer2), "race"].values[0])
 
     def error_message(player, values):
         if values['decision'] == "":
