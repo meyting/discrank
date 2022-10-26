@@ -9,8 +9,8 @@ import pandas as pd
 import random
 import numpy as np
 
-df1 = pd.read_csv('_static/global/rankrankings/workers_rank_mat.csv', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
-df2 = pd.read_excel('_static/global/rankrankings/workers_rank_re.csv', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
+df1 = pd.read_excel('_static/global/rankrankings/workers_rank_mat.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
+df2 = pd.read_excel('_static/global/rankrankings/workers_rank_re.xlsx', keep_default_na = False, engine = 'openpyxl') # can also index sheet by name or fetch all sheets
 
 df1["mat_range"] = "middle 4"
 df1.loc[(df1.mat_rank <= 4), "mat_range"] = "top 4"
@@ -24,8 +24,8 @@ print("DF1M IN BINARY!",df1m)
 
 print("DF1 IN BINARY",df1)
 
-df1.to_csv('_static/global/binaryrankings/workers_rank_mat.csv')
-df2.to_csv('_static/global/binaryrankings/workers_rank_re.csv')
+df1.to_excel('_static/global/binaryrankings/workers_rank_mat.xlsx')
+df2.to_excel('_static/global/binaryrankings/workers_rank_re.xlsx')
 
 class C(BaseConstants):
     NAME_IN_URL = 'binary'

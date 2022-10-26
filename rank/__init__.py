@@ -41,15 +41,16 @@ df1f = df1f.sort_values(by=['mat_rank']).reset_index()
 df2m = df2m.sort_values(by=['re_rank']).reset_index()
 df2f = df2f.sort_values(by=['re_rank']).reset_index()
 
-df1f.to_csv('_static/global/rankrankings/workers_rank_mat_female.csv')
-df1m.to_csv('_static/global/rankrankings/workers_rank_mat_male.csv')
-df2f.to_csv('_static/global/rankrankings/workers_rank_re_female.csv')
-df2m.to_csv('_static/global/rankrankings/workers_rank_re_male.csv')
+df1f.to_excel('_static/global/rankrankings/workers_rank_mat_female.xlsx')
+df1m.to_excel('_static/global/rankrankings/workers_rank_mat_male.xlsx')
+df2f.to_excel('_static/global/rankrankings/workers_rank_re_female.xlsx')
+df2m.to_excel('_static/global/rankrankings/workers_rank_re_male.xlsx')
 
 df1 = pd.concat([df1f, df1m], axis=0).reset_index()
 df2 = pd.concat([df2f, df2m], axis=0).reset_index()
-df1.to_csv('_static/global/rankrankings/workers_rank_mat.csv')
-df2.to_csv('_static/global/rankrankings/workers_rank_re.csv')
+
+df1.to_excel('_static/global/rankrankings/workers_rank_mat.xlsx')
+df2.to_excel('_static/global/rankrankings/workers_rank_re.xlsx')
 
 print("DF1F IN RANK!",df1f)
 print("DF1M IN RANK!",df1m)

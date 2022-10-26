@@ -1,13 +1,13 @@
 ,index,name,gender,matrices,race,mat_rank
-0,2,Colleen,female,13.432250636190307,White,1.0
-1,3,Annes,female,13.034916813202361,Asian,2.0
-2,22,Khushi,female,8.403846102047346,Asian,3.0
-3,21,Bri,female,8.306460397252138,Black or African American,4.0
-4,19,Jewel,female,8.255382214481363,Black or African American,5.0
-5,30,Shadaisia,female,5.391783912463171,Black or African American,6.0
-6,32,Kellie,female,5.264060443171246,White,7.0
-7,33,Shaniek,female,5.058683953488068,Black or African American,8.0
-8,34,Tina,female,4.484631346861797,White,9.0
-9,35,Lori,female,4.257895238356264,White,10.0
-10,41,Giana,female,2.1969753802510152,White,11.0
-11,44,Nansi,female,1.2963851641148818,Asian,12.0
+0,3,Annes,female,13.441820422542165,Asian,1.0
+1,2,Colleen,female,13.022218852924725,White,2.0
+2,19,Jewel,female,8.48298246785495,Black or African American,3.0
+3,21,Bri,female,8.42696983151678,Black or African American,4.0
+4,22,Khushi,female,8.328924579591044,Asian,5.0
+5,33,Shaniek,female,5.478807825997995,Black or African American,6.0
+6,32,Kellie,female,5.07551718009771,White,7.0
+7,30,Shadaisia,female,5.038925448131285,Black or African American,8.0
+8,35,Lori,female,4.344866961792534,White,9.0
+9,34,Tina,female,4.067633848303596,White,10.0
+10,41,Giana,female,2.222473069659302,White,11.0
+11,44,Nansi,female,1.3946871817911055,Asian,12.0
