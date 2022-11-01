@@ -60,8 +60,11 @@ Part I
     After all participants have ranked the workers, we will randomly assign a number between
     1 and {{ C.number_of_workers_tot }} to each participant.
     This number determines your position of when a worker will be allocated to you.
+    You will receive the highest-ranked remaining worker from your own ranking, and thus <b>you should rank the workers as you prefer them to maximize your expected payoff</b>.
 </p>
-<p>
+
+<p>For more information about the payment mechanism click <b class="openbox" id="openbox">here</b>.</p>
+<p class="infobox hidden" id="infobox">
     The person with the number 1 gets their top-ranked worker (rank 1).
     The chosen worker is then not available anymore.
     The person with the number 2 gets their top-ranked worker unless this worker has already been allocated before,
@@ -91,4 +94,35 @@ Part I
     {% next_button %}
 
 {% endblock %}
+
+{{ block styles }}
+
+<style type="text/css">
+.hidden {
+	display:none;
+}
+
+.infobox {
+    background-color:#f0f0f5
+    }
+
+.openbox {
+        cursor: pointer;
+		margin: 15px 0;
+		  }
+
+</style>
+{{ endblock }}
+
+
+{{ block app_scripts }}
+<script>
+document.getElementById("openbox").addEventListener("click", function(){
+document.getElementById("infobox").classList.remove("hidden");
+        });
+
+</script>
+{{ endblock }}
+
+
 
