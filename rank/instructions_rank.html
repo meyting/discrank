@@ -63,7 +63,9 @@ Part I
     You will receive the highest-ranked remaining worker from your own ranking, and thus <b>you should rank the workers as you prefer them to maximize your expected payoff</b>.
 </p>
 
-<p>For more information about the payment mechanism click <b class="openbox" id="openbox">here</b>.</p>
+<p id="container">
+    For more information about the payment mechanism click <b class="openbox" id="openbox">here</b>.
+</p>
 <p class="infobox hidden" id="infobox">
     The person with the number 1 gets their top-ranked worker (rank 1).
     The chosen worker is then not available anymore.
@@ -121,6 +123,8 @@ Part I
 <script>
 document.getElementById("openbox").addEventListener("click", function(){
 document.getElementById("infobox").classList.remove("hidden");
+document.getElementById("container").classList.add("hidden");
+
         });
 
 </script>
