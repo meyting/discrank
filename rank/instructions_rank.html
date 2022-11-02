@@ -20,8 +20,8 @@ Part I
     Both subgroups contain {{ C.number_of_workers_sep }} workers, i.e., there are {{ C.number_of_workers_sep }}
     female workers and {{ C.number_of_workers_sep }} male workers.
     For each worker, you will see their first name and their rank <b>within their subgroup</b> (i.e., within male or female workers).
-    Here, rank 1) refers to the best performance in the logic/math test among all workers of the respective subgroup,
-    and rank {{ C.number_of_workers_sep }}) refers to the lowest performance among all workers of the respective subgroup.
+    Here, rank 1) refers to the worker with the best performance in the logic/math test within a subgroup,
+    and rank {{ C.number_of_workers_sep }}) refers to the worker with the lowest performance in the respective subgroup.
     To ensure that no rank is shared by two workers within a subgroup, we added a random number between 0 and 0.5
     to each worker's score.
     Your final ranking will not have any consequences for the workers.
@@ -42,8 +42,8 @@ Part I
     Both subgroups contain {{ C.number_of_workers_sep }} workers, i.e., there are {{ C.number_of_workers_sep }}
     female workers and {{ C.number_of_workers_sep }} male workers.
     For each worker, you will see their first name and their rank <b>within their subgroup</b> (i.e., within male or female workers).
-    Here, rank 1) refers to the best performance in the counting task among all workers of the respective subgroup,
-    and rank {{ C.number_of_workers_sep }}) refers to the lowest performance among all workers of the respective subgroup.
+    Here, rank 1) refers to the worker with the best performance in the counting task within a subgroup,
+    and rank {{ C.number_of_workers_sep }}) refers to the worker with the lowest performance in the respective subgroup.
     To ensure that no rank is shared by two workers within a subgroup, we added a random number between 0 and 0.5
     to each worker's score.
     Your final ranking will not have any consequences for the workers.
@@ -60,11 +60,11 @@ Part I
     After all participants have ranked the workers, we will randomly assign a number between
     1 and {{ C.number_of_workers_tot }} to each participant.
     This number determines your position of when a worker will be allocated to you.
-    You will receive the highest-ranked remaining worker from your own ranking, and thus <b>you should rank the workers as you prefer them to maximize your expected payoff</b>.
+    You will receive the highest-ranked remaining worker from your own ranking, and thus <b>you should rank the workers according to your evaluation of their score</b> to earn the most bonus money.
 </p>
 <p>
     If this part will be drawn as the part-that-counts, you will receive {{ C.conversionrate }} for each point
-    of the productivity score of the worker that has been allocated to you.
+    of the score of the worker that has been allocated to you.
 </p>
 <p id="container">
     For more information about the payment mechanism click <b class="openbox" id="openbox">here</b>.
@@ -81,7 +81,7 @@ Part I
     Example: After the study is completed by all participants, we assign you the number 4. Thus, the worker that will
     be allocated to you will be the worker that ranks highest in your ranking and that is still available after the
     first 3 other participants have been allocated their worker.
-    If that worker got a productivity score of {{ C.examplescore }}, you will receive a bonus payment of {{ C.examplebonus}}.
+    If that worker got a score of {{ C.examplescore }}, you will receive a bonus payment of {{ C.examplebonus}}.
 </p>
 
 
