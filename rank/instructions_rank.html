@@ -56,8 +56,11 @@ Part I
     In total, {{C.number_of_other_subjects}} other participants will also all rank the same workers as you.
     After all participants have ranked the workers, we will randomly assign a number between
     1 and {{ C.number_of_workers_tot }} to each participant.
-    This number determines your position of when a worker will be allocated to you.
-    You will receive the highest-ranked remaining worker from your own ranking, and thus <b>you should rank the workers according to your evaluation of their score</b> to earn the most bonus money.
+    If this part will be drawn as the part-that-counts, this number determines when a worker will be allocated to you.
+    When it is your turn, you will receive your highest-ranked remaining worker.
+    This worker's performance determines your payment.
+    In particular, you will receive {{ C.conversionrate }} for each point of the score of the worker that has been allocated to you.
+    Thus, to earn the most bonus, <b>you should rank the workers according to your evaluation of their score</b>.
 </p>
 <p>
     If this part will be drawn as the part-that-counts, you will receive {{ C.conversionrate }} for each point
