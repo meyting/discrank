@@ -19,7 +19,7 @@ class C(BaseConstants):
     t5 = 9
     t6 = 10
     t7 = 12
-    t8 = 12
+    t8 = 13
     t9 = 15
 
 class Subsession(BaseSubsession):
