@@ -29,7 +29,7 @@ df2.to_excel('_static/global/binaryrankings/workers_rank_re.xlsx')
 class C(BaseConstants):
     NAME_IN_URL = 'binary'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 9
+    NUM_ROUNDS = 10
     number_of_workers_tot = 24
     number_of_workers_sep = int(number_of_workers_tot/2)
     number_of_other_subjects = int(number_of_workers_tot-1)
