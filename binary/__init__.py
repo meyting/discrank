@@ -159,7 +159,7 @@ class instructions_binary(Page):
 
 class binary(Page):
     form_model = 'player'
-    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_race']
+    form_fields = ['decision', 'offer1', 'offer2', 'range1', 'range2', 'score1', 'score2', 'decision_race', 'race1', 'race2']
     def vars_for_template(player):
         if player.participant.task == "logic":
             if player.round_number == 1:
