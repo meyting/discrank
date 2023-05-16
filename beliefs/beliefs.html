@@ -26,7 +26,7 @@ Before we start...
 <table>
     <tr>
         <td>
-            <h6> Out of all female workers in our pool of workers, what fraction got a score between ...</h6>
+            <h6> Out of all Asian workers in our pool of workers, what fraction got a score between ...</h6>
         </td>
     </tr>
 </table>
@@ -39,7 +39,7 @@ Before we start...
             <h6><span style="color:#B22222" id="f1">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="f1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange1">
+            <input name="a1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange1">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -52,7 +52,7 @@ Before we start...
             <h6><span style="color:#B22222" id="f2">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="f2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange2">
+            <input name="a2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange2">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -65,7 +65,7 @@ Before we start...
             <h6><span style="color:#B22222" id="f3">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="f3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange3">
+            <input name="a3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange3">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -78,7 +78,7 @@ Before we start...
             <h6><span style="color:#B22222" id="f4">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="f4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange4">
+            <input name="a4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange4">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -91,7 +91,7 @@ Before we start...
             <h6><span style="color:#B22222" id="f5">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="f5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange5">
+            <input name="a5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="frange5">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -117,7 +117,7 @@ Before we start...
 <table>
     <tr>
         <td>
-            <h6> Out of all male workers in our pool of workers, what fraction got a score between ...</h6>
+            <h6> Out of all Hispanic workers in our pool of workers, what fraction got a score between ...</h6>
         </td>
     </tr>
 </table>
@@ -130,7 +130,7 @@ Before we start...
             <h6><span style="color:#B22222" id="m1">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="m1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange1">
+            <input name="h1" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange1">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -143,7 +143,7 @@ Before we start...
             <h6><span style="color:#B22222" id="m2">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="m2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange2">
+            <input name="h2" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange2">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -156,7 +156,7 @@ Before we start...
             <h6><span style="color:#B22222" id="m3">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="m3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange3">
+            <input name="h3" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange3">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -169,7 +169,7 @@ Before we start...
             <h6><span style="color:#B22222" id="m4">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="m4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange4">
+            <input name="h4" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange4">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -182,7 +182,7 @@ Before we start...
             <h6><span style="color:#B22222" id="m5">0</span>%</h6>
         </td>
         <td style="width:65%">
-            <input name="m5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange5">
+            <input name="h5" type="range" min="0" max="50" value="0" step="1" class="slidershown" id="mrange5">
         </td>
     </tr>
     <tr class="emptyrow">
@@ -205,25 +205,25 @@ Before we start...
     {{ next_button }}
 
 
-    <input type="hidden" name="ftotal" id="femaletotal" />
-    <input type="hidden" name="mtotal" id="maletotal" />
+    <input type="hidden" name="asiantotal" id="asiantotal" />
+    <input type="hidden" name="hispanictotal" id="hispanictotal" />
 
 
 
 {{ endblock }}
 
-{{ formfield_errors 'f1' }}
-{{ formfield_errors 'f2' }}
-{{ formfield_errors 'f3' }}
-{{ formfield_errors 'f4' }}
-{{ formfield_errors 'f5' }}
-{{ formfield_errors 'ftotal' }}
-{{ formfield_errors 'm1' }}
-{{ formfield_errors 'm2' }}
-{{ formfield_errors 'm3' }}
-{{ formfield_errors 'm4' }}
-{{ formfield_errors 'm5' }}
-{{ formfield_errors 'mtotal' }}
+{{ formfield_errors 'a1' }}
+{{ formfield_errors 'a2' }}
+{{ formfield_errors 'a3' }}
+{{ formfield_errors 'a4' }}
+{{ formfield_errors 'a5' }}
+{{ formfield_errors 'asiantotal' }}
+{{ formfield_errors 'h1' }}
+{{ formfield_errors 'h2' }}
+{{ formfield_errors 'h3' }}
+{{ formfield_errors 'h4' }}
+{{ formfield_errors 'h5' }}
+{{ formfield_errors 'hispanictotal' }}
 
 
 {{ block app_scripts }}
@@ -339,7 +339,7 @@ Before we start...
         slider1.oninput = function() {
             output1.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = parseFloat(this.value) + s2 + s3 + s4 + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -352,7 +352,7 @@ Before we start...
         slider2.oninput = function() {
             output2.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + parseFloat(this.value) + s3 + s4 + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -365,7 +365,7 @@ Before we start...
         slider3.oninput = function() {
             output3.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + s2 + parseFloat(this.value) + s4 + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -378,7 +378,7 @@ Before we start...
         slider4.oninput = function() {
             output4.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + parseFloat(this.value) + s5;
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -391,7 +391,7 @@ Before we start...
         slider5.oninput = function() {
             output5.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("ftotal").innerHTML = s1 + s2 + s3 + s4 + parseFloat(this.value);
-            document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
+            document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
             if (document.getElementById("ftotal").innerHTML == 100) {
                   document.getElementById('fsum').style.color = "green";
                   document.getElementById('ftotal').style.color = "green";
@@ -404,7 +404,7 @@ Before we start...
         slider7.oninput = function() {
             output7.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = parseFloat(this.value) + s8 + s9 + s10 + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -417,7 +417,7 @@ Before we start...
         slider8.oninput = function() {
             output8.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + parseFloat(this.value) + s9 + s10 + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -430,7 +430,7 @@ Before we start...
         slider9.oninput = function() {
             output9.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + s8 + parseFloat(this.value) + s10 + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -442,7 +442,7 @@ Before we start...
         slider10.oninput = function() {
             output10.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + parseFloat(this.value) + s11;
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -454,7 +454,7 @@ Before we start...
         slider11.oninput = function() {
             output11.innerHTML = parseFloat(this.value).toFixed(0);
             document.getElementById("mtotal").innerHTML = s7 + s8 + s9 + s10 + parseFloat(this.value);
-            document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+            document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
             if (document.getElementById("mtotal").innerHTML == 100) {
                   document.getElementById('msum').style.color = "green";
                   document.getElementById('mtotal').style.color = "green";
@@ -466,8 +466,8 @@ Before we start...
 
         }
 
-        document.getElementById('femaletotal').value = document.getElementById("ftotal").innerHTML;
-        document.getElementById('maletotal').value = document.getElementById("mtotal").innerHTML;
+        document.getElementById('asiantotal').value = document.getElementById("ftotal").innerHTML;
+        document.getElementById('hispanictotal').value = document.getElementById("mtotal").innerHTML;
 
 </script>
 {{ endblock }}
@@ -501,6 +501,4 @@ Before we start...
         }
 </style>
 {{ endblock }}
-
-
 

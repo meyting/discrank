@@ -15,14 +15,15 @@ Part II
 <p>
     You will make 9 decisions.
     For each worker, you will see information about: <br>
-    A) whether they performed in the top 4, middle 4 or bottom 4 within their subgroup (male or female) <br>
-    B) their gender.
+    A) whether they performed in the top 4, middle 4 or bottom 4 within their subgroup (Asians or Hispanics) <br>
+    B) their race.
 </p>
+<!--
 <p>
-    <img class="avatarimg_small" src="{% static "global/avatar_f.png" %}" /> refers to a female worker.
+    <img class="avatarimg_small" src="{% static "global/avatar_f.png" %}" /> refers to an  female worker.
     <img class="avatarimg_small" src="{% static "global/avatar_m.png" %}" /> refers to a male worker.
 </p>
-
+-->
 <br />
 
 <h5><u>Your bonus payment</u></h5>
@@ -30,7 +31,7 @@ Part II
     If this part will be drawn as the part-that-counts, one of your decisions will also be randomly drawn as the <b>decision-that-counts</b>.
     Your bonus payment is determined by the performance of the worker that your hired in the decision-that-counts.
     For each point that your assigned worker has, you receive {{ C.conversionrate }}.
-    Example: If that worker who you hired in the decision-that-counts got a productivity score of {{ C.examplescore }},
+    Example: If that worker who you hired in the decision-that-counts got a score of {{ C.examplescore }},
     you will receive a bonus payment of {{ C.examplebonus}}.
 </p>
 
