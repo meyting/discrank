@@ -98,15 +98,7 @@ class C(BaseConstants):
                   for i in range(len(df2h))]
 
 class Subsession(BaseSubsession):
-    import itertools
-    treatments = itertools.cycle(['mixranking', 'sepranking'])
-    for p in subsession.get_players():
-        if p.round_number == 1:
-           if 'treatment' in subsession.session.config:
-               p.participant.treatment = subsession.session.config['treatment']
-           else:
-               p.participant.treatment = next(treatments)
-           p.treatment = p.participant.treatment
+    pass
 
 
 class Group(BaseGroup):
