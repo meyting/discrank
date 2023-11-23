@@ -98,15 +98,7 @@ class C(BaseConstants):
                   for i in range(len(df2h))]
 
 class Subsession(BaseSubsession):
-    import itertools
-    treatments = itertools.cycle(['mixranking', 'sepranking'])
-    for p in subsession.get_players():
-        if p.round_number == 1:
-           if 'treatment' in subsession.session.config:
-               p.participant.treatment = subsession.session.config['treatment']
-           else:
-               p.participant.treatment = next(treatments)
-           p.treatment = p.participant.treatment
+    pass
 
 
 class Group(BaseGroup):
@@ -124,7 +116,7 @@ class Player(BasePlayer):
     hispanicranking_re = models.CharField()
 
 
-class check(Page):
+class check3(Page):
     form_model = 'player'
     form_fields = ['check', 'abcdleft']
 
@@ -138,12 +130,12 @@ class check(Page):
             return 'Please make sure that you create the correct mixed ranking: A,B,C,D,E,F,G,H'
 
 
-class instructions(Page):
+class instructions_rank(Page):
     def is_displayed(player):
         return player.round_number == 1
 
 
-class rank(Page):
+class rank3(Page):
     form_model = 'player'
     form_fields = ['ranking', 'asiansleft']
 
@@ -194,7 +186,7 @@ class rank(Page):
                 )
 
 
-page_sequence = [instructions,
-                 check,
-                 rank,
+page_sequence = [instructions_rank,
+                 check3,
+                 rank3,
                  ]

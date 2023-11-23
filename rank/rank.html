@@ -1,272 +1,97 @@
-
+{{ block title }}
+Ranking
+{{ endblock }}
 {{ block content }}
 <!-- The only relevant part is the dragging attribute assigned to the items
   which are supposed to be dragged. -->
 
-<h2>Ranking</h2>
-<br />
+{{ if player.participant.task == "realeffort" }}
 <p>
-    On the left side, you a selection of female workers from our pool of workers, ranked according to their performance
-    in the counting task.
-    On the right side, you a selection of male workers from our pool of workers, ranked according to their performance
-    in the counting task.
-    In the middle, you see an empty "Mixed Ranking".
-    You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the mixed ranking.
+  Below you see again three columns: On the sides, you see the two subgroups of workers.
+  One subgroup contains a random selection of Asian workers from the total pool of workers, the other subgroup
+  contains a random selection of Hispanic workers.
+  Workers are ranked according to their performance in the counting task within their subgroup (Asians or Hispanics).
+  In the middle, you see an empty "Mixed Ranking".
+  You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
+  mixed ranking.
 </p>
-<p><b>Please rank all workers into one mixed ranking.</b></p>
+{{ endif }}
+{{ if player.participant.task == "logic" }}
+<p>
+  Below you see again three columns: On the sides, you see the two subgoups of workers.
+  One subgroup contains a random selection of Asian workers from the total pool of workers, the other subgroup contains a random
+  selection of Hispanic workers.
+  Workers are ranked according to their performance in the logic/math test within their subgroup (Asians or Hispanics).
+  In the middle, you see an empty "Mixed Ranking".
+  You can fill this mixed ranking by dragging and dropping a worker from on of the rankings on the sides into the
+  mixed ranking.
+</p>
+{{ endif }}
+<p><b>
+        Please rank all workers into one mixed ranking.
+        The mixed ranking determines your bonus payment if this part is paid out.
+</b></p>
 
+<br />
+{% include "rank/instructionsonpage.html" %}
 <br />
 
 
 <div class="container">
-  <div class="items-container" id="items-container">
-  <div class="headlines"><b>Female Ranking</b></div>
+
   <div class="row">
-    <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">Lena</p></div>
+
+    <div class="col-4">
+      <h5 class="bg-dark text-white p-2 text-center fw-bold rounded-3 mb-4" id="leftranking"></h5>
+      <div class="row px-4 mb-3">
+        <div class="col-2" id="left-container-ranks"></div>
+        <div class="col-10">
+          <div id="left-container" class="h-100">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 bg-light rounded-3 px-0">
+      <h5 class="bg-dark text-white p-2 text-center fw-bold rounded-3 mb-4" >Mixed Ranking</h5>
+      <div class="row px-4 mb-3">
+        <div class="col-2" id="drop-container-ranks"></div>
+        <div class="col-10">
+          <div id="drop-container" class="h-100"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <h5 class="bg-dark text-white p-2 text-center fw-bold rounded-3 mb-4" id="rightranking"></h5>
+      <div class="row px-4 mb-3">
+        <div class="col-2" id="right-container-ranks"></div>
+        <div class="col-10">
+          <div id="right-container" class="h-100"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="rank"> 2) </div> <div class="name"><p class="draggable" draggable="true">Lara</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 3) </div> <div class="name"><p class="draggable" draggable="true">Clara</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 4) </div> <div class="name"><p class="draggable" draggable="true">Sarah</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 5) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 6) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 7) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 8) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 9) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 10) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 11) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 12) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 13) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 14) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 15) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-  </div>
-
-
-  <div class="empty">&nbsp;</div>
-
-  <div class="outcome">
-    <div class="headlines"><b>Mixed Ranking</b></div>
-  <div class="rank-mixed">
-   <div class="row">
-     <div class="rank"> 1) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 2) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 3) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 4) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 5) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 6) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 7) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 8) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 9) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 10) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 11) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 12) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 13) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 14) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 15) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 16) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 17) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 18) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 19) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 20) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 21) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 22) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 23) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 24) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 25) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 26) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 27) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 28) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 29) </div>
-   </div>
-
-   <div class="row">
-     <div class="rank"> 30) </div>
-   </div>
-   </div>
-
-   <div class="drop-container">
-   </div>
-
-
-   </div>
-
-
-  <div class="empty">&nbsp;</div>
-  <div class="items-container">
-  <div class="headlines"><b>Male Ranking</b></div>
-  <div class="row">
-    <div class="rank"> 1) </div> <div class="name"><p class="draggable" draggable="true">Florian</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 2) </div> <div class="name"><p class="draggable" draggable="true">Markus</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 3) </div> <div class="name"><p class="draggable" draggable="true">Jan</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 4) </div> <div class="name"><p class="draggable" draggable="true">Simon</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 5) </div> <div class="name"><p class="draggable" draggable="true">Florian</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 6) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 7) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 8) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 9) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 10) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 11) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 12) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-      <div class="row">
-    <div class="rank"> 13) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 14) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-  <div class="row">
-    <div class="rank"> 15) </div> <div class="name"><p class="draggable" draggable="true">...</p></div>
-  </div>
-  </div>
-
 </div>
 
 
-<div class="footer-container">
-<p>Once you have added all items to the mixed ranking, please click "Next".</p>
-    <button class="btn otree-btn-next btn-primary" id="submit-btn">Next</button>
+  <div class="text-center mt-5">
+     <p>Once you have added all items to the mixed ranking, please click on "Next".</p>
+    <button class="btn otree-btn-next btn-primary px-5" id="submit-btn">Next</button>
+  </div>
+<br/>
+<br/>
 
-    </div>
 
 
     <input type="hidden" name="ranking" id="ranking" />
+    <input type="hidden" name="asiansleft" id="asiansleft" />
+
 {{ endblock }}
 
 
 {{ formfield_errors 'ranking' }}
+{{ formfield_errors 'asiansleft' }}
 
 
 
@@ -275,122 +100,19 @@
 <style>
 
 
-.container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    font-size: 1rem;
-    position:relative;
-}
-
-.items-container {
-    float: left;
-    width: 25%;
-    background-color: #F5F5F5;
-    height: 900px;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-
-}
-
-.headlines {
-    width: 100%;
-    text-align: center;
-    background-color: #333333;
-    border-radius: 5px;
-    color: white;
-  }
-
-.empty{
-    width: 5%;
-    float: left;
-    }
-
-.row {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.outcome .row {
-    margin-top: 1rem;
-    margin-bottom: 1.118rem;
-}
-
-.rank {
-    width: 15%;
-    float: left;
-    height: 100%;
-    font-weight: bold;
-}
-
-.name {
-    width: 85%;
-    float: left;
-    height: 100%;
-}
-
-.outcome {
-    width: 40%;
-    float: left;
-    height: 1270px;
-    background-color:#F5F5F5;
-
-   }
-
-.rank-mixed {
-    text-align: center;
-    width: 15%;
-    float: left;
-    height: 100%;
-    background-color:#F5F5F5;
-}
-
-.drop-container {
-    padding-top: 1rem;
-    width: 85%;
-    height: 100%;
-    float: left;
-    background-color:#F5F5F5;
-    text-align:center;
-    padding-right: 1rem;
-}
-
 .draggable {
-    border: 1px solid black;
-    border-radius: 5px;
     cursor: move;
     text-align: center;
-    margin-bottom: 1rem;
     background-color: black;
     color: white;
 }
 
-.footer-container {
-    margin-top: 5%;
-    justify-content: center;
-}
-
-.btn {
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: large;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    color: white;
-    cursor: pointer;
-
-}
 
 .dragging {
     opacity: .5;
 }
 
 
-.green {
-   background-color: green;
-   border-color: green;
-   }
 
 </style>
 {{ endblock }}
@@ -399,23 +121,188 @@
 
 {{ block app_scripts }}
 <script>
-"use strict";
+'use strict';
 
-let ranking = [];
+/////////////////////////////////////////////////////////////////////////////////////
+// Initial names and correct ranking
+/////////////////////////////////////////////////////////////////////////////////////
 
-// This loop adds makes the currently dragged item appear with reduced opacity.
-document.querySelectorAll('.draggable').forEach(draggable => {
+const ASIANS = [js_vars.asian1+' (A-1)', js_vars.asian2+' (A-2)', js_vars.asian3+' (A-3)',
+                js_vars.asian4+' (A-4)', js_vars.asian5+' (A-5)', js_vars.asian6+' (A-6)',
+                js_vars.asian7+' (A-7)', js_vars.asian8+' (A-8)', js_vars.asian9+' (A-9)',
+                js_vars.asian10+' (A-10)', js_vars.asian11+' (A-11)', js_vars.asian12+' (A-12)'];
 
-  draggable.addEventListener('dragstart', () => {
-    draggable.classList.add('dragging');
+const HISPANICS = [js_vars.hispanic1+' (H-1)', js_vars.hispanic2+' (H-2)', js_vars.hispanic3+' (H-3)',
+              js_vars.hispanic4+' (H-4)', js_vars.hispanic5+' (H-5)', js_vars.hispanic6+' (H-6)',
+              js_vars.hispanic7+' (H-7)', js_vars.hispanic8+' (H-8)', js_vars.hispanic9+' (H-9)',
+              js_vars.hispanic10+' (H-10)', js_vars.hispanic11+' (H-11)', js_vars.hispanic12+' (H-12)'];
+const MALES_ARE_LEFT_PROB = .5;
+
+// Leave empty (i.e. []) if there is no correct answer (or green highlighting is not desired)
+const CORRECT_RANKING = [];
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+// DOM Elements
+/////////////////////////////////////////////////////////////////////////////////////
+
+const dropContainer = document.querySelector('#drop-container');
+const leftContainer = document.querySelector('#left-container');
+const rightContainer = document.querySelector('#right-container');
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Local Storage Helpers
+/////////////////////////////////////////////////////////////////////////////////////
+
+function getFromLocalStorage(key, defaultValue) {
+  const value = sessionStorage.getItem(key);
+  if (!value) {
+    storeInLocalStorage(key, defaultValue);
+    return defaultValue;
+  }
+  return JSON.parse(value);
+}
+
+function storeInLocalStorage(key, value) {
+  sessionStorage.setItem(key, JSON.stringify(value));
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Class Names
+/////////////////////////////////////////////////////////////////////////////////////
+
+function Names() {
+
+  this.malesAreLeft = getFromLocalStorage('malesAreLeft', Math.random() < MALES_ARE_LEFT_PROB);
+  this.leftNames = this.malesAreLeft ? ASIANS : HISPANICS;
+  this.rightNames = this.malesAreLeft ? HISPANICS : ASIANS;
+  this.MixedRanking = getFromLocalStorage('mixed', []);
+}
+
+Names.prototype.update = function () {
+  const currentMixedRanking = [...dropContainer.querySelectorAll('.draggable')]
+      .map(draggable => draggable.innerText);
+  storeInLocalStorage('mixed', currentMixedRanking);
+}
+
+Names.prototype.getMixedRanking = function () {
+  return getFromLocalStorage('mixed', []);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Container Initialization
+/////////////////////////////////////////////////////////////////////////////////////
+
+const names = new Names();
+
+function addNamesToContainer(nameArr, container) {
+  nameArr.forEach(name => {
+    const outerDiv = document.createElement('div');
+    outerDiv.style.height = "2rem";
+
+    const div = document.createElement('div');
+    div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center');
+    div.draggable = true;
+    div.innerText = name;
+
+    // Invisibly insert left/right names in their original position. Thus, every name
+    // appears in its original position and is not pushed upwards.
+    if (container !== dropContainer && names.getMixedRanking().includes(name)) {
+      div.classList.remove('draggable');
+      div.draggable = false;
+      div.style.opacity = "0";
+    }
+
+    div.addEventListener('dragstart', () => div.classList.add('dragging'));
+    div.addEventListener('dragend', () => div.classList.remove('dragging'));
+
+    outerDiv.appendChild(div);
+    container.appendChild(outerDiv);
+  })
+}
+
+function addNamesToDropContainer(nameArr, container) {
+  nameArr.forEach(name => {
+    const div = document.createElement('div');
+    div.classList.add('draggable', 'bg-dark', 'text-white', 'rounded-3', 'text-center', 'mb-2');
+    div.draggable = true;
+    div.innerText = name;
+
+    div.addEventListener('dragstart', () => div.classList.add('dragging'));
+    div.addEventListener('dragend', () => div.classList.remove('dragging'));
+
+    container.appendChild(div);
+  })
+}
+
+function addRanksToContainer(arr, container) {
+  arr.forEach((_, idx) => {
+    const div = document.createElement('div');
+    div.style.height = "2rem";
+    div.innerText = (idx + 1).toString() + ')';
+    container.appendChild(div);
   });
+}
 
-  draggable.addEventListener('dragend', () => {
-    draggable.classList.remove('dragging');
-  });
-});
+function displayCorrectRanking() {
+  const outerDiv = document.createElement('div');
+  outerDiv.classList.add('mb-3');
 
-const dropContainer = document.querySelector('.drop-container');
+//  const p = document.createElement('p');
+//  p.innerText = CORRECT_RANKING_EXPLANATION;
+//  outerDiv.appendChild(p);
+
+  CORRECT_RANKING.forEach((rank, idx) => {
+    const div = document.createElement('div');
+    div.innerText = (idx + 1).toString() + ') ' + rank;
+    outerDiv.appendChild(div);
+  })
+
+  document.querySelector('.container').insertBefore(outerDiv, document.querySelector('h1').nextSibling);
+}
+
+function isRankingCorrect() {
+  dropContainer.querySelectorAll('.draggable')
+      .forEach((draggable, idx) => {
+        if (CORRECT_RANKING.indexOf(draggable.innerText) === idx) {
+          draggable.classList.remove('bg-dark');
+          draggable.classList.add('bg-success');
+        } else {
+          draggable.classList.add('bg-dark');
+          draggable.classList.remove('bg-success');
+        }
+      });
+}
+
+function initializeContainers() {
+  addNamesToContainer(names.leftNames, leftContainer);
+  const leftContainerRanks = document.querySelector('#left-container-ranks');
+  addRanksToContainer(names.leftNames, leftContainerRanks);
+
+  addNamesToContainer(names.rightNames, rightContainer);
+  const rightContainerRanks = document.querySelector('#right-container-ranks');
+  addRanksToContainer(names.rightNames, rightContainerRanks);
+
+  addNamesToDropContainer(names.MixedRanking, dropContainer);
+  const dropContainerRanks = document.querySelector('#drop-container-ranks');
+  addRanksToContainer(
+      names.leftNames.concat(names.rightNames)
+          .filter(name => !names.MixedRanking.includes(name))
+          .concat(names.MixedRanking),
+      dropContainerRanks
+  );
+}
+
+initializeContainers();
+
+if (CORRECT_RANKING.length > 0) {
+  isRankingCorrect();
+  //displayCorrectRanking();
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Dragover Event Handling
+/////////////////////////////////////////////////////////////////////////////////////
 
 dropContainer.addEventListener('dragover', (e) => {
 
@@ -425,7 +312,7 @@ dropContainer.addEventListener('dragover', (e) => {
 
   // Only the currently dragged item has the class dragging.
   const draggable = document.querySelector('.dragging');
-    draggable.classList.add('green');
+  draggable.classList.add('mb-2');
 
   // This determines the element which comes after the current mouse position (in the case
   // where there are no such elements, null is returned).
@@ -438,7 +325,10 @@ dropContainer.addEventListener('dragover', (e) => {
     dropContainer.insertBefore(draggable, afterElement);
   }
 
-  updateranking(dropContainer);
+  names.update();
+
+  isRankingCorrect();
+
 });
 
 function getDragAfterElement(container, y) {
@@ -455,79 +345,67 @@ function getDragAfterElement(container, y) {
     // (1): box.top - box.height / 2 gives the exact position of the vertical center of
     //      the current element
     // (2): y - "vertical center" < 0 iff the child is below the current mouse position
-    const offset = y - box.top - box.height /2
+    const offset = y - box.top - box.height / 2
 
     // This condition only holds when the child is the closest child to the current
     // mouse position.
     if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child };
+      return {offset: offset, element: child};
     } else {
       return closest;
     }
-  }, { offset: Number.NEGATIVE_INFINITY }).element
+  }, {offset: Number.NEGATIVE_INFINITY}).element
 }
 
-/**
- * Updates the global variable ranking with the currently chosen ranking.
- * @param container
- */
-function updateranking(container) {
-  ranking = [];
-  [...container.children].forEach(child => {
-    ranking.push(child.innerText);
-  });
-}
-
-/**
- * Return true if both item containers are empty.
- *
- * @return {boolean}
- */
-function itemsEmpty() {
-  return [...document.querySelectorAll('.items-container')]
-      .reduce(
-          (previousValue, currentContainer) =>
-              previousValue && currentContainer.children.length < 17
-      , true);
-}
+if (names.malesAreLeft == true) {
+    document.getElementById("leftranking").innerHTML= "Asians (A)";
+    document.getElementById("rightranking").innerHTML= "Hispanics (H)";
+    }
+    else {
+        document.getElementById("rightranking").innerHTML= "Asians (A)";
+        document.getElementById("leftranking").innerHTML= "Hispanics (H)";
+    }
+/////////////////////////////////////////////////////////////////////////////////////
+// Submit Functionality
+/////////////////////////////////////////////////////////////////////////////////////
 
 document.querySelector('#submit-btn')
     .addEventListener('click', () => {
 
-      // TODO Perform your desired checks (i.e. if all people have been ranked)
-      if (! itemsEmpty()) {
-        window.alert('Please add all people to your ranking.');
-        return;
-      }
-
       // Create an empty invisible form
-      const form  = document.createElement('form');
+      const form = document.createElement('form');
       document.body.appendChild(form);
       form.style.display = 'none';
 
-      // TODO Select appropriate method and action (i.e. target location) here
+      // Select appropriate method and action (i.e. target location) here
       form.method = 'POST';
       form.action = '#';
 
-      // Create an array which contains the submitted ranking
-      const input = document.createElement('input');
-      form.appendChild(input);
-
       // Add the currently chosen ranking to the input's value
-      input.name = 'ranking[]';
-      input.value = ranking.reduce((previousValue, currentValue) => {
-        return previousValue.concat(currentValue);
-      }, []);
+      //const rankingInput = document.createElement('input');
+      //form.appendChild(rankingInput);
+      //rankingInput.name = 'ranking[]';
+      //rankingInput.value = names.getMixedRanking();
+
+      // Provide some information whether male names were in the left-hand side container
+      //const malesAreLeftInput = document.createElement('input');
+      //form.appendChild(malesAreLeftInput);
+      //malesAreLeftInput.name = 'males_are_left';
+      //malesAreLeftInput.value = names.malesAreLeft;
 
       // Submit to Otree form ranking
-      document.getElementById('ranking').value = ranking;
-
+      document.getElementById('ranking').value = names.getMixedRanking();
+      document.getElementById('asiansleft').value = names.malesAreLeft;
 
       // Submit the form (this uses the method and action from above)
       form.submit();
-
-
     });
+
+
+
+// ----------------------------------------------------------
+// endregion Submit Functionality
+// ----------------------------------------------------------
 
 </script>
 {{ endblock }}

@@ -69,7 +69,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=5.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ["task", "usedprofiles", "variant", "profiles"]
+PARTICIPANT_FIELDS = ["task", "usedprofiles", "variant", "profiles","treatment"]
 SESSION_FIELDS = []
 
 # ISO-639 code
